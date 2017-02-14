@@ -1,23 +1,21 @@
+import { Canvas } from './modules/canvas/engine.canvas.module';
+import { Collision } from './modules/collision/engine.collision.module';
 import { PhysicsEngineOptions } from './engine-model/engine.model';
-import { Collision } from './modules/collision/engine.module.collision';
 
 export class PhysicsEngine {
 
-    private collisionEnabled: boolean = false;
+    private isCollisionEnabled: boolean;
 
     constructor(options: PhysicsEngineOptions) {
         this.collision = options.collision;
+        const canvas = new Canvas(window.innerWidth, window.innerHeight);
     }
 
-    public set collision(option) {
-        this.collisionEnabled = option;
+    private set collision(option) {
+        this.isCollisionEnabled = option;
         if (option) {
-            this.enableCollision();
+            new Collision();
         }
-    }
-
-    private enableCollision(): void {
-        new Collision();
     }
 
 }
