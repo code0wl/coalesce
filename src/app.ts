@@ -1,15 +1,23 @@
+import { PhysicsEngineOptions } from './engine-model/engine.model';
 import { Collision } from './modules/collision'
 
 export class PhysicsEngine {
 
     private collisionEnabled: boolean = false;
 
-    constructor(options) {
-        this.enableCollision();
+    constructor(options: PhysicsEngineOptions) {
+        this.collision = options.collision;
     }
 
-    private enableCollision() {
-        this.collisionEnabled = true;
+    public set collision(option) {
+        this.collisionEnabled = option;
+        if (option) {
+            this.enableCollision();
+        }
+    }
+
+    private enableCollision(): void {
+        new Collision();
     }
 
 }

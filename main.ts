@@ -1,3 +1,9 @@
+import { PhysicsEngineOptions } from './src/engine-model/engine.model';
 import { PhysicsEngine } from './src/app';
 
-new PhysicsEngine({ collision: true }) 
+// move to demo project
+const engineConfiguration: PhysicsEngineOptions = {
+    collision: true
+}
+
+new PhysicsEngine(engineConfiguration);
