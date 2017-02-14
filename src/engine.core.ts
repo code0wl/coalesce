@@ -1,5 +1,5 @@
 import { PhysicsEngineOptions } from './engine-model/engine.model';
-import { Collision } from './modules/collision'
+import { Collision } from './modules/collision/engine.module.collision';
 
 export class PhysicsEngine {
 
