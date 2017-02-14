@@ -1,6 +1,6 @@
 import { Canvas } from './modules/canvas/engine.canvas.module';
 import { Collision } from './modules/collision/engine.collision.module';
-import { PhysicsEngineOptions } from './engine-model/engine.model';
+import { PhysicsEngineOptions } from './models/engine-model/engine.model';
 
 export class PhysicsEngine extends Canvas {
 
