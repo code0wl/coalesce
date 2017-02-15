@@ -8,7 +8,6 @@ export class Draw extends Canvas {
     }
 
     public drawRectangle() {
-        console.log('should draw rectangle');
         super.context.strokeRect(
             this.generateRandomPosition(super.canvasWidth, 0.8),
             this.generateRandomPosition(super.canvasHeight, 0.8),
@@ -18,7 +17,6 @@ export class Draw extends Canvas {
     }
 
     public drawCircle() {
-        console.log('should draw circle');
         super.context.beginPath();
         super.context.arc(
             this.generateRandomPosition(super.canvasWidth, 0.8),

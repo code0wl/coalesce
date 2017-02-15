@@ -1,3 +1,4 @@
+import { Vector } from './modules/vector/engine.vector';
 import { Draw } from './modules/drawing/engine.draw';
 import { Subscription } from 'rxjs';
 import { InputKeyboard, InputMouse } from './modules/input/input.peripheral';
@@ -11,11 +12,13 @@ export class PhysicsEngine {
     private keyboard: InputKeyboard;
     private mouse: InputMouse;
     private draw: Draw;
+    private vector: Vector;
     private collision: Collision;
 
     constructor(options: PhysicsEngineOptions) {
         this.bootstrapEngine(options);
         this.draw = new Draw();
+        this.vector = new Vector(1, 1);
     }
 
     private enableCollision(option) {
@@ -64,7 +67,6 @@ export class PhysicsEngine {
                 this.draw.drawCircle();
                 break;
         }
-        
     }
 
     private enableMouse(isEnabled: boolean): void {
