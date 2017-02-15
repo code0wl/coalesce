@@ -8,9 +8,7 @@ export class PhysicsEngine extends Canvas {
 
     constructor(options: PhysicsEngineOptions) {
         super(window.innerWidth, window.innerHeight);
-        this.enableCollision(options.collision);
-        this.enableKeyboard(options.keyboard);
-        this.enableMouse(options.mouse);
+        this.bootstrapEngine(options);
     }
 
     public getContext() {
@@ -25,6 +23,12 @@ export class PhysicsEngine extends Canvas {
         if (option) {
             new Collision();
         }
+    }
+
+    private bootstrapEngine(options) {
+        this.enableCollision(options.collision);
+        this.enableKeyboard(options.keyboard);
+        this.enableMouse(options.mouse);
     }
 
     private enableKeyboard(option) {
