@@ -1,7 +1,10 @@
-export class Draw {
+import { Canvas } from './../canvas/engine.canvas';
 
-    constructor() {
-        
+export class Draw extends Canvas {
+
+    // add option to provide own canvas with optional sizes
+    public constructor() {
+        super(window.innerWidth, window.innerHeight);
     }
 
     public drawRectangle() {
@@ -12,7 +15,15 @@ export class Draw {
         console.log('should draw circle');
     }
 
-    private randomPosition() {
+    public getContext() {
+        return super.getContext();
+    }
+
+    public getCanvas(): HTMLCanvasElement {
+        return super.getCanvas();
+    }
+
+    private generateRandomPosition() {
         console.log('should return random position');
     }
 

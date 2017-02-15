@@ -1,4 +1,7 @@
-# typescript-rxjs-webpack
-A simple starterkit for a local playground or project.
+# A modern lightweight physics engine for the browser
 
-Feel free to fork or add additions to. The target though is to keep it simple and lean.
+Work in Progress
+
+This project is maintained using TypeScript and RxJS. 
+For the code you are writing does not need to include these dependencies, of course :).
+
