@@ -1,3 +1,5 @@
+import { Draw } from './modules/drawing/engine.draw';
+import { Subscription } from 'rxjs';
 import { InputMouse } from './modules/input/input.mouse';
 import { InputKeyboard } from './modules/input/input.keyboard';
 import { Canvas } from './modules/canvas/engine.canvas';
@@ -5,6 +7,9 @@ import { Collision } from './modules/collision/engine.collision';
 import { PhysicsEngineOptions } from './models/engine-model/engine.model';
 
 export class PhysicsEngine extends Canvas {
+
+    private keyboard: InputKeyboard;
+    private draw: Draw;
 
     constructor(options: PhysicsEngineOptions) {
         super(window.innerWidth, window.innerHeight);
@@ -15,7 +20,7 @@ export class PhysicsEngine extends Canvas {
         return super.getContext();
     }
 
-    public getCanvas() {
+    public getCanvas(): HTMLCanvasElement {
         return super.getCanvas();
     }
 
@@ -25,20 +30,21 @@ export class PhysicsEngine extends Canvas {
         }
     }
 
-    private bootstrapEngine(options) {
+    private bootstrapEngine(options: PhysicsEngineOptions): void {
         this.enableCollision(options.collision);
         this.enableKeyboard(options.keyboard);
         this.enableMouse(options.mouse);
     }
 
-    private enableKeyboard(option) {
-        if (option) {
-            new InputKeyboard();
+    private enableKeyboard(isEnabled: boolean): void {
+        if (isEnabled) {
+            this.keyboard = new InputKeyboard(this.getCanvas());
+            this.keyboard.keyboardInput$.subscribe(e => console.log(e));
         }
     }
 
-    private enableMouse(option) {
-        if (option) {
+    private enableMouse(isEnabled: boolean): void {
+        if (isEnabled) {
             new InputMouse();
         }
     }
