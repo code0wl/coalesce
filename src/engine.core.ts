@@ -5,12 +5,12 @@ import { Collision } from './modules/collision/engine.collision';
 import { PhysicsEngineOptions } from './models/engine-model/engine.model';
 
 export class PhysicsEngine extends Canvas {
-    
+
     constructor(options: PhysicsEngineOptions) {
         super(window.innerWidth, window.innerHeight);
-        this.collision = options.collision;
-        this.keyboard = options.keyboard;
-        this.mouse = options.mouse;
+        this.enableCollision(options.collision);
+        this.enableKeyboard(options.keyboard);
+        this.enableMouse(options.mouse);
     }
 
     public getContext() {
@@ -21,19 +21,19 @@ export class PhysicsEngine extends Canvas {
         return super.getCanvas();
     }
 
-    private set collision(option) {
+    private enableCollision(option) {
         if (option) {
             new Collision();
         }
     }
 
-    private set keyboard(option) {
+    private enableKeyboard(option) {
         if (option) {
             new InputKeyboard();
         }
     }
 
-    private set mouse(option) {
+    private enableMouse(option) {
         if (option) {
             new InputMouse();
         }
