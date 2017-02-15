@@ -4,6 +4,7 @@ import { InputKeyboard, InputMouse } from './modules/input/input.peripheral';
 import { Canvas } from './modules/canvas/engine.canvas';
 import { Collision } from './modules/collision/engine.collision';
 import { PhysicsEngineOptions } from './models/engine-model/engine.model';
+import { Controls } from './models/input-model/controls.model';
 
 export class PhysicsEngine {
 
@@ -14,6 +15,7 @@ export class PhysicsEngine {
 
     constructor(options: PhysicsEngineOptions) {
         this.bootstrapEngine(options);
+        this.draw = new Draw();
     }
 
     private enableCollision(option) {
@@ -31,14 +33,44 @@ export class PhysicsEngine {
     private enableKeyboard(isEnabled: boolean): void {
         if (isEnabled) {
             this.keyboard = new InputKeyboard();
-            this.keyboard.keyboardInput$.subscribe(e => console.log(e));
+            this.keyboard.keyboardInput$
+                .map((keyCode) => this.handleInput(keyCode))
+                .subscribe();
         }
+    }
+
+    // move to domain specific implementation
+    private handleInput(keyCode) {
+        switch (keyCode) {
+            case Controls.down:
+                console.log('down')
+                break;
+
+            case Controls.up:
+                console.log('up')
+                break;
+
+            case Controls.right:
+                break;
+
+            case Controls.left:
+                break;
+
+            case Controls.rectangle:
+                this.draw.drawRectangle();
+                break;
+
+            case Controls.circle:
+                this.draw.drawCircle();
+                break;
+        }
+        
     }
 
     private enableMouse(isEnabled: boolean): void {
         if (isEnabled) {
             this.mouse = new InputMouse();
-            this.mouse.mouseInput$.subscribe(e => console.log(e));
+            this.mouse.mouseInput$.subscribe();
         }
     }
 
