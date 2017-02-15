@@ -1,14 +1,16 @@
-import { Canvas } from './modules/canvas/engine.canvas.module';
-import { Collision } from './modules/collision/engine.collision.module';
+import { InputMouse } from './modules/input/input.mouse';
+import { InputKeyboard } from './modules/input/input.keyboard';
+import { Canvas } from './modules/canvas/engine.canvas';
+import { Collision } from './modules/collision/engine.collision';
 import { PhysicsEngineOptions } from './models/engine-model/engine.model';
 
 export class PhysicsEngine extends Canvas {
-
-    private isCollisionEnabled: boolean;
-
+    
     constructor(options: PhysicsEngineOptions) {
         super(window.innerWidth, window.innerHeight);
         this.collision = options.collision;
+        this.keyboard = options.keyboard;
+        this.mouse = options.mouse;
     }
 
     public getContext() {
@@ -20,9 +22,20 @@ export class PhysicsEngine extends Canvas {
     }
 
     private set collision(option) {
-        this.isCollisionEnabled = option;
         if (option) {
             new Collision();
+        }
+    }
+
+    private set keyboard(option) {
+        if (option) {
+            new InputKeyboard();
+        }
+    }
+
+    private set mouse(option) {
+        if (option) {
+            new InputMouse();
         }
     }
 

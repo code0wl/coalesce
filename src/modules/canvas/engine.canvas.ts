@@ -1,9 +1,9 @@
 export class Canvas {
 
     private _canvas: HTMLCanvasElement;
-    public _context: CanvasRenderingContext2D;
-    public width: number;
-    public height: number;
+    private _context: CanvasRenderingContext2D;
+    private width: number;
+    private height: number;
 
     constructor(width, height) {
         this.width = width;
@@ -19,7 +19,7 @@ export class Canvas {
         return this._context;
     }
 
-    public generateCanvas() {
+    private generateCanvas() {
         this._canvas = document.createElement('canvas');
         this._context = this._canvas.getContext('2d');
         this._canvas.width = this.width;
