@@ -1,3 +1,4 @@
+import { Circle } from './../rigid/engine.shape.circle';
 import { Rectangle } from './../rigid/engine.shape.rectangle';
 import { Canvas } from './../canvas/engine.canvas';
 
@@ -5,10 +6,12 @@ export class Draw extends Canvas {
 
     private _shapeCollection: Array<any> = [];
     private rectangle: Rectangle;
+    private circle: Circle;
 
     public constructor() {
         super(window.innerWidth, window.innerHeight);
-        this.rectangle = new Rectangle(1, 2, 3);
+        // this.rectangle = new Rectangle(1, 2, 3);
+        // this.circle = new Circle(1, 2);
     }
 
     // createShape and move drawing responsibility to draw method
@@ -20,11 +23,11 @@ export class Draw extends Canvas {
             this.generateRandomPosition(4, 40)
         );
         // move all rendering / drawing to draw class
-        this.rectangle.render(super.context);
+        // this.rectangle.render(super.context);
     }
 
     // TODO: Implement drawing class
-    private drawShape() {
+    private drawShape(shapeType: string) {
         // should accept any shape and draw it on the canvas;
     }
 
@@ -39,6 +42,7 @@ export class Draw extends Canvas {
         );
         super.context.closePath();
         super.context.stroke();
+        // this.circle.render(super.context);
     }
 
     private generateRandomPosition(canvasDimension: number, randomnessThreshold: number): number {
