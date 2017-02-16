@@ -4,7 +4,9 @@
 Work in Progress
 
 This project is maintained using TypeScript and RxJS. 
-For the code you are writing does not need to include these dependencies, of course :).
+Nice to know is the project your are including this library in does not need to include these dependencies, of course :).
+The package will only contain TypeScript and RxJS as dependencies. To keep the code as light-weight as possible, I have decided to only make it work for modern browsers.
+A full list of supported browsers will be up as soon as the project is complete.
 
 **Module Support** 
 
