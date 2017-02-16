@@ -1,3 +1,4 @@
+import { AnimationLoop } from './../animation/engine.animation-loop';
 import { Vector } from './../vector/engine.vector';
 import { Circle } from './../rigid/engine.shape.circle';
 import { Rectangle } from './../rigid/engine.shape.rectangle';
@@ -11,6 +12,11 @@ export class Draw extends Canvas {
 
     public constructor() {
         super(window.innerWidth, window.innerHeight);
+        this.startRenderEngine();
+    }
+
+    private startRenderEngine() {
+        new AnimationLoop();
     }
 
     // createShape and move drawing responsibility to draw method
