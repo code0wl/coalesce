@@ -1,3 +1,4 @@
+import { Accelerometer } from './modules/accelerometer/engine.accelerometer';
 import { Vector } from './modules/vector/engine.vector';
 import { Draw } from './modules/drawing/engine.draw';
 import { Subscription } from 'rxjs';
@@ -14,6 +15,7 @@ export class PhysicsEngine {
     private draw: Draw;
     private vector: Vector;
     private collision: Collision;
+    private accelerometer: Accelerometer;
 
     constructor(options: PhysicsEngineOptions) {
         this.bootstrapEngine(options);
