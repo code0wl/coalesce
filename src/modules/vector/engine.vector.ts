@@ -40,8 +40,8 @@ export class Vector {
     }
 
     public normalize(): Vector {
-        let len = this.lengthCalculation();
-        len = len > 0 ? 1 / len : 0;
+        const calc = this.lengthCalculation();
+        const len = calc > 0 ? 1 / calc : calc;
         return new Vector(this.x * len, this.y * len);
     }
 

@@ -20,11 +20,10 @@ export class PhysicsEngine {
     constructor(options: PhysicsEngineOptions) {
         this.bootstrapEngine(options);
         this.draw = new Draw();
-        this.vector = new Vector(1, 1);
     }
 
-    private enableCollision(option) {
-        if (option) {
+    private enableCollision(isEnabled) {
+        if (isEnabled) {
             this.collision = new Collision();
         }
     }

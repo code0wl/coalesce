@@ -5,28 +5,19 @@ export class Circle extends RigidShape {
 
     private rigidShapeType: string;
     private radius: number;
-    private startPoint: Circle;
+    private startPoint: Vector;
 
     constructor(center, radius) {
-        super(center, null);
+        super(center, radius);
         this.rigidShapeType = 'Circle';
         this.radius = radius;
-        this.startPoint = new Circle(super.center.x, super.center.y - radius);
-        this.generateDummyObjects();
-    }
-
-    // test compass direction
-    private generateDummyObjects() {
-
+        this.startPoint = new Vector(this.center.x, this.center.y - radius);
     }
 
     public render(context: CanvasRenderingContext2D) {
         context.beginPath();
-        //draw a circle
-        context.arc(this.center.x, this.center.y,
-            this.radius, 0, Math.PI * 2, true);
-        //draw a line from start point toward center
-        context.moveTo(this.startPoint.center.x, this.startPoint.center.y);
+        context.arc(this.center.x, this.center.y, this.radius, 0, Math.PI * 2, true);
+        context.moveTo(this.center.x, this.center.y);
         context.lineTo(this.center.x, this.center.y);
         context.closePath();
         context.stroke();

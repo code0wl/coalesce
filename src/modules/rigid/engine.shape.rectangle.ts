@@ -13,20 +13,28 @@ export class Rectangle extends RigidShape {
         super(center, width);
         this.rigidShapeType = 'Rectangle';
         this.height = height;
-        this.center = super.center;
+        this.center = center;
         this.width = width;
         this.vertexes = [];
         this.compass = [];
         this.generateDummyObjects();
     }
 
-    // test compass direction
     private generateDummyObjects() {
-        // const vectorOne = new Vector(this.center.x - this.width / 2, this.center.y - this.height / 2); // TopLeft 
-        // const vectorTwo = new Vector(this.center.x + this.width / 2, this.center.y - this.height / 2); // TopRight
-        // const vectorThree = new Vector(this.center.x + this.width / 2, this.center.y + this.height / 2); // BottomRight
-        // const vectorFour = new Vector(this.center.x - this.width / 2, this.center.y + this.height / 2); // BottomLeft
-        // this.vertexes.push(vectorOne, vectorTwo, vectorThree, vectorFour);
+        const vectorOne = new Vector(this.center.x - this.width / 2, this.center.y - this.height / 2); // TopLeft 
+        const vectorTwo = new Vector(this.center.x + this.width / 2, this.center.y - this.height / 2); // TopRight
+        const vectorThree = new Vector(this.center.x + this.width / 2, this.center.y + this.height / 2); // BottomRight
+        const vectorFour = new Vector(this.center.x - this.width / 2, this.center.y + this.height / 2); // BottomLeft
+        this.vertexes.push(vectorOne, vectorTwo, vectorThree, vectorFour);
+
+        // this.compass[0] = this.vertexes[1].subtract(this.vertexes[2]);
+        // this.compass[0] = this.compass[0].normalize();
+        // this.compass[1] = this.vertexes[2].subtract(this.vertexes[3]);
+        // this.compass[1] = this.compass[1].normalize();
+        // this.compass[2] = this.vertexes[3].subtract(this.vertexes[0]);
+        // this.compass[2] = this.compass[2].normalize();
+        // this.compass[3] = this.vertexes[0].subtract(this.vertexes[1]);
+        // this.compass[3] = this.compass[3].normalize();
     }
 
     public render(context: CanvasRenderingContext2D) {

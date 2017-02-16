@@ -1,3 +1,4 @@
+import { Vector } from './../vector/engine.vector';
 import { Circle } from './../rigid/engine.shape.circle';
 import { Rectangle } from './../rigid/engine.shape.rectangle';
 import { Canvas } from './../canvas/engine.canvas';
@@ -10,20 +11,15 @@ export class Draw extends Canvas {
 
     public constructor() {
         super(window.innerWidth, window.innerHeight);
-        // this.rectangle = new Rectangle(1, 2, 3);
-        // this.circle = new Circle(1, 2);
     }
 
     // createShape and move drawing responsibility to draw method
     public drawRectangle(): void {
-        const rectangle = super.context.strokeRect(
-            this.generateRandomPosition(super.canvasWidth, 0.8),
-            this.generateRandomPosition(super.canvasHeight, 0.8),
-            this.generateRandomPosition(2, 40),
-            this.generateRandomPosition(4, 40)
-        );
-        // move all rendering / drawing to draw class
-        // this.rectangle.render(super.context);
+        const rectangleOne = new Rectangle(new Vector(
+            Math.random() * super.canvas.width * 0.8,
+            Math.random() * super.canvas.height * 0.8),
+            Math.random() * 30 + 10,
+            Math.random() * 30 + 10);
     }
 
     // TODO: Implement drawing class
@@ -33,16 +29,10 @@ export class Draw extends Canvas {
 
     // createShape and move drawing responsibility to draw method
     public drawCircle() {
-        super.context.beginPath();
-        const circle = super.context.arc(
-            this.generateRandomPosition(super.canvasWidth, 0.8),
-            this.generateRandomPosition(super.canvasHeight, 0.8),
-            this.generateRandomPosition(2, 40),
-            0, Math.PI * 2, true
-        );
-        super.context.closePath();
-        super.context.stroke();
-        // this.circle.render(super.context);
+        const r1 = new Circle(new Vector(
+            Math.random() * super.canvas.width * 0.8,
+            Math.random() * super.canvas.height * 0.8),
+            Math.random() * 10 + 20);
     }
 
     private generateRandomPosition(canvasDimension: number, randomnessThreshold: number): number {

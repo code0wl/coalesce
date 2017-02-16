@@ -1,8 +1,12 @@
 import { ShapeCollection } from './../shapes/engine.shape-collection';
 
-export abstract class RigidShape {
+export class RigidShape {
+
     public shapeCollection = ShapeCollection;
-    constructor(public center: any, public angle: number) {
+
+    constructor(public center: any, public angle: any) {
         this.shapeCollection.push(this);
+        console.log(this.shapeCollection);
     }
+
 }
