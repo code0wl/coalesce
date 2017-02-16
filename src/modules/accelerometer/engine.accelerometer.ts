@@ -4,7 +4,7 @@ export class Accelerometer {
         // bind object to accelerometer
     }
 
-    private forceInput(peripheral, startX, startY) {
+    private forceInput(peripheral: string, coordinates: Object) {
         // isPeripheral active?
         // get x, y stream
         // get mouse end point stream

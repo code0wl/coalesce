@@ -33,6 +33,7 @@ export class PhysicsEngine {
         this.enableCollision(options.collision);
         this.enableKeyboard(options.keyboard);
         this.enableMouse(options.mouse);
+        this.enableAccelerometer(options.accelerometer);
     }
 
     private enableKeyboard(isEnabled: boolean): void {
@@ -44,21 +45,29 @@ export class PhysicsEngine {
         }
     }
 
+    private enableAccelerometer(isEnabled: boolean): void {
+        if (isEnabled) {
+            this.accelerometer = new Accelerometer();
+        }
+    }
+
     // move to domain specific implementation
     private handleInput(keyCode) {
         switch (keyCode) {
             case Controls.down:
-                console.log('down')
+                console.log('down');
                 break;
 
             case Controls.up:
-                console.log('up')
+                console.log('up');
                 break;
 
             case Controls.right:
+                console.log('right');
                 break;
 
             case Controls.left:
+                console.log('left');
                 break;
 
             case Controls.rectangle:
