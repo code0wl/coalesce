@@ -38,7 +38,6 @@ export class Rectangle extends RigidShape {
     }
 
     public render(context: CanvasRenderingContext2D) {
-        console.log('working');
         context.save();
         context.translate(this.vertexes[0].x, this.vertexes[0].y);
         context.rotate(this.angle);

@@ -14,7 +14,7 @@ export class Circle extends RigidShape {
         this.startPoint = new Vector(this.center.x, this.center.y - radius);
     }
 
-    public render(context: CanvasRenderingContext2D) {
+    public render(context) {
         context.beginPath();
         context.arc(this.center.x, this.center.y, this.radius, 0, Math.PI * 2, true);
         context.moveTo(this.center.x, this.center.y);

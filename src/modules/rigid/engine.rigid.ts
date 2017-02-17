@@ -6,4 +6,7 @@ export class RigidShape {
         console.log(ShapeCollection.collection);
     }
 
+    public render(context: CanvasRenderingContext2D) {
+        // violates solid, needs polymorphism
+    }
 }
