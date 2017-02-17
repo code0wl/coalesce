@@ -4,5 +4,7 @@ export enum Controls {
     up = 87,
     down = 83,
     left = 65,
-    right = 68
+    right = 68,
+    one = 49,
+    nine = 57
 }

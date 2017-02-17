@@ -49,13 +49,21 @@ export class PhysicsEngine {
 
     // move to domain specific implementation
     private handleInput(keyCode) {
+
+        // ew
+        if (keyCode >= Controls.one && keyCode <= Controls.nine) {
+            if (keyCode - Controls.one < ShapeCollection.collection.length) {
+                ShapeCollection.selectedObject = keyCode - Controls.one;
+            }
+        }
+
         switch (keyCode) {
             case Controls.down:
-                this.IncrementObject();
+                this.incrementObject();
                 break;
 
             case Controls.up:
-                console.log('up');
+                this.decrementObject();
                 break;
 
             case Controls.right:
@@ -74,16 +82,16 @@ export class PhysicsEngine {
                 this.draw.drawCircle();
                 break;
         }
+
     }
 
-    // private dontKnow() {
-    //     if (keycode >= 48 && keycode <= 57){  //number
-    //         if (keycode - 48 < gEngine.Core.mAllObjects.length)
-    //             gObjectNum = keycode - 48;
-    //     }
-    // }
+    private decrementObject() {
+        if (ShapeCollection.selectedObject > 0) {
+            ShapeCollection.selectedObject--;
+        }
+    }
 
-    private IncrementObject() {
+    private incrementObject() {
         if (ShapeCollection.selectedObject < ShapeCollection.collection.length - 1) {
             ShapeCollection.selectedObject++;
         }
