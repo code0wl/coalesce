@@ -1,0 +1,33 @@
+{
+  "name": "2d-physics-engine-demo",
+  "version": "0.0.2",
+  "description": "A simple physics engine for 2d applications",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm i && webpack-dev-server --watch --inline",
+    "postinstall": "typings install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/code0wl/2d-physics-engine.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/code0wl/2d-physics-engine/issues"
+  },
+  "homepage": "https://github.com/code0wl/2d-physics-engine#readme",
+  "dependencies": {
+    "rxjs": "^5.0.2",
+    "whatwg-fetch": "^2.0.1"
+  },
+  "devDependencies": {
+    "2d-physics-engine": "file:///Users/oscarlodriguez/Dropbox/projects/2d-physics",
+    "ts-loader": "^1.3.3",
+    "typescript": "^2.1.4",
+    "typings": "^2.1.0",
+    "webpack": "^1.14.0",
+    "webpack-dev-server": "^1.16.2"
+  }
+}

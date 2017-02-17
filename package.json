@@ -1,8 +1,8 @@
 {
-    "name": "starter-kit",
-    "version": "1.0.0",
-    "description": "A simple starterkit for a local playground or project",
-    "main": "index.js",
+    "name": "2d-physics-engine",
+    "version": "0.0.2",
+    "description": "A simple physics engine for 2d applications",
+    "main": "main.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "npm i && webpack-dev-server --watch --inline",
@@ -10,14 +10,14 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/code0wl/typescript-rxjs-webpack.git"
+        "url": "git+https://github.com/code0wl/2d-physics-engine.git"
     },
     "author": "",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/code0wl/typescript-rxjs-webpack/issues"
+        "url": "https://github.com/code0wl/2d-physics-engine/issues"
     },
-    "homepage": "https://github.com/code0wl/typescript-rxjs-webpack#readme",
+    "homepage": "https://github.com/code0wl/2d-physics-engine#readme",
     "dependencies": {
         "rxjs": "^5.0.2",
         "whatwg-fetch": "^2.0.1"
