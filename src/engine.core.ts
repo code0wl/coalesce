@@ -1,19 +1,16 @@
 import { Accelerometer } from './modules/accelerometer/engine.accelerometer';
-import { Vector } from './modules/vector/engine.vector';
 import { Draw } from './modules/drawing/engine.draw';
-import { Subscription } from 'rxjs';
 import { InputKeyboard, InputMouse } from './modules/input/input.peripheral';
-import { Canvas } from './modules/canvas/engine.canvas';
 import { Collision } from './modules/collision/engine.collision';
 import { PhysicsEngineOptions } from './models/engine-model/engine.model';
 import { Controls } from './models/input-model/controls.model';
+import { ShapeCollection } from './modules/shapes/engine.shape-collection';
 
 export class PhysicsEngine {
 
     private keyboard: InputKeyboard;
     private mouse: InputMouse;
     private draw: Draw;
-    private vector: Vector;
     private collision: Collision;
     private accelerometer: Accelerometer;
 
@@ -54,7 +51,7 @@ export class PhysicsEngine {
     private handleInput(keyCode) {
         switch (keyCode) {
             case Controls.down:
-                console.log('down');
+                this.IncrementObject();
                 break;
 
             case Controls.up:
@@ -76,6 +73,19 @@ export class PhysicsEngine {
             case Controls.circle:
                 this.draw.drawCircle();
                 break;
+        }
+    }
+
+    // private dontKnow() {
+    //     if (keycode >= 48 && keycode <= 57){  //number
+    //         if (keycode - 48 < gEngine.Core.mAllObjects.length)
+    //             gObjectNum = keycode - 48;
+    //     }
+    // }
+
+    private IncrementObject() {
+        if (ShapeCollection.selectedObject < ShapeCollection.collection.length - 1) {
+            ShapeCollection.selectedObject++;
         }
     }
 

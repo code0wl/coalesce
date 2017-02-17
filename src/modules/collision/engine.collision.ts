@@ -1,5 +1,10 @@
 export class Collision {
     constructor() {
-        console.log('collision enabled');
+        console.info('collision enabled');
     }
+
+    private crossed(interceptedObjects: Object) {
+        // lifecycle to know when object have been hit
+    }
+
 }

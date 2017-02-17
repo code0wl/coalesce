@@ -6,24 +6,22 @@ import { Canvas } from './../canvas/engine.canvas';
 
 export class Draw extends Canvas {
 
-    private _shapeCollection: Array<any> = [];
-    private rectangle: Rectangle;
-    private circle: Circle;
-
     public constructor() {
         super(window.innerWidth, window.innerHeight);
-        this.startRenderEngine();
+        console.info('drawing engine enabled');
+        this.startEngine();
     }
 
-    private startRenderEngine() {
+    private startEngine() {
         new AnimationLoop();
+        console.info('Animation lifecycle activated');
     }
 
     // createShape and move drawing responsibility to draw method
     public drawRectangle(): void {
         const rectangleOne = new Rectangle(new Vector(
-            Math.random() * super.canvas.width * 0.8,
-            Math.random() * super.canvas.height * 0.8),
+                Math.random() * super.canvas.width * 0.8,
+                Math.random() * super.canvas.height * 0.8),
             Math.random() * 30 + 10,
             Math.random() * 30 + 10);
     }
@@ -36,12 +34,12 @@ export class Draw extends Canvas {
     // createShape and move drawing responsibility to draw method
     public drawCircle() {
         const r1 = new Circle(new Vector(
-            Math.random() * super.canvas.width * 0.8,
-            Math.random() * super.canvas.height * 0.8),
-            Math.random() * 10 + 20);
+            this.randomPosition(super.canvas.width, 0.8),
+            this.randomPosition(super.canvas.height, 0.8)),
+            this.randomPosition(null, 30));
     }
 
-    private generateRandomPosition(canvasDimension: number, randomnessThreshold: number): number {
+    private randomPosition(canvasDimension: number, randomnessThreshold: number): number {
         return Math.random() * canvasDimension * randomnessThreshold;
     }
 

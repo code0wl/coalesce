@@ -4,15 +4,6 @@ export class AnimationLoop {
         this.animationLoop();
     }
 
-    private animationLoop() {
-        requestAnimationFrame(() => {
-            console.log('loop running');
-            this.animationLoop();
-        })
-        this.updateUIEcho();
-        this.draw();
-    }
-
     private updateUIEcho() {
         // document.getElementById("uiEchoString").innerHTML =
         //     `<p><b>Selected Object:</b>:</p> 
@@ -38,6 +29,12 @@ export class AnimationLoop {
         //         mAllObjects[i].draw(mContext);
         //     }
         // 
+    }
+
+    private animationLoop() {
+        requestAnimationFrame(() => this.animationLoop())
+        this.updateUIEcho();
+        this.draw();
     }
 
 }
