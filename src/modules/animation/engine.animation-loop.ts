@@ -21,7 +21,6 @@ export class AnimationLoop {
     }
 
     private updateUIEcho() {
-
         if (ShapeCollection.collection.length) {
             document.querySelector('.uiEchoString').innerHTML =
                 `<p><b>Selected Object:</b>:</p> 
@@ -39,17 +38,17 @@ export class AnimationLoop {
 
     private draw() {
         this.context.clearRect(0, 0, this.width, this.height);
-        for (let i = 0; i < ShapeCollection.collection.length; i++) {
+        ShapeCollection.collection.map((item, index) => {
             this.context.strokeStyle = 'blue';
-            if (i === ShapeCollection.selectedObject) {
+            if (index === ShapeCollection.selectedObject) {
                 this.context.strokeStyle = 'red';
             }
-            ShapeCollection.collection[i].render(this.context);
-        }
+            ShapeCollection.collection[index].render(this.context);
+        });
     }
 
     private animationLoop() {
-        requestAnimationFrame(() => this.animationLoop())
+        requestAnimationFrame(() => this.animationLoop());
         this.updateUIEcho();
         this.draw();
     }
