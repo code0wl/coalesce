@@ -7,6 +7,6 @@ export class RigidShape {
     }
 
     public render(context: CanvasRenderingContext2D) {
-        // violates solid, needs polymorphism
+        // Remove as it violates solid, needs polymorphism
     }
 }

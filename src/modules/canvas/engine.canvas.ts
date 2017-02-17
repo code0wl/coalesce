@@ -11,14 +11,6 @@ export class Canvas {
         this.generateCanvas();
     }
 
-    public get canvasWidth(): number {
-        return this.width;
-    }
-
-    public get canvasHeight(): number {
-        return this.height;
-    }
-
     public get canvas(): HTMLCanvasElement {
         return this._canvas;
     }

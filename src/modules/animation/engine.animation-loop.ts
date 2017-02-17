@@ -23,7 +23,7 @@ export class AnimationLoop {
     private updateUIEcho() {
         if (ShapeCollection.collection.length) {
             document.querySelector('.uiEchoString').innerHTML =
-                `<p><b>Selected Object:</b>:</p> 
+                `<p><b>Selected Object:</b></p> 
             <ul style="margin:-10px"> 
             <li>Id: ${ShapeCollection.selectedObject} </li>
             <li>Center: ${ShapeCollection.collection[ShapeCollection.selectedObject].center.x.toPrecision(3)},

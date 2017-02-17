@@ -22,26 +22,18 @@ export class Draw extends Canvas {
     // createShape and move drawing responsibility to draw method
     public drawRectangle(): void {
         new Rectangle(new Vector(
-            this.randomPosition(super.canvas.width, 0.8),
-            this.randomPosition(super.canvas.height, 0.8)),
-            this.randomPosition(null, 30),
-            this.randomPosition(null, 30));
-    }
+                Math.random() * super.canvas.width * 0.8,
+                Math.random() * super.canvas.height * 0.8),
+            Math.random() * 30 + 10,
+            Math.random() * 30 + 10);
 
-    // TODO: Implement drawing class
-    private draw(shapeType: string) {
-        // should accept any shape and draw it on the canvas;
     }
 
     // createShape and move drawing responsibility to draw method
     public drawCircle() {
         new Circle(new Vector(
-            this.randomPosition(super.canvas.width, 0.8),
-            this.randomPosition(super.canvas.height, 0.8)),
-            this.randomPosition(null, 30));
-    }
-
-    private randomPosition(canvasDimension: number, randomnessThreshold: number): number {
-        return Math.random() * canvasDimension * randomnessThreshold;
+                Math.random() * super.canvas.width * 0.8,
+                Math.random() * super.canvas.height * 0.8),
+            Math.random() * 10 + 20);
     }
 }
