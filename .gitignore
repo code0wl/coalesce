@@ -3,6 +3,5 @@ node_modules/
 .idea/
 main.js
 *.js.map
-src/**/*.js
-src/*.js
-*.log.*
+lib/src/**/*.js
+*.log
