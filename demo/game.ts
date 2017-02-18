@@ -1,5 +1,5 @@
-import { PhysicsEngine } from '2d-physics-engine/src/module/engine.core';
-import { ShapeCollection } from '2d-physics-engine/src/module/components/shapes/engine.shape-collection';
+import { PhysicsEngine } from '2d-physics-engine/build/src/module/engine.core';
+import { ShapeCollection } from '2d-physics-engine/build/src/module/components/shapes/engine.shape-collection';
 import { Controls } from './models/input-model/controls.model';
 
 const engineConfiguration = {
@@ -57,9 +57,7 @@ class Game {
                 this.engine.draw.drawCircle();
                 break;
         }
-
     }
-
 
     private decrementObject() {
         if (ShapeCollection.selectedObject > 0) {

@@ -42,7 +42,8 @@ export class Draw extends Canvas {
 
     // createShape and move drawing responsibility to draw method
     public drawCircle() {
-        new Circle(new Vector(
+        new Circle(
+            new Vector(
                 Math.random() * super.canvas.width * 0.8,
                 Math.random() * super.canvas.height * 0.8),
             Math.random() * 10 + 20);

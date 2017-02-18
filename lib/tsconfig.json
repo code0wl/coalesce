@@ -2,11 +2,15 @@
     "compilerOptions": {
         "target": "es6",
         "module": "commonjs",
-        "allowJs": true,
+        "outDir": "build/",
+        "allowJs": false,
         "sourceMap": true,
         "lib": [
             "dom",
             "es7"
         ]
-    }
+    },
+    "exclude": [
+        "node_modules"
+    ]
 }

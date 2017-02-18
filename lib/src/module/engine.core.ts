@@ -20,6 +20,7 @@ export class PhysicsEngine {
     }
 
     public handleInput(keyCode): void {
+        // TODO: abstract
     };
 
     private enableCollision(isEnabled) {

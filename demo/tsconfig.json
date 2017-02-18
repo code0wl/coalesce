@@ -8,5 +8,8 @@
             "dom",
             "es7"
         ]
-    }
+    },
+    "exclude": [
+        "node_modules"
+    ]
 }
