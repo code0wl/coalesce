@@ -4,6 +4,9 @@ import { Circle } from './../rigid/engine.shape.circle';
 import { Rectangle } from './../rigid/engine.shape.rectangle';
 import { Canvas } from './../canvas/engine.canvas';
 
+declare const console: any;
+declare const Math: any;
+
 export class Draw extends Canvas {
 
     private animationLoop: AnimationLoop;

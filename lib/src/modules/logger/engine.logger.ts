@@ -1,3 +1,5 @@
+declare const console: any;
+
 export class Logger {
 
     constructor() {
@@ -5,7 +7,7 @@ export class Logger {
     }
 
     private logPerformance() {
-        console.log('logging performance');
+        console.info('logging performance');
     }
 
 }
