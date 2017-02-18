@@ -2,6 +2,7 @@ node_modules/
 .vscode/
 .idea/
 main.js
+*.js.map
 src/**/*.js
 src/*.js
 *.log.*
