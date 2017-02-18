@@ -9,16 +9,18 @@ declare const Math: any;
 
 export class Draw extends Canvas {
 
+    private logger: boolean;
     private animationLoop: AnimationLoop;
 
-    public constructor(width, height) {
+    public constructor(width, height, logger) {
         super(width, height);
-        console.info(`drawing engine enabled with dimension: ${width}px X ${height}px`);
+        this.logger = logger;
         this.startEngine();
+        console.info(`drawing engine enabled with dimension: ${width}px X ${height}px`);
     }
 
     private startEngine() {
-        this.animationLoop = new AnimationLoop(super.context, super.canvas.width, super.canvas.height);
+        this.animationLoop = new AnimationLoop(super.context, super.canvas.width, super.canvas.height, this.logger);
         console.info('Animation lifecycle activated');
     }
 
@@ -29,7 +31,6 @@ export class Draw extends Canvas {
                 Math.random() * super.canvas.height * 0.8),
             Math.random() * 30 + 10,
             Math.random() * 30 + 10);
-
     }
 
     // createShape and move drawing responsibility to draw method

@@ -8,5 +8,6 @@ export const engineConfiguration: PhysicsEngineOptions = {
     mouse: true,
     accelerometer: true,
     width: window.innerWidth,
-    height: window.innerHeight
+    height: window.innerHeight,
+    log: true
 };

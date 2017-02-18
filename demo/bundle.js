@@ -56,11 +56,11 @@
 	};
 	class Game {
 	    constructor() {
-	        console.log('initiliased bruh');
+	        alert('hi');
 	        this.engine = new _2d_physics_engine_1.PhysicsEngine(engineConfiguration);
 	        this.width = engineConfiguration.width;
 	        this.height = engineConfiguration.height;
-	        this.engine.handleInput((keyCode) => {
+	        this.engine.handleInput = ((keyCode) => {
 	            console.log(keyCode, 'simple handler');
 	        });
 	        console.log('handle', this.engine);

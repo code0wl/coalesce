@@ -5,4 +5,5 @@ export interface PhysicsEngineOptions {
     mouse: boolean;
     width: number;
     height: number;
+    log: boolean;
 }

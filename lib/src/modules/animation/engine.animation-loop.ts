@@ -1,38 +1,32 @@
 import { ShapeCollection } from '../shapes/engine.shape-collection';
+import { Logger } from '../logger/engine.logger';
 
 export class AnimationLoop {
 
     private context: CanvasRenderingContext2D;
     private width: number;
+    private logger: boolean;
+    private loggable: Logger;
     private height: number;
 
-    public constructor(context, width, height) {
+    public constructor(context, width, height, logger) {
         this.context = context;
         this.width = width;
+        this.logger = logger;
         this.height = height;
+        this.createLogger();
         this.animationLoop();
-        const ui = document.createElement('div');
-        ui.classList.add('uiEchoString');
-        ui.style.zIndex = '1';
-        ui.style.position = 'absolute';
-        ui.style.top = `0px`;
-        ui.style.left = `0px`;
-        document.body.appendChild(ui);
     }
 
-    private updateUIEcho() {
-        if (ShapeCollection.collection.length) {
-            document.querySelector('.uiEchoString').innerHTML =
-                `<p><b>Selected Object:</b></p> 
-            <ul style="margin:-10px"> 
-            <li>Id: ${ShapeCollection.selectedObject} </li>
-            <li>Center: ${ShapeCollection.collection[ShapeCollection.selectedObject].center.x.toPrecision(3)},
-            ${ShapeCollection.collection[ShapeCollection.selectedObject].center.y.toPrecision(3)}</li>
-            </ul> <hr><p><b>Control</b>: of selected object</p>
-            <ul style="margin:-10px">
-            <li><b>Num</b> or <b>Up/Down Arrow</b>:SelectObject</li>
-            </ul> <hr>
-            <b>F/G</b>: Spawn [Rectangle/Circle] at random location <hr>`
+    private createLogger() {
+        if (this.logger) {
+            this.loggable = new Logger();
+        }
+    }
+
+    private updateLogger(): void {
+        if (this.logger) {
+            this.loggable.logStats();
         }
     }
 
@@ -49,7 +43,7 @@ export class AnimationLoop {
 
     private animationLoop() {
         requestAnimationFrame(() => this.animationLoop());
-        this.updateUIEcho();
+        this.updateLogger();
         this.draw();
     }
 
