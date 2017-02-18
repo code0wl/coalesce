@@ -29,14 +29,11 @@ export class Rectangle extends RigidShape {
 
         this.compass[0] = this.vertexes[1].subtract(this.vertexes[2]);
         this.compass[0] = this.compass[0].normalize();
-        this.compass[1] = this.vertexes[2].subtract(this.
-            vertexes[3]);
+        this.compass[1] = this.vertexes[2].subtract(this.vertexes[3]);
         this.compass[1] = this.compass[1].normalize();
-        this.compass[2] = this.vertexes[3].subtract(this.
-            vertexes[0]);
+        this.compass[2] = this.vertexes[3].subtract(this.vertexes[0]);
         this.compass[2] = this.compass[2].normalize();
-        this.compass[3] = this.vertexes[0].subtract(this.
-            vertexes[1]);
+        this.compass[3] = this.vertexes[0].subtract(this.vertexes[1]);
         this.compass[3] = this.compass[3].normalize();
         return this;
     };

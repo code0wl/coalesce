@@ -22,7 +22,6 @@ export class Draw extends Canvas {
 
     private startEngine() {
         this.animationLoop = new AnimationLoop(super.context, super.canvas.width, super.canvas.height, this.logger);
-        console.info('Animation lifecycle activated');
     }
 
     // createShape and move drawing responsibility to draw method

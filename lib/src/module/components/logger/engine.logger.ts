@@ -4,6 +4,9 @@ declare const console: any;
 
 export class Logger {
 
+    private lagTime: number = 0;
+    private color: string;
+
     constructor() {
         console.info('logging performance');
         const ui = document.createElement('div');
@@ -19,7 +22,8 @@ export class Logger {
         // move ugly pseudo code to logger
         if (ShapeCollection.collection.length) {
             document.querySelector('.uiEchoString').innerHTML = `
-            <p><b>Selected Object:</b></p> 
+            <p><b>Selected Object:</b></p>
+            <p style="color: ${this.color}">Missed rendering frames meter: ${this.lagTime}</p>
             <ul> 
             <li>Id: ${ShapeCollection.selectedObject} </li>
             <li>
@@ -45,25 +49,26 @@ export class Logger {
     }
 
     private fpsMeter() {
+
         let currentTime,
             elapsedTime,
-            previousTime = Date.now(),
-            lagTime = 0;
+            previousTime = Date.now();
 
         const kFPS = 60;
         const kFrameTime = 1 / kFPS;
-        const mUpdateIntervalInSeconds = kFrameTime;
         const kMPF = 1000 * kFrameTime;
 
         currentTime = Date.now();
         elapsedTime = currentTime - previousTime;
-        previousTime = currentTime;
 
-        lagTime += elapsedTime;
+        this.lagTime += elapsedTime;
 
-        while (lagTime >= kMPF) {
-            lagTime -= kMPF;
+        while (this.lagTime >= kMPF) {
+            this.lagTime -= kMPF;
         }
+        console.log('test', this.lagTime);
+        console.log('kmpf', kFrameTime);
+        this.color = this.lagTime > 10 ? 'red' : 'green';
     }
 
 }
