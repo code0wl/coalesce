@@ -16,47 +16,15 @@ export class PhysicsEngine {
     private collision: Collision;
     private accelerometer: Accelerometer;
 
-    constructor(options: PhysicsEngineOptions) {
+    public constructor(options: PhysicsEngineOptions) {
         this.bootstrapEngine(options);
         this.width = options.width;
         this.height = options.height;
         this.initializeDrawingModule();
     }
 
-    private initializeDrawingModule(): void {
-        this.draw = new Draw(this.width, this.height);
-    }
-
-    private enableCollision(isEnabled) {
-        if (isEnabled) {
-            this.collision = new Collision();
-        }
-    }
-
-    private bootstrapEngine(options: PhysicsEngineOptions): void {
-        this.enableCollision(options.collision);
-        this.enableKeyboard(options.keyboard);
-        this.enableMouse(options.mouse);
-        this.enableAccelerometer(options.accelerometer);
-    }
-
-    private enableKeyboard(isEnabled: boolean): void {
-        if (isEnabled) {
-            this.keyboard = new InputKeyboard();
-            this.keyboard.keyboardInput$
-                .map((keyCode) => this.handleInput(keyCode))
-                .subscribe();
-        }
-    }
-
-    private enableAccelerometer(isEnabled: boolean): void {
-        if (isEnabled) {
-            this.accelerometer = new Accelerometer();
-        }
-    }
-
     // move to domain specific implementation
-    private handleInput(keyCode) {
+    public handleInput(keyCode) {
 
         // ew
         if (keyCode >= Controls.one && keyCode <= Controls.nine) {
@@ -91,6 +59,38 @@ export class PhysicsEngine {
                 break;
         }
 
+    }
+
+    private initializeDrawingModule(): void {
+        this.draw = new Draw(this.width, this.height);
+    }
+
+    private enableCollision(isEnabled) {
+        if (isEnabled) {
+            this.collision = new Collision();
+        }
+    }
+
+    private bootstrapEngine(options: PhysicsEngineOptions): void {
+        this.enableCollision(options.collision);
+        this.enableKeyboard(options.keyboard);
+        this.enableMouse(options.mouse);
+        this.enableAccelerometer(options.accelerometer);
+    }
+
+    private enableKeyboard(isEnabled: boolean): void {
+        if (isEnabled) {
+            this.keyboard = new InputKeyboard();
+            this.keyboard.keyboardInput$
+                .map((keyCode) => this.handleInput(keyCode))
+                .subscribe();
+        }
+    }
+
+    private enableAccelerometer(isEnabled: boolean): void {
+        if (isEnabled) {
+            this.accelerometer = new Accelerometer();
+        }
     }
 
     private decrementObject() {

@@ -1,8 +1,8 @@
 {
   "name": "2d-physics-engine",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A simple physics engine for 2d applications",
-  "main": "main.js",
+  "main": "bundle.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm i && webpack-dev-server --watch --inline",

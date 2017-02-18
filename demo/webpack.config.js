@@ -1,6 +1,6 @@
 module.exports = {
-    entry: './game',
-    output: {filename: 'bundle.js'},
+    entry: './game.ts',
+    output: {filename: './bundle.js'},
     resolve: {
         extensions: ['.js', '.ts', '']
     },
