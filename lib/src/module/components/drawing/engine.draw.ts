@@ -3,6 +3,7 @@ import { Vector } from './../vector/engine.vector';
 import { Circle } from './../rigid/engine.shape.circle';
 import { Rectangle } from './../rigid/engine.shape.rectangle';
 import { Canvas } from './../canvas/engine.canvas';
+import { ShapeCollection } from '../shapes/engine.shape-collection';
 
 declare const console: any;
 declare const Math: any;
@@ -31,6 +32,12 @@ export class Draw extends Canvas {
                 Math.random() * super.canvas.height * 0.8),
             Math.random() * 30 + 10,
             Math.random() * 30 + 10);
+    }
+
+    public update() {
+        ShapeCollection.collection.map((item) => {
+            item.update(super.context);
+        });
     }
 
     // createShape and move drawing responsibility to draw method

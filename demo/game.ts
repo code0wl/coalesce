@@ -60,6 +60,7 @@ class Game {
 
     }
 
+    
     private decrementObject() {
         if (ShapeCollection.selectedObject > 0) {
             ShapeCollection.selectedObject--;

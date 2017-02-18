@@ -5,12 +5,14 @@ export class Circle extends RigidShape {
 
     private rigidShapeType: string;
     private radius: number;
+    private fix: number;
     private startPoint: Vector;
 
-    constructor(center, radius) {
+    constructor(center, radius, fix) {
         super(center, radius);
         this.rigidShapeType = 'Circle';
         this.radius = radius;
+        this.fix = fix;
         this.startPoint = new Vector(this.center.x, this.center.y - radius);
     }
 
@@ -23,4 +25,15 @@ export class Circle extends RigidShape {
         context.stroke();
     }
 
+    rotate(angle): Circle {
+        this.angle += angle;
+        this.startPoint = this.startPoint.rotate(this.center, angle);
+        return this;
+    };
+
+    public move(s): Circle {
+        this.startPoint = this.startPoint.addition(s);
+        this.center = this.center.addition(s);
+        return this;
+    };
 }

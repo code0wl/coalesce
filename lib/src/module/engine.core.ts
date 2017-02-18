@@ -3,6 +3,7 @@ import { Draw } from './components/drawing/engine.draw';
 import { InputKeyboard, InputMouse } from './components/input/input.peripheral';
 import { Collision } from './components/collision/engine.collision';
 import { PhysicsEngineOptions } from '../models/engine-model/engine.model';
+import { ShapeCollection } from './components/shapes/engine.shape-collection';
 
 export class PhysicsEngine {
     private keyboard: InputKeyboard;
@@ -14,6 +15,8 @@ export class PhysicsEngine {
     public constructor(options: PhysicsEngineOptions) {
         this.bootstrapEngine(options);
         this.draw = new Draw(options.width, options.height, options.log);
+        ShapeCollection.canvas.height = options.height;
+        ShapeCollection.canvas.width = options.width;
     }
 
     public handleInput(keyCode): void {
