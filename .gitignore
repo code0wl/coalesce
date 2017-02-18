@@ -1,6 +1,7 @@
 node_modules/
 .vscode/
 .idea/
-bundle.js
+main.js
+src/**/*.js
 src/*.js
 *.log.*
