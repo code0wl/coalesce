@@ -1,13 +1,13 @@
 module.exports = {
-    entry: ['whatwg-fetch', './game'],
-    output: { filename: 'bundle.js' },
+    entry: './game',
+    output: {filename: 'bundle.js'},
     resolve: {
         extensions: ['.js', '.ts', '']
     },
     module: {
         loaders: [
             {
-                test: /demo\/.ts$/,
+                test: /.ts$/,
                 loader: 'ts-loader'
             }
         ]
