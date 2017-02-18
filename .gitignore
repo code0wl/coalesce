@@ -1,7 +1,7 @@
 node_modules/
 .vscode/
-.idea/
 main.js
 *.js.map
 lib/src/**/*.js
 *.log
+.idea/

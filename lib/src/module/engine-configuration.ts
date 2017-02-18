@@ -1,4 +1,4 @@
-import { PhysicsEngineOptions } from './models/engine-model/engine.model';
+import { PhysicsEngineOptions } from '../models/engine-model/engine.model';
 
 declare const window: any;
 

@@ -1,8 +1,8 @@
-import { Accelerometer } from './modules/accelerometer/engine.accelerometer';
-import { Draw } from './modules/drawing/engine.draw';
-import { InputKeyboard, InputMouse } from './modules/input/input.peripheral';
-import { Collision } from './modules/collision/engine.collision';
-import { PhysicsEngineOptions } from './models/engine-model/engine.model';
+import { Accelerometer } from './components/accelerometer/engine.accelerometer';
+import { Draw } from './components/drawing/engine.draw';
+import { InputKeyboard, InputMouse } from './components/input/input.peripheral';
+import { Collision } from './components/collision/engine.collision';
+import { PhysicsEngineOptions } from '../models/engine-model/engine.model';
 
 export class PhysicsEngine {
     private keyboard: InputKeyboard;

@@ -1,4 +1,4 @@
-import { Vector } from './../vector/engine.vector';
+import { Vector } from '../vector/engine.vector';
 import { RigidShape } from './engine.rigid';
 
 export class Circle extends RigidShape {

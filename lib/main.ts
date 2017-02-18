@@ -1,4 +1,4 @@
-import { PhysicsEngine } from './src/engine.core';
-import { engineConfiguration } from './src/engine-configuration';
+import { PhysicsEngine } from './src/module/engine.core';
+import { engineConfiguration } from './src/module/engine-configuration';
 
 new PhysicsEngine(engineConfiguration);

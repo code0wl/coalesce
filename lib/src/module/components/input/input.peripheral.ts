@@ -1,6 +1,5 @@
-import { Observable, Subscription } from 'rxjs';
-import { Canvas } from './../canvas/engine.canvas';
-import { Controls } from '../../models/input-model/controls.model';
+import { Observable } from 'rxjs';
+import { Controls } from '../../../models/input-model/controls.model';
 
 export class InputKeyboard {
     public keyboardInput$: Observable<number>;
@@ -22,9 +21,9 @@ export class InputMouse {
 }
 
 // devices such as leapMotion
-export class inputGestures {
-    public gestureInput$: Observable<Object>;
-    constructor() {
-        console.log('to be implemented');
-    }
-}
+// export class inputGestures {
+//     public gestureInput$: Observable<Object>;
+//     constructor() {
+//         console.log('to be implemented');
+//     }
+// }
