@@ -1,7 +1,7 @@
 "use strict";
-const engine_core_1 = require("2d-physics-engine/build/src/module/engine.core");
-const engine_shape_collection_1 = require("2d-physics-engine/build/src/module/components/shapes/engine.shape-collection");
-const controls_model_1 = require("./models/input-model/controls.model");
+const _2d_physics_engine_1 = require('2d-physics-engine');
+const _2d_physics_engine_2 = require('2d-physics-engine');
+const controls_model_1 = require('./models/input-model/controls.model');
 const engineConfiguration = {
     collision: true,
     keyboard: true,
@@ -11,9 +11,10 @@ const engineConfiguration = {
     height: window.innerHeight,
     log: true
 };
+console.log(_2d_physics_engine_1.default);
 class Game {
     constructor() {
-        this.engine = new engine_core_1.PhysicsEngine(engineConfiguration);
+        this.engine = new _2d_physics_engine_1.default(engineConfiguration);
         this.width = engineConfiguration.width;
         this.gameInput = this.gameInput.bind(this);
         this.height = engineConfiguration.height;
@@ -21,8 +22,8 @@ class Game {
     }
     gameInput(keyCode) {
         if (keyCode >= controls_model_1.Controls.one && keyCode <= controls_model_1.Controls.nine) {
-            if (keyCode - controls_model_1.Controls.one < engine_shape_collection_1.ShapeCollection.collection.length) {
-                engine_shape_collection_1.ShapeCollection.selectedObject = keyCode - controls_model_1.Controls.one;
+            if (keyCode - controls_model_1.Controls.one < _2d_physics_engine_2.default.collection.length) {
+                _2d_physics_engine_2.default.selectedObject = keyCode - controls_model_1.Controls.one;
             }
         }
         switch (keyCode) {
@@ -33,13 +34,21 @@ class Game {
                 this.decrementObject();
                 break;
             case controls_model_1.Controls.right:
-                console.log('right');
+                _2d_physics_engine_2.default.collection[_2d_physics_engine_2.default.selectedObject].rotate(-0.1);
                 break;
             case controls_model_1.Controls.left:
-                console.log('left');
+                _2d_physics_engine_2.default.collection[_2d_physics_engine_2.default.selectedObject].rotate(0.1);
                 break;
             case controls_model_1.Controls.rectangle:
                 this.engine.draw.drawRectangle();
+                break;
+            case controls_model_1.Controls.gravity:
+                if (_2d_physics_engine_2.default.collection[_2d_physics_engine_2.default.selectedObject].fix === 0) {
+                    _2d_physics_engine_2.default.collection[_2d_physics_engine_2.default.selectedObject].fix = 1;
+                }
+                else {
+                    _2d_physics_engine_2.default.collection[_2d_physics_engine_2.default.selectedObject].fix = 0;
+                }
                 break;
             case controls_model_1.Controls.circle:
                 this.engine.draw.drawCircle();
@@ -47,13 +56,13 @@ class Game {
         }
     }
     decrementObject() {
-        if (engine_shape_collection_1.ShapeCollection.selectedObject > 0) {
-            engine_shape_collection_1.ShapeCollection.selectedObject--;
+        if (_2d_physics_engine_2.default.selectedObject > 0) {
+            _2d_physics_engine_2.default.selectedObject--;
         }
     }
     incrementObject() {
-        if (engine_shape_collection_1.ShapeCollection.selectedObject < engine_shape_collection_1.ShapeCollection.collection.length - 1) {
-            engine_shape_collection_1.ShapeCollection.selectedObject++;
+        if (_2d_physics_engine_2.default.selectedObject < _2d_physics_engine_2.default.collection.length - 1) {
+            _2d_physics_engine_2.default.selectedObject++;
         }
     }
 }

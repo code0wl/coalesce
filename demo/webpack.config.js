@@ -1,5 +1,5 @@
 module.exports = {
-    entry: './game.ts',
+    entry: './',
     output: {filename: './bundle.js'},
     resolve: {
         extensions: ['.js', '.ts', '']

@@ -1,5 +1,6 @@
-import { PhysicsEngine } from '2d-physics-engine/build/src/module/engine.core';
-import { ShapeCollection } from '2d-physics-engine/build/src/module/components/shapes/engine.shape-collection';
+import PhysicsEngine from '2d-physics-engine';
+import ShapeCollection  from '2d-physics-engine';
+
 import { Controls } from './models/input-model/controls.model';
 
 const engineConfiguration = {
@@ -11,6 +12,8 @@ const engineConfiguration = {
     height: window.innerHeight,
     log: true
 };
+
+console.log(PhysicsEngine)
 
 class Game {
     private engine: PhysicsEngine;
@@ -42,15 +45,23 @@ class Game {
                 break;
 
             case Controls.right:
-                console.log('right');
+                ShapeCollection.collection[ShapeCollection.selectedObject].rotate(-0.1);
                 break;
 
             case Controls.left:
-                console.log('left');
+                ShapeCollection.collection[ShapeCollection.selectedObject].rotate(0.1);
                 break;
 
             case Controls.rectangle:
                 this.engine.draw.drawRectangle();
+                break;
+
+            case Controls.gravity:
+                if (ShapeCollection.collection[ShapeCollection.selectedObject].fix === 0) {
+                    ShapeCollection.collection[ShapeCollection.selectedObject].fix = 1;
+                } else {
+                    ShapeCollection.collection[ShapeCollection.selectedObject].fix = 0;
+                }
                 break;
 
             case Controls.circle:

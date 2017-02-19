@@ -4,15 +4,18 @@ import { InputKeyboard, InputMouse } from './components/input/input.peripheral';
 import { Collision } from './components/collision/engine.collision';
 import { PhysicsEngineOptions } from '../models/engine-model/engine.model';
 import { ShapeCollection } from './components/shapes/engine.shape-collection';
+const json = require('../../package.json');
 
 export class PhysicsEngine {
     private keyboard: InputKeyboard;
     private mouse: InputMouse;
     public draw: Draw;
+    private version: string = json.version;
     public collision: Collision;
     public accelerometer: Accelerometer;
 
     public constructor(options: PhysicsEngineOptions) {
+        console.log(`Engine started, running version ${this.version}`);
         this.bootstrapEngine(options);
         this.draw = new Draw(options.width, options.height, options.log);
         ShapeCollection.canvas.height = options.height;

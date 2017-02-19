@@ -2,7 +2,7 @@ import { ShapeCollection } from '../shapes/engine.shape-collection';
 import { Vector } from '../vector/engine.vector';
 
 export class RigidShape {
-    public fix: any;
+    public fix: number;
 
     constructor(public center: any, public angle: any) {
         ShapeCollection.collection.push(this);
@@ -13,6 +13,10 @@ export class RigidShape {
     }
 
     public render(context: CanvasRenderingContext2D) {
+        // override;
+    }
+
+    public rotate (angle: number) {
         // override;
     }
 

@@ -1,4 +1,5 @@
 import { PhysicsEngine } from './src/module/engine.core';
-import { engineConfiguration } from './src/module/engine-configuration';
+import { ShapeCollection } from './src/module/components/shapes/engine.shape-collection';
 
-new PhysicsEngine(engineConfiguration);
+module.exports = PhysicsEngine;
+module.exports = ShapeCollection;
