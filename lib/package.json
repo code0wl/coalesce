@@ -8,7 +8,7 @@
         "start": "npm i && typings install && webpack-dev-server --watch --inline",
         "validate-webpack:dev": "webpack-validator webpack.config.js --env.dev",
         "validate-webpack:production": "webpack-validator webpack.config.js --env.prod",
-        "prep.demo": "npm run validate-webpack:dev && webpack && cd ../demo && rm -rf node_modules && npm start"
+        "prep.demo": "webpack && cd ../demo && rm -rf node_modules && npm start"
     },
     "repository": {
         "type": "git",

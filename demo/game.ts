@@ -1,5 +1,4 @@
-import PhysicsEngine from '2d-physics-engine';
-import ShapeCollection  from '2d-physics-engine';
+import * as PhysicsEngine from '2d-physics-engine/main';
 
 import { Controls } from './models/input-model/controls.model';
 
@@ -16,12 +15,12 @@ const engineConfiguration = {
 console.log(PhysicsEngine)
 
 class Game {
-    private engine: PhysicsEngine;
+    private engine: PhysicsEngine.PhysicsEngine;
     public height: number;
     public width: number;
 
     constructor() {
-        this.engine = new PhysicsEngine(engineConfiguration);
+        this.engine = new PhysicsEngine.PhysicsEngine(engineConfiguration);
         this.width = engineConfiguration.width;
         this.gameInput = this.gameInput.bind(this);
         this.height = engineConfiguration.height;
