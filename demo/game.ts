@@ -1,8 +1,6 @@
 import { PhysicsEngine } from '2d-physics-engine';
 import { Controls } from './models/input-model/controls.model';
 
-declare const ShapeCollection: any;
-
 const engineConfiguration = {
     collision: true,
     keyboard: true,
@@ -26,7 +24,7 @@ class Game {
         this.engine.handleInput = this.gameInput;
     }
 
-    public gameInput(keyCode) {
+    public gameInput(keyCode: number) {
         if (keyCode >= Controls.one && keyCode <= Controls.nine) {
             if (keyCode - Controls.one < this.engine.shapeCollection.collection.length) {
                 this.engine.shapeCollection.selectedObject = keyCode - Controls.one;
@@ -40,6 +38,14 @@ class Game {
 
             case Controls.up:
                 this.decrementObject();
+                break;
+
+            case Controls.arrowUp:
+                this.engine.shapeCollection.collection[this.engine.shapeCollection.selectedObject].move(this.engine.vector.createVectorShape(0, -10));
+                break;
+
+            case Controls.arrowDown:
+                this.engine.shapeCollection.collection[this.engine.shapeCollection.selectedObject].move(this.engine.vector.createVectorShape(0, +10));
                 break;
 
             case Controls.right:

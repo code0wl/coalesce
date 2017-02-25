@@ -13,11 +13,21 @@ export class RigidShape {
         // override
     }
 
+    public boundTest(shape) {
+        const vFrom1to2 = shape.center.subtract(this.center);
+        const rSum = this.angle + shape.mBoundRadius;
+        const dist = vFrom1to2.length();
+        if (dist > rSum) {
+            return false;  //not overlapping
+        }
+        return true;
+    };
+
     public render(context: CanvasRenderingContext2D) {
         // override;
     }
 
-    public rotate (angle: number) {
+    public rotate(angle: number, center?: number) {
         // override;
     }
 

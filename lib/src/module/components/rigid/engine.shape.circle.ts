@@ -8,7 +8,7 @@ export class Circle extends RigidShape {
     public fix: number;
     private startPoint: Vector;
 
-    constructor(center, radius, shapeCollection, fix?) {
+    public constructor(center, radius, shapeCollection, fix?) {
         super(center, radius, shapeCollection);
         this.rigidShapeType = 'Circle';
         this.radius = radius;
@@ -16,7 +16,7 @@ export class Circle extends RigidShape {
         this.startPoint = new Vector(this.center.x, this.center.y - radius);
     }
 
-    public render(context) {
+    public render(context): void {
         context.beginPath();
         context.arc(this.center.x, this.center.y, this.radius, 0, Math.PI * 2, true);
         context.moveTo(this.center.x, this.center.y);
@@ -25,15 +25,14 @@ export class Circle extends RigidShape {
         context.stroke();
     }
 
-    public rotate(angle): Circle {
+    public rotate(angle: number): void {
         this.angle += angle;
-        this.startPoint = this.startPoint.rotate(this.center, angle);
-        return this;
+        this.startPoint = this.startPoint.rotate(angle, this.center);
     };
 
-    public move(s): Circle {
-        this.startPoint = this.startPoint.addition(s);
-        this.center = this.center.addition(s);
+    public move(vector: Vector): Circle {
+        this.startPoint = this.startPoint.add(vector);
+        this.center = this.center.add(vector);
         return this;
     };
 }

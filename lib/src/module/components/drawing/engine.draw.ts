@@ -23,15 +23,19 @@ export class Draw extends Canvas {
         console.info(`drawing engine enabled with dimension: ${width}px X ${height}px`);
     }
 
+    public getContext(): CanvasRenderingContext2D {
+        return super.getContext();
+    }
+
     public startEngine() {
         this.animationLoop = new AnimationLoop(super.getContext(), super.getCanvas().width, super.getCanvas().height, this.logger, this.shapeCollection);
     }
 
-    // createShape and move drawing responsibility to draw method
+    // createShape and move drawing responsibility to from draw method
     public drawRectangle(): void {
         new Rectangle(new Vector(
-                Math.random() * super.getCanvas().width * 0.8,
-                Math.random() * super.getCanvas().height * 0.8),
+            Math.random() * super.getCanvas().width * 0.8,
+            Math.random() * super.getCanvas().height * 0.8),
             Math.random() * 30 + 10,
             Math.random() * 30 + 10, this.shapeCollection);
     }
@@ -42,7 +46,7 @@ export class Draw extends Canvas {
         });
     }
 
-    // createShape and move drawing responsibility to draw method
+    // create higher order to take any shape
     public drawCircle() {
         new Circle(
             new Vector(

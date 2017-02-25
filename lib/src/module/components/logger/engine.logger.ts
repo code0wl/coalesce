@@ -26,20 +26,24 @@ export class Logger {
             <p><b>Selected Object:</b></p>
             <p style="color: ${this.color}">Missed rendering frames meter: ${this.lagTime}</p>
             <ul> 
-            <li>Id: ${this.shapeCollection.selectedObject} </li>
-            <li>
-                Center: ${this.shapeCollection.collection[this.shapeCollection.selectedObject].center.x.toPrecision(3)},
-                ${this.shapeCollection.collection[this.shapeCollection.selectedObject].center.y.toPrecision(3)}
-            </li>
-            <li>Angle:  ${this.shapeCollection.collection[this.shapeCollection.selectedObject].angle.toPrecision(3)} </li>
+                <li>Id: ${this.shapeCollection.selectedObject} </li>
+                <li>
+                    Center: ${this.shapeCollection.collection[this.shapeCollection.selectedObject].center.x.toPrecision(3)},
+                    ${this.shapeCollection.collection[this.shapeCollection.selectedObject].center.y.toPrecision(3)}
+                </li>
+                <li>Angle:  ${this.shapeCollection.collection[this.shapeCollection.selectedObject].angle.toPrecision(3)} </li>
             </ul> 
             <hr>
-            <p><b>Control</b>: of selected object</p>
+            <p>
+                <b>Control</b>: of selected object
+            </p>
             <ul>
-            <li><b>Arrow keys</b> <b>QE</b>: Position [Move + Rotate]</li>
             <li>
-                <b>Num</b> or  
-                <b>Up/Down Arrow</b>:SelectObject</li>
+                <b>Arrow keys</b> 
+                <b>QE</b>: Position [Move + Rotate]
+            </li>
+            <li>
+                <b>key W/ key S</b>:SelectObject</li>
             </ul>
             <p><b>H</b>: Fix object</p>
             <p><b>R</b>: Reset System</p>

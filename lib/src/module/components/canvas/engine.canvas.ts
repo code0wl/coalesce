@@ -1,7 +1,7 @@
 export class Canvas {
 
-    private _canvas: HTMLCanvasElement;
-    private _context: CanvasRenderingContext2D;
+    private canvas: HTMLCanvasElement;
+    private context: CanvasRenderingContext2D;
     private width: number;
     private height: number;
 
@@ -12,19 +12,19 @@ export class Canvas {
     }
 
     public getCanvas(): HTMLCanvasElement {
-        return this._canvas;
+        return this.canvas;
     }
 
     public getContext(): CanvasRenderingContext2D {
-        return this._context;
+        return this.context;
     }
 
     private generateCanvas() {
-        this._canvas = document.createElement('canvas');
-        this._context = this._canvas.getContext('2d');
-        this._canvas.width = this.width;
-        this._canvas.height = this.height;
-        this._canvas.classList.add('physics-canvas');
-        document.body.appendChild(this._canvas);
+        this.canvas = document.createElement('canvas');
+        this.context = this.canvas.getContext('2d');
+        this.canvas.width = this.width;
+        this.canvas.height = this.height;
+        this.canvas.classList.add('physics-canvas');
+        document.body.appendChild(this.canvas);
     }
 }

@@ -3,6 +3,7 @@ import { Draw } from './module/components/drawing/engine.draw';
 import { InputKeyboard, InputMouse } from './module/components/input/input.peripheral';
 import { Collision } from './module/components/collision/engine.collision';
 import { PhysicsEngineOptions } from './models/engine-model/engine.model';
+import { VectorFactory } from './module/components/vector/vector.factory';
 import { ShapeCollection } from './module/components/shapes/engine.shape-collection';
 const json = require('../package.json');
 
@@ -12,16 +13,18 @@ export class PhysicsEngine {
     public draw: Draw;
     public shapeCollection: ShapeCollection;
     private version: string = json.version;
+    private vector = VectorFactory;
     public collision: Collision;
     public accelerometer: Accelerometer;
 
     public constructor(options: PhysicsEngineOptions) {
         console.log(`Engine started, running version ${this.version}`);
-        this.bootstrapEngine(options);
         this.shapeCollection = new ShapeCollection();
         this.shapeCollection.canvas.height = options.height;
         this.shapeCollection.canvas.width = options.width;
         this.draw = new Draw(options.width, options.height, options.log, this.shapeCollection);
+        this.vector = new VectorFactory();
+        this.bootstrapEngine(options);
     }
 
     public handleInput(keyCode): void {
@@ -30,7 +33,7 @@ export class PhysicsEngine {
 
     private enableCollision(isEnabled) {
         if (isEnabled) {
-            this.collision = new Collision();
+            this.collision = new Collision(this.shapeCollection, this.draw.getContext());
         }
     }
 

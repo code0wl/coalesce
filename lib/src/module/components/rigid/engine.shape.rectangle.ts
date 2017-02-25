@@ -1,4 +1,5 @@
 import { RigidShape } from './engine.rigid';
+import { Vector } from '../vector/engine.vector';
 
 export class Rectangle extends RigidShape {
 
@@ -6,7 +7,7 @@ export class Rectangle extends RigidShape {
     private height: number;
     private width: number;
     public fix: number;
-    private vertexes: Array<any>;
+    private vertexes: Array<Vector>;
     private compass: Array<any>;
 
     constructor(center, width, height, shapeCollection, fix?) {
@@ -18,9 +19,17 @@ export class Rectangle extends RigidShape {
         this.width = width;
         this.vertexes = [];
         this.compass = [];
+        this.registerAngles();
     }
 
-    public rotate(angle) {
+    private registerAngles(): void {
+        this.vertexes[0] = new Vector(this.center.x - this.width / 2, this.center.y - this.height / 2);
+        this.vertexes[1] = new Vector(this.center.x + this.width / 2, this.center.y - this.height / 2);
+        this.vertexes[2] = new Vector(this.center.x + this.width / 2, this.center.y + this.height / 2);
+        this.vertexes[3] = new Vector(this.center.x - this.width / 2, this.center.y + this.height / 2);
+    }
+
+    public rotate(angle: number): void {
         this.angle += angle;
 
         this.vertexes.map((vertex, i) => {
@@ -35,10 +44,9 @@ export class Rectangle extends RigidShape {
         this.compass[2] = this.compass[2].normalize();
         this.compass[3] = this.vertexes[0].subtract(this.vertexes[1]);
         this.compass[3] = this.compass[3].normalize();
-        return this;
     };
 
-    public render(context: CanvasRenderingContext2D) {
+    public render(context: CanvasRenderingContext2D): void {
         context.save();
         context.translate(this.center.x, this.center.y);
         context.rotate(this.angle);
@@ -46,12 +54,10 @@ export class Rectangle extends RigidShape {
         context.restore();
     }
 
-    public move(v) {
+    public move(vector: Vector): void {
         this.vertexes.map((vertex, i) => {
-            vertex[i] = vertex.addition(v);
+            vertex[i] = vertex.add(vector);
         });
-        this.center = this.center.addition(v);
-        return this;
+        this.center = this.center.add(vector);
     };
-
 }

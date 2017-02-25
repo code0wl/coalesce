@@ -4,6 +4,7 @@ import { InputKeyboard, InputMouse } from './module/components/input/input.perip
 import { Collision } from './module/components/collision/engine.collision';
 import { PhysicsEngineOptions } from './models/engine-model/engine.model';
 import { ShapeCollection } from './module/components/shapes/engine.shape-collection';
+import { VectorFactory } from './module/components/vector/vector.factory';
 
 /**
  * @class AsyncSubject<T>
@@ -12,6 +13,7 @@ export declare class PhysicsEngine<T> {
     private keyboard: InputKeyboard;
     private mouse: InputMouse;
     public draw: Draw;
+    private vector: VectorFactory;
     private version: string;
     public collision: Collision;
     public shapeCollection: ShapeCollection;

@@ -31,6 +31,12 @@ class Game {
             case controls_model_1.Controls.up:
                 this.decrementObject();
                 break;
+            case controls_model_1.Controls.arrowUp:
+                this.engine.shapeCollection.collection[this.engine.shapeCollection.selectedObject].move(this.engine.vector.createVectorShape(0, -10));
+                break;
+            case controls_model_1.Controls.arrowDown:
+                this.engine.shapeCollection.collection[this.engine.shapeCollection.selectedObject].move(this.engine.vector.createVectorShape(0, +10));
+                break;
             case controls_model_1.Controls.right:
                 this.engine.shapeCollection.collection[this.engine.shapeCollection.selectedObject].rotate(-0.1);
                 break;

@@ -8,11 +8,11 @@ export class Vector {
         return Math.sqrt(this.x * this.x + this.y * this.y);
     }
 
-    public addition(vector): Vector {
+    public add(vector): Vector {
         return new Vector(vector.x + this.x, vector.y + this.y);
     }
 
-    public subtraction(vector): Vector {
+    public subtract(vector): Vector {
         return new Vector(vector.x - this.x, vector.y - this.y);
     }
 

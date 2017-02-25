@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 361);
+/******/ 	return __webpack_require__(__webpack_require__.s = 362);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -74,7 +74,7 @@
 
 var root_1 = __webpack_require__(7);
 var toSubscriber_1 = __webpack_require__(348);
-var observable_1 = __webpack_require__(21);
+var observable_1 = __webpack_require__(22);
 /**
  * A representation of any set of values over any amount of time. This the most basic building block
  * of RxJS.
@@ -222,10 +222,10 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var isFunction_1 = __webpack_require__(27);
+var isFunction_1 = __webpack_require__(28);
 var Subscription_1 = __webpack_require__(4);
 var Observer_1 = __webpack_require__(39);
-var rxSubscriber_1 = __webpack_require__(22);
+var rxSubscriber_1 = __webpack_require__(23);
 /**
  * Implements the {@link Observer} interface and extends the
  * {@link Subscription} class. While the {@link Observer} is the public API for
@@ -526,7 +526,7 @@ var isObject_1 = __webpack_require__(64);
 var Observable_1 = __webpack_require__(0);
 var iterator_1 = __webpack_require__(18);
 var InnerSubscriber_1 = __webpack_require__(74);
-var observable_1 = __webpack_require__(21);
+var observable_1 = __webpack_require__(22);
 function subscribeToResult(outerSubscriber, result, outerValue, outerIndex) {
     var destination = new InnerSubscriber_1.InnerSubscriber(outerSubscriber, outerValue, outerIndex);
     if (destination.closed) {
@@ -605,7 +605,7 @@ exports.subscribeToResult = subscribeToResult;
 
 var isArray_1 = __webpack_require__(11);
 var isObject_1 = __webpack_require__(64);
-var isFunction_1 = __webpack_require__(27);
+var isFunction_1 = __webpack_require__(28);
 var tryCatch_1 = __webpack_require__(8);
 var errorObject_1 = __webpack_require__(6);
 var UnsubscriptionError_1 = __webpack_require__(61);
@@ -810,9 +810,9 @@ var __extends = (this && this.__extends) || function (d, b) {
 var Observable_1 = __webpack_require__(0);
 var Subscriber_1 = __webpack_require__(1);
 var Subscription_1 = __webpack_require__(4);
-var ObjectUnsubscribedError_1 = __webpack_require__(25);
+var ObjectUnsubscribedError_1 = __webpack_require__(26);
 var SubjectSubscription_1 = __webpack_require__(40);
-var rxSubscriber_1 = __webpack_require__(22);
+var rxSubscriber_1 = __webpack_require__(23);
 /**
  * @class SubjectSubscriber<T>
  */
@@ -1090,7 +1090,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Observable_1 = __webpack_require__(0);
-var ScalarObservable_1 = __webpack_require__(30);
+var ScalarObservable_1 = __webpack_require__(31);
 var EmptyObservable_1 = __webpack_require__(13);
 var isScheduler_1 = __webpack_require__(12);
 /**
@@ -1761,6 +1761,60 @@ exports.$$iterator = symbolIteratorPonyfill(root_1.root);
 
 "use strict";
 
+class Vector {
+    constructor(x, y) {
+        this.x = x;
+        this.y = y;
+    }
+    lengthCalculation() {
+        return Math.sqrt(this.x * this.x + this.y * this.y);
+    }
+    add(vector) {
+        return new Vector(vector.x + this.x, vector.y + this.y);
+    }
+    subtract(vector) {
+        return new Vector(vector.x - this.x, vector.y - this.y);
+    }
+    scale(nth) {
+        return new Vector(this.x * nth, this.y * nth);
+    }
+    dot(vector) {
+        return (this.x * vector.x + this.y * vector.y);
+    }
+    cross(vector) {
+        return (this.x * vector.y - this.y * vector.x);
+    }
+    rotate(center, angle) {
+        const r = [];
+        const x = this.x - center.x;
+        const y = this.y - center.y;
+        r[0] = x * Math.cos(angle) - y * Math.sin(angle);
+        r[1] = x * Math.sin(angle) + y * Math.cos(angle);
+        r[0] += center.x;
+        r[1] += center.y;
+        return new Vector(r[0], r[1]);
+    }
+    normalize() {
+        const calc = this.lengthCalculation();
+        const len = calc > 0 ? 1 / calc : calc;
+        return new Vector(this.x * len, this.y * len);
+    }
+    distance(vector) {
+        const x = this.x - vector.x;
+        const y = this.y - vector.y;
+        return Math.sqrt(x * x + y * y);
+    }
+    ;
+}
+exports.Vector = Vector;
+
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
     function __() { this.constructor = d; }
@@ -1815,7 +1869,7 @@ exports.AsyncSubject = AsyncSubject;
 //# sourceMappingURL=AsyncSubject.js.map
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1932,7 +1986,7 @@ exports.MergeAllSubscriber = MergeAllSubscriber;
 //# sourceMappingURL=mergeAll.js.map
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1960,7 +2014,7 @@ exports.$$observable = getSymbolObservable(root_1.root);
 //# sourceMappingURL=observable.js.map
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1972,7 +2026,7 @@ exports.$$rxSubscriber = (typeof Symbol === 'function' && typeof Symbol.for === 
 //# sourceMappingURL=rxSubscriber.js.map
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2006,7 +2060,7 @@ exports.ArgumentOutOfRangeError = ArgumentOutOfRangeError;
 //# sourceMappingURL=ArgumentOutOfRangeError.js.map
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2040,7 +2094,7 @@ exports.EmptyError = EmptyError;
 //# sourceMappingURL=EmptyError.js.map
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2073,7 +2127,7 @@ exports.ObjectUnsubscribedError = ObjectUnsubscribedError;
 //# sourceMappingURL=ObjectUnsubscribedError.js.map
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2085,7 +2139,7 @@ exports.isDate = isDate;
 //# sourceMappingURL=isDate.js.map
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2097,7 +2151,7 @@ exports.isFunction = isFunction;
 //# sourceMappingURL=isFunction.js.map
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2115,7 +2169,7 @@ exports.isNumeric = isNumeric;
 //# sourceMappingURL=isNumeric.js.map
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2128,8 +2182,8 @@ var __extends = (this && this.__extends) || function (d, b) {
 var Subject_1 = __webpack_require__(5);
 var queue_1 = __webpack_require__(57);
 var Subscription_1 = __webpack_require__(4);
-var observeOn_1 = __webpack_require__(34);
-var ObjectUnsubscribedError_1 = __webpack_require__(25);
+var observeOn_1 = __webpack_require__(35);
+var ObjectUnsubscribedError_1 = __webpack_require__(26);
 var SubjectSubscription_1 = __webpack_require__(40);
 /**
  * @class ReplaySubject<T>
@@ -2223,7 +2277,7 @@ var ReplayEvent = (function () {
 //# sourceMappingURL=ReplaySubject.js.map
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2287,7 +2341,7 @@ exports.ScalarObservable = ScalarObservable;
 //# sourceMappingURL=ScalarObservable.js.map
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2445,7 +2499,7 @@ exports.CombineLatestSubscriber = CombineLatestSubscriber;
 //# sourceMappingURL=combineLatest.js.map
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2453,7 +2507,7 @@ exports.CombineLatestSubscriber = CombineLatestSubscriber;
 var Observable_1 = __webpack_require__(0);
 var isScheduler_1 = __webpack_require__(12);
 var ArrayObservable_1 = __webpack_require__(10);
-var mergeAll_1 = __webpack_require__(20);
+var mergeAll_1 = __webpack_require__(21);
 /* tslint:enable:max-line-length */
 /**
  * Creates an output Observable which sequentially emits all values from every
@@ -2625,7 +2679,7 @@ exports.concatStatic = concatStatic;
 //# sourceMappingURL=concat.js.map
 
 /***/ }),
-/* 33 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2718,7 +2772,7 @@ var MapSubscriber = (function (_super) {
 //# sourceMappingURL=map.js.map
 
 /***/ }),
-/* 34 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2800,7 +2854,7 @@ exports.ObserveOnMessage = ObserveOnMessage;
 //# sourceMappingURL=observeOn.js.map
 
 /***/ }),
-/* 35 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2932,7 +2986,7 @@ exports.ReduceSubscriber = ReduceSubscriber;
 //# sourceMappingURL=reduce.js.map
 
 /***/ }),
-/* 36 */
+/* 37 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3213,60 +3267,6 @@ var ZipBufferIterator = (function (_super) {
 //# sourceMappingURL=zip.js.map
 
 /***/ }),
-/* 37 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-class Vector {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
-    }
-    lengthCalculation() {
-        return Math.sqrt(this.x * this.x + this.y * this.y);
-    }
-    addition(vector) {
-        return new Vector(vector.x + this.x, vector.y + this.y);
-    }
-    subtraction(vector) {
-        return new Vector(vector.x - this.x, vector.y - this.y);
-    }
-    scale(nth) {
-        return new Vector(this.x * nth, this.y * nth);
-    }
-    dot(vector) {
-        return (this.x * vector.x + this.y * vector.y);
-    }
-    cross(vector) {
-        return (this.x * vector.y - this.y * vector.x);
-    }
-    rotate(center, angle) {
-        const r = [];
-        const x = this.x - center.x;
-        const y = this.y - center.y;
-        r[0] = x * Math.cos(angle) - y * Math.sin(angle);
-        r[1] = x * Math.sin(angle) + y * Math.cos(angle);
-        r[0] += center.x;
-        r[1] += center.y;
-        return new Vector(r[0], r[1]);
-    }
-    normalize() {
-        const calc = this.lengthCalculation();
-        const len = calc > 0 ? 1 / calc : calc;
-        return new Vector(this.x * len, this.y * len);
-    }
-    distance(vector) {
-        const x = this.x - vector.x;
-        const y = this.y - vector.y;
-        return Math.sqrt(x * x + y * y);
-    }
-    ;
-}
-exports.Vector = Vector;
-
-
-/***/ }),
 /* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -3278,7 +3278,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Subject_1 = __webpack_require__(5);
-var ObjectUnsubscribedError_1 = __webpack_require__(25);
+var ObjectUnsubscribedError_1 = __webpack_require__(26);
 /**
  * @class BehaviorSubject<T>
  */
@@ -3569,8 +3569,8 @@ var ArrayObservable_1 = __webpack_require__(10);
 var ArrayLikeObservable_1 = __webpack_require__(204);
 var iterator_1 = __webpack_require__(18);
 var Observable_1 = __webpack_require__(0);
-var observeOn_1 = __webpack_require__(34);
-var observable_1 = __webpack_require__(21);
+var observeOn_1 = __webpack_require__(35);
+var observable_1 = __webpack_require__(22);
 /**
  * We need this JSDoc comment for affecting ESDoc.
  * @extends {Ignored}
@@ -3820,7 +3820,7 @@ var tryCatch_1 = __webpack_require__(8);
 var errorObject_1 = __webpack_require__(6);
 var Observable_1 = __webpack_require__(0);
 var Subscriber_1 = __webpack_require__(1);
-var map_1 = __webpack_require__(33);
+var map_1 = __webpack_require__(34);
 function getCORSRequest() {
     if (root_1.root.XMLHttpRequest) {
         return new root_1.root.XMLHttpRequest();
@@ -4551,7 +4551,7 @@ exports.FindValueSubscriber = FindValueSubscriber;
 
 var Observable_1 = __webpack_require__(0);
 var ArrayObservable_1 = __webpack_require__(10);
-var mergeAll_1 = __webpack_require__(20);
+var mergeAll_1 = __webpack_require__(21);
 var isScheduler_1 = __webpack_require__(12);
 /* tslint:enable:max-line-length */
 /**
@@ -5813,7 +5813,7 @@ exports.clearImmediate = clearImmediate;
 
 "use strict";
 
-const engine_vector_1 = __webpack_require__(37);
+const engine_vector_1 = __webpack_require__(19);
 class RigidShape {
     constructor(center, angle, shapeCollection) {
         this.center = center;
@@ -5825,10 +5825,20 @@ class RigidShape {
     move(v) {
         // override
     }
+    boundTest(shape) {
+        const vFrom1to2 = shape.center.subtract(this.center);
+        const rSum = this.angle + shape.mBoundRadius;
+        const dist = vFrom1to2.length();
+        if (dist > rSum) {
+            return false; //not overlapping
+        }
+        return true;
+    }
+    ;
     render(context) {
         // override;
     }
-    rotate(angle) {
+    rotate(angle, center) {
         // override;
     }
     update(context) {
@@ -5877,17 +5887,20 @@ const engine_accelerometer_1 = __webpack_require__(351);
 const engine_draw_1 = __webpack_require__(355);
 const input_peripheral_1 = __webpack_require__(356);
 const engine_collision_1 = __webpack_require__(354);
+const vector_factory_1 = __webpack_require__(361);
 const engine_shape_collection_1 = __webpack_require__(360);
 const json = __webpack_require__(72);
 class PhysicsEngine {
     constructor(options) {
         this.version = json.version;
+        this.vector = vector_factory_1.VectorFactory;
         console.log(`Engine started, running version ${this.version}`);
-        this.bootstrapEngine(options);
         this.shapeCollection = new engine_shape_collection_1.ShapeCollection();
         this.shapeCollection.canvas.height = options.height;
         this.shapeCollection.canvas.width = options.width;
         this.draw = new engine_draw_1.Draw(options.width, options.height, options.log, this.shapeCollection);
+        this.vector = new vector_factory_1.VectorFactory();
+        this.bootstrapEngine(options);
     }
     handleInput(keyCode) {
         // TODO: abstract
@@ -5895,7 +5908,7 @@ class PhysicsEngine {
     ;
     enableCollision(isEnabled) {
         if (isEnabled) {
-            this.collision = new engine_collision_1.Collision();
+            this.collision = new engine_collision_1.Collision(this.shapeCollection, this.draw.getContext());
         }
     }
     bootstrapEngine(options) {
@@ -5935,17 +5948,17 @@ exports.PhysicsEngine = PhysicsEngine;
 
 var Controls;
 (function (Controls) {
+    Controls[Controls["arrowUp"] = 38] = "arrowUp";
+    Controls[Controls["arrowDown"] = 40] = "arrowDown";
     Controls[Controls["rectangle"] = 70] = "rectangle";
     Controls[Controls["circle"] = 71] = "circle";
     Controls[Controls["up"] = 87] = "up";
     Controls[Controls["down"] = 83] = "down";
-    Controls[Controls["left"] = 65] = "left";
-    Controls[Controls["right"] = 68] = "right";
     Controls[Controls["one"] = 49] = "one";
     Controls[Controls["nine"] = 57] = "nine";
     Controls[Controls["gravity"] = 72] = "gravity";
-    Controls[Controls["turn_left"] = 81] = "turn_left";
-    Controls[Controls["turn_right"] = 69] = "turn_right";
+    Controls[Controls["left"] = 37] = "left";
+    Controls[Controls["right"] = 39] = "right";
 })(Controls = exports.Controls || (exports.Controls = {}));
 
 
@@ -5986,7 +5999,7 @@ module.exports = {
 		"/"
 	],
 	"_resolved": "file:../lib",
-	"_shasum": "801adee792749251723a748d4e456e0fa9f2af6f",
+	"_shasum": "b4a39d4bfd81f30b0e37dfe1fe9f164575c85b2d",
 	"_shrinkwrap": null,
 	"_spec": "2d-physics-engine@../lib",
 	"_where": "/Users/oscarlodriguez/Dropbox/projects/2d-physics-engine/demo",
@@ -6409,9 +6422,9 @@ var Subscription_1 = __webpack_require__(4);
 exports.Subscription = Subscription_1.Subscription;
 var Subscriber_1 = __webpack_require__(1);
 exports.Subscriber = Subscriber_1.Subscriber;
-var AsyncSubject_1 = __webpack_require__(19);
+var AsyncSubject_1 = __webpack_require__(20);
 exports.AsyncSubject = AsyncSubject_1.AsyncSubject;
-var ReplaySubject_1 = __webpack_require__(29);
+var ReplaySubject_1 = __webpack_require__(30);
 exports.ReplaySubject = ReplaySubject_1.ReplaySubject;
 var BehaviorSubject_1 = __webpack_require__(38);
 exports.BehaviorSubject = BehaviorSubject_1.BehaviorSubject;
@@ -6419,11 +6432,11 @@ var ConnectableObservable_1 = __webpack_require__(41);
 exports.ConnectableObservable = ConnectableObservable_1.ConnectableObservable;
 var Notification_1 = __webpack_require__(15);
 exports.Notification = Notification_1.Notification;
-var EmptyError_1 = __webpack_require__(24);
+var EmptyError_1 = __webpack_require__(25);
 exports.EmptyError = EmptyError_1.EmptyError;
-var ArgumentOutOfRangeError_1 = __webpack_require__(23);
+var ArgumentOutOfRangeError_1 = __webpack_require__(24);
 exports.ArgumentOutOfRangeError = ArgumentOutOfRangeError_1.ArgumentOutOfRangeError;
-var ObjectUnsubscribedError_1 = __webpack_require__(25);
+var ObjectUnsubscribedError_1 = __webpack_require__(26);
 exports.ObjectUnsubscribedError = ObjectUnsubscribedError_1.ObjectUnsubscribedError;
 var TimeoutError_1 = __webpack_require__(60);
 exports.TimeoutError = TimeoutError_1.TimeoutError;
@@ -6445,9 +6458,9 @@ var asap_1 = __webpack_require__(56);
 var async_1 = __webpack_require__(9);
 var queue_1 = __webpack_require__(57);
 var animationFrame_1 = __webpack_require__(336);
-var rxSubscriber_1 = __webpack_require__(22);
+var rxSubscriber_1 = __webpack_require__(23);
 var iterator_1 = __webpack_require__(18);
-var observable_1 = __webpack_require__(21);
+var observable_1 = __webpack_require__(22);
 /* tslint:enable:no-unused-variable */
 /**
  * @typedef {Object} Rx.Scheduler
@@ -6949,7 +6962,7 @@ Observable_1.Observable.prototype.combineAll = combineAll_1.combineAll;
 "use strict";
 
 var Observable_1 = __webpack_require__(0);
-var combineLatest_1 = __webpack_require__(31);
+var combineLatest_1 = __webpack_require__(32);
 Observable_1.Observable.prototype.combineLatest = combineLatest_1.combineLatest;
 //# sourceMappingURL=combineLatest.js.map
 
@@ -6960,7 +6973,7 @@ Observable_1.Observable.prototype.combineLatest = combineLatest_1.combineLatest;
 "use strict";
 
 var Observable_1 = __webpack_require__(0);
-var concat_1 = __webpack_require__(32);
+var concat_1 = __webpack_require__(33);
 Observable_1.Observable.prototype.concat = concat_1.concat;
 //# sourceMappingURL=concat.js.map
 
@@ -7293,7 +7306,7 @@ Observable_1.Observable.prototype.letBind = let_1.letProto;
 "use strict";
 
 var Observable_1 = __webpack_require__(0);
-var map_1 = __webpack_require__(33);
+var map_1 = __webpack_require__(34);
 Observable_1.Observable.prototype.map = map_1.map;
 //# sourceMappingURL=map.js.map
 
@@ -7348,7 +7361,7 @@ Observable_1.Observable.prototype.merge = merge_1.merge;
 "use strict";
 
 var Observable_1 = __webpack_require__(0);
-var mergeAll_1 = __webpack_require__(20);
+var mergeAll_1 = __webpack_require__(21);
 Observable_1.Observable.prototype.mergeAll = mergeAll_1.mergeAll;
 //# sourceMappingURL=mergeAll.js.map
 
@@ -7416,7 +7429,7 @@ Observable_1.Observable.prototype.multicast = multicast_1.multicast;
 "use strict";
 
 var Observable_1 = __webpack_require__(0);
-var observeOn_1 = __webpack_require__(34);
+var observeOn_1 = __webpack_require__(35);
 Observable_1.Observable.prototype.observeOn = observeOn_1.observeOn;
 //# sourceMappingURL=observeOn.js.map
 
@@ -7526,7 +7539,7 @@ Observable_1.Observable.prototype.race = race_1.race;
 "use strict";
 
 var Observable_1 = __webpack_require__(0);
-var reduce_1 = __webpack_require__(35);
+var reduce_1 = __webpack_require__(36);
 Observable_1.Observable.prototype.reduce = reduce_1.reduce;
 //# sourceMappingURL=reduce.js.map
 
@@ -7934,7 +7947,7 @@ Observable_1.Observable.prototype.withLatestFrom = withLatestFrom_1.withLatestFr
 "use strict";
 
 var Observable_1 = __webpack_require__(0);
-var zip_1 = __webpack_require__(36);
+var zip_1 = __webpack_require__(37);
 Observable_1.Observable.prototype.zip = zip_1.zipProto;
 //# sourceMappingURL=zip.js.map
 
@@ -7961,7 +7974,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Observable_1 = __webpack_require__(0);
-var ScalarObservable_1 = __webpack_require__(30);
+var ScalarObservable_1 = __webpack_require__(31);
 var EmptyObservable_1 = __webpack_require__(13);
 /**
  * We need this JSDoc comment for affecting ESDoc.
@@ -8039,7 +8052,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 var Observable_1 = __webpack_require__(0);
 var tryCatch_1 = __webpack_require__(8);
 var errorObject_1 = __webpack_require__(6);
-var AsyncSubject_1 = __webpack_require__(19);
+var AsyncSubject_1 = __webpack_require__(20);
 /**
  * We need this JSDoc comment for affecting ESDoc.
  * @extends {Ignored}
@@ -8313,7 +8326,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 var Observable_1 = __webpack_require__(0);
 var tryCatch_1 = __webpack_require__(8);
 var errorObject_1 = __webpack_require__(6);
-var AsyncSubject_1 = __webpack_require__(19);
+var AsyncSubject_1 = __webpack_require__(20);
 /**
  * We need this JSDoc comment for affecting ESDoc.
  * @extends {Ignored}
@@ -8892,7 +8905,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var Observable_1 = __webpack_require__(0);
 var tryCatch_1 = __webpack_require__(8);
-var isFunction_1 = __webpack_require__(27);
+var isFunction_1 = __webpack_require__(28);
 var errorObject_1 = __webpack_require__(6);
 var Subscription_1 = __webpack_require__(4);
 var toString = Object.prototype.toString;
@@ -9036,7 +9049,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var isFunction_1 = __webpack_require__(27);
+var isFunction_1 = __webpack_require__(28);
 var Observable_1 = __webpack_require__(0);
 var Subscription_1 = __webpack_require__(4);
 /**
@@ -9363,7 +9376,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var isNumeric_1 = __webpack_require__(28);
+var isNumeric_1 = __webpack_require__(29);
 var Observable_1 = __webpack_require__(0);
 var async_1 = __webpack_require__(9);
 /**
@@ -9886,7 +9899,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 };
 var Observable_1 = __webpack_require__(0);
 var asap_1 = __webpack_require__(56);
-var isNumeric_1 = __webpack_require__(28);
+var isNumeric_1 = __webpack_require__(29);
 /**
  * We need this JSDoc comment for affecting ESDoc.
  * @extends {Ignored}
@@ -9941,11 +9954,11 @@ var __extends = (this && this.__extends) || function (d, b) {
     function __() { this.constructor = d; }
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
-var isNumeric_1 = __webpack_require__(28);
+var isNumeric_1 = __webpack_require__(29);
 var Observable_1 = __webpack_require__(0);
 var async_1 = __webpack_require__(9);
 var isScheduler_1 = __webpack_require__(12);
-var isDate_1 = __webpack_require__(26);
+var isDate_1 = __webpack_require__(27);
 /**
  * We need this JSDoc comment for affecting ESDoc.
  * @extends {Ignored}
@@ -10139,7 +10152,7 @@ exports.bindNodeCallback = BoundNodeCallbackObservable_1.BoundNodeCallbackObserv
 var isScheduler_1 = __webpack_require__(12);
 var isArray_1 = __webpack_require__(11);
 var ArrayObservable_1 = __webpack_require__(10);
-var combineLatest_1 = __webpack_require__(31);
+var combineLatest_1 = __webpack_require__(32);
 /* tslint:enable:max-line-length */
 /**
  * Combines multiple Observables to create an Observable whose values are
@@ -10278,7 +10291,7 @@ exports.combineLatest = combineLatest;
 
 "use strict";
 
-var concat_1 = __webpack_require__(32);
+var concat_1 = __webpack_require__(33);
 exports.concat = concat_1.concatStatic;
 //# sourceMappingURL=concat.js.map
 
@@ -10308,7 +10321,7 @@ var Subscriber_1 = __webpack_require__(1);
 var Observable_1 = __webpack_require__(0);
 var Subscription_1 = __webpack_require__(4);
 var root_1 = __webpack_require__(7);
-var ReplaySubject_1 = __webpack_require__(29);
+var ReplaySubject_1 = __webpack_require__(30);
 var tryCatch_1 = __webpack_require__(8);
 var errorObject_1 = __webpack_require__(6);
 var assign_1 = __webpack_require__(346);
@@ -10732,7 +10745,7 @@ exports.using = UsingObservable_1.UsingObservable.create;
 
 "use strict";
 
-var zip_1 = __webpack_require__(36);
+var zip_1 = __webpack_require__(37);
 exports.zip = zip_1.zipStatic;
 //# sourceMappingURL=zip.js.map
 
@@ -11776,7 +11789,7 @@ var CatchSubscriber = (function (_super) {
 
 "use strict";
 
-var combineLatest_1 = __webpack_require__(31);
+var combineLatest_1 = __webpack_require__(32);
 /**
  * Converts a higher-order Observable into a first-order Observable by waiting
  * for the outer Observable to complete, then applying {@link combineLatest}.
@@ -11829,7 +11842,7 @@ exports.combineAll = combineAll;
 
 "use strict";
 
-var mergeAll_1 = __webpack_require__(20);
+var mergeAll_1 = __webpack_require__(21);
 /* tslint:enable:max-line-length */
 /**
  * Converts a higher-order Observable into a first-order Observable by
@@ -12498,7 +12511,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var async_1 = __webpack_require__(9);
-var isDate_1 = __webpack_require__(26);
+var isDate_1 = __webpack_require__(27);
 var Subscriber_1 = __webpack_require__(1);
 var Notification_1 = __webpack_require__(15);
 /**
@@ -13237,7 +13250,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Subscriber_1 = __webpack_require__(1);
-var ArgumentOutOfRangeError_1 = __webpack_require__(23);
+var ArgumentOutOfRangeError_1 = __webpack_require__(24);
 /**
  * Emits the single value at the specified `index` in a sequence of emissions
  * from the source Observable.
@@ -13915,7 +13928,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Subscriber_1 = __webpack_require__(1);
-var EmptyError_1 = __webpack_require__(24);
+var EmptyError_1 = __webpack_require__(25);
 /**
  * Emits only the first value (or the first value that meets some condition)
  * emitted by the source Observable.
@@ -14425,7 +14438,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Subscriber_1 = __webpack_require__(1);
-var EmptyError_1 = __webpack_require__(24);
+var EmptyError_1 = __webpack_require__(25);
 /* tslint:enable:max-line-length */
 /**
  * Returns an Observable that emits only the last item emitted by the source Observable.
@@ -14727,7 +14740,7 @@ var MaterializeSubscriber = (function (_super) {
 
 "use strict";
 
-var reduce_1 = __webpack_require__(35);
+var reduce_1 = __webpack_require__(36);
 /**
  * The Max operator operates on an Observable that emits numbers (or items that can be compared with a provided function),
  * and when source Observable completes it emits a single item: the item with the largest value.
@@ -14909,7 +14922,7 @@ exports.MergeScanSubscriber = MergeScanSubscriber;
 
 "use strict";
 
-var reduce_1 = __webpack_require__(35);
+var reduce_1 = __webpack_require__(36);
 /**
  * The Min operator operates on an Observable that emits numbers (or items that can be compared with a provided function),
  * and when source Observable completes it emits a single item: the item with the smallest value.
@@ -15097,7 +15110,7 @@ exports.partition = partition;
 
 "use strict";
 
-var map_1 = __webpack_require__(33);
+var map_1 = __webpack_require__(34);
 /**
  * Maps each source value (an object) to its specified nested property.
  *
@@ -15209,7 +15222,7 @@ exports.publishBehavior = publishBehavior;
 
 "use strict";
 
-var AsyncSubject_1 = __webpack_require__(19);
+var AsyncSubject_1 = __webpack_require__(20);
 var multicast_1 = __webpack_require__(14);
 /**
  * @return {ConnectableObservable<T>}
@@ -15228,7 +15241,7 @@ exports.publishLast = publishLast;
 
 "use strict";
 
-var ReplaySubject_1 = __webpack_require__(29);
+var ReplaySubject_1 = __webpack_require__(30);
 var multicast_1 = __webpack_require__(14);
 /**
  * @param bufferSize
@@ -16142,7 +16155,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Subscriber_1 = __webpack_require__(1);
-var EmptyError_1 = __webpack_require__(24);
+var EmptyError_1 = __webpack_require__(25);
 /**
  * Returns an Observable that emits the single item emitted by the source Observable that matches a specified
  * predicate, if that Observable emits one such item. If the source Observable emits more than one such item or no
@@ -16442,9 +16455,9 @@ var SkipWhileSubscriber = (function (_super) {
 "use strict";
 
 var ArrayObservable_1 = __webpack_require__(10);
-var ScalarObservable_1 = __webpack_require__(30);
+var ScalarObservable_1 = __webpack_require__(31);
 var EmptyObservable_1 = __webpack_require__(13);
-var concat_1 = __webpack_require__(32);
+var concat_1 = __webpack_require__(33);
 var isScheduler_1 = __webpack_require__(12);
 /* tslint:enable:max-line-length */
 /**
@@ -16925,7 +16938,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Subscriber_1 = __webpack_require__(1);
-var ArgumentOutOfRangeError_1 = __webpack_require__(23);
+var ArgumentOutOfRangeError_1 = __webpack_require__(24);
 var EmptyObservable_1 = __webpack_require__(13);
 /**
  * Emits only the first `count` values emitted by the source Observable.
@@ -17020,7 +17033,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var Subscriber_1 = __webpack_require__(1);
-var ArgumentOutOfRangeError_1 = __webpack_require__(23);
+var ArgumentOutOfRangeError_1 = __webpack_require__(24);
 var EmptyObservable_1 = __webpack_require__(13);
 /**
  * Emits only the last `count` values emitted by the source Observable.
@@ -17527,7 +17540,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var async_1 = __webpack_require__(9);
-var isDate_1 = __webpack_require__(26);
+var isDate_1 = __webpack_require__(27);
 var Subscriber_1 = __webpack_require__(1);
 var TimeoutError_1 = __webpack_require__(60);
 /**
@@ -17634,7 +17647,7 @@ var __extends = (this && this.__extends) || function (d, b) {
     d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
 };
 var async_1 = __webpack_require__(9);
-var isDate_1 = __webpack_require__(26);
+var isDate_1 = __webpack_require__(27);
 var OuterSubscriber_1 = __webpack_require__(2);
 var subscribeToResult_1 = __webpack_require__(3);
 /* tslint:enable:max-line-length */
@@ -18135,7 +18148,7 @@ var __extends = (this && this.__extends) || function (d, b) {
 var Subject_1 = __webpack_require__(5);
 var async_1 = __webpack_require__(9);
 var Subscriber_1 = __webpack_require__(1);
-var isNumeric_1 = __webpack_require__(28);
+var isNumeric_1 = __webpack_require__(29);
 var isScheduler_1 = __webpack_require__(12);
 function windowTime(windowTimeSpan) {
     var scheduler = async_1.async;
@@ -18749,7 +18762,7 @@ var WithLatestFromSubscriber = (function (_super) {
 
 "use strict";
 
-var zip_1 = __webpack_require__(36);
+var zip_1 = __webpack_require__(37);
 /**
  * @param project
  * @return {Observable<R>|WebSocketSubject<T>|Observable<T>}
@@ -19925,7 +19938,7 @@ exports.not = not;
 "use strict";
 
 var Subscriber_1 = __webpack_require__(1);
-var rxSubscriber_1 = __webpack_require__(22);
+var rxSubscriber_1 = __webpack_require__(23);
 var Observer_1 = __webpack_require__(39);
 function toSubscriber(nextOrObserver, error, complete) {
     if (nextOrObserver) {
@@ -20145,14 +20158,17 @@ exports.toSubscriber = toSubscriber;
 
 var Controls;
 (function (Controls) {
+    Controls[Controls["arrowUp"] = 38] = "arrowUp";
+    Controls[Controls["arrowDown"] = 40] = "arrowDown";
     Controls[Controls["rectangle"] = 70] = "rectangle";
     Controls[Controls["circle"] = 71] = "circle";
     Controls[Controls["up"] = 87] = "up";
     Controls[Controls["down"] = 83] = "down";
-    Controls[Controls["left"] = 65] = "left";
-    Controls[Controls["right"] = 68] = "right";
     Controls[Controls["one"] = 49] = "one";
     Controls[Controls["nine"] = 57] = "nine";
+    Controls[Controls["gravity"] = 72] = "gravity";
+    Controls[Controls["left"] = 37] = "left";
+    Controls[Controls["right"] = 39] = "right";
 })(Controls = exports.Controls || (exports.Controls = {}));
 
 
@@ -20237,18 +20253,18 @@ class Canvas {
         this.generateCanvas();
     }
     getCanvas() {
-        return this._canvas;
+        return this.canvas;
     }
     getContext() {
-        return this._context;
+        return this.context;
     }
     generateCanvas() {
-        this._canvas = document.createElement('canvas');
-        this._context = this._canvas.getContext('2d');
-        this._canvas.width = this.width;
-        this._canvas.height = this.height;
-        this._canvas.classList.add('physics-canvas');
-        document.body.appendChild(this._canvas);
+        this.canvas = document.createElement('canvas');
+        this.context = this.canvas.getContext('2d');
+        this.canvas.width = this.width;
+        this.canvas.height = this.height;
+        this.canvas.classList.add('physics-canvas');
+        document.body.appendChild(this.canvas);
     }
 }
 exports.Canvas = Canvas;
@@ -20261,12 +20277,25 @@ exports.Canvas = Canvas;
 "use strict";
 
 class Collision {
-    constructor() {
+    constructor(shapeCollection, context) {
+        this.shapeCollection = shapeCollection;
+        this.context = context;
         console.info('collision enabled');
+        this.observeCollision();
     }
-    crossed(interceptedObjects) {
-        // lifecycle to know when object have been hit
+    observeCollision() {
+        var i, j;
+        for (i = 5; i < this.shapeCollection.collection.length; i++) {
+            for (j = i + 1; j < this.shapeCollection.collection.length; j++) {
+                if (this.shapeCollection.collection[i].boundTest(this.shapeCollection.collection[j])) {
+                    this.context.strokeStyle = 'green';
+                    this.shapeCollection.collection[i].render(this.context);
+                    this.shapeCollection.collection[j].render(this.context);
+                }
+            }
+        }
     }
+    ;
 }
 exports.Collision = Collision;
 
@@ -20278,7 +20307,7 @@ exports.Collision = Collision;
 "use strict";
 
 const engine_animation_loop_1 = __webpack_require__(352);
-const engine_vector_1 = __webpack_require__(37);
+const engine_vector_1 = __webpack_require__(19);
 const engine_shape_circle_1 = __webpack_require__(358);
 const engine_shape_rectangle_1 = __webpack_require__(359);
 const engine_canvas_1 = __webpack_require__(353);
@@ -20290,10 +20319,13 @@ class Draw extends engine_canvas_1.Canvas {
         this.startEngine();
         console.info(`drawing engine enabled with dimension: ${width}px X ${height}px`);
     }
+    getContext() {
+        return super.getContext();
+    }
     startEngine() {
         this.animationLoop = new engine_animation_loop_1.AnimationLoop(super.getContext(), super.getCanvas().width, super.getCanvas().height, this.logger, this.shapeCollection);
     }
-    // createShape and move drawing responsibility to draw method
+    // createShape and move drawing responsibility to from draw method
     drawRectangle() {
         new engine_shape_rectangle_1.Rectangle(new engine_vector_1.Vector(Math.random() * super.getCanvas().width * 0.8, Math.random() * super.getCanvas().height * 0.8), Math.random() * 30 + 10, Math.random() * 30 + 10, this.shapeCollection);
     }
@@ -20302,7 +20334,7 @@ class Draw extends engine_canvas_1.Canvas {
             item.update(super.getContext());
         });
     }
-    // createShape and move drawing responsibility to draw method
+    // create higher order to take any shape
     drawCircle() {
         new engine_shape_circle_1.Circle(new engine_vector_1.Vector(Math.random() * super.getCanvas().width * 0.8, Math.random() * super.getCanvas().height * 0.8), Math.random() * 10 + 20, this.shapeCollection);
     }
@@ -20370,20 +20402,24 @@ class Logger {
             <p><b>Selected Object:</b></p>
             <p style="color: ${this.color}">Missed rendering frames meter: ${this.lagTime}</p>
             <ul> 
-            <li>Id: ${this.shapeCollection.selectedObject} </li>
-            <li>
-                Center: ${this.shapeCollection.collection[this.shapeCollection.selectedObject].center.x.toPrecision(3)},
-                ${this.shapeCollection.collection[this.shapeCollection.selectedObject].center.y.toPrecision(3)}
-            </li>
-            <li>Angle:  ${this.shapeCollection.collection[this.shapeCollection.selectedObject].angle.toPrecision(3)} </li>
+                <li>Id: ${this.shapeCollection.selectedObject} </li>
+                <li>
+                    Center: ${this.shapeCollection.collection[this.shapeCollection.selectedObject].center.x.toPrecision(3)},
+                    ${this.shapeCollection.collection[this.shapeCollection.selectedObject].center.y.toPrecision(3)}
+                </li>
+                <li>Angle:  ${this.shapeCollection.collection[this.shapeCollection.selectedObject].angle.toPrecision(3)} </li>
             </ul> 
             <hr>
-            <p><b>Control</b>: of selected object</p>
+            <p>
+                <b>Control</b>: of selected object
+            </p>
             <ul>
-            <li><b>Arrow keys</b> <b>QE</b>: Position [Move + Rotate]</li>
             <li>
-                <b>Num</b> or  
-                <b>Up/Down Arrow</b>:SelectObject</li>
+                <b>Arrow keys</b> 
+                <b>QE</b>: Position [Move + Rotate]
+            </li>
+            <li>
+                <b>key W/ key S</b>:SelectObject</li>
             </ul>
             <p><b>H</b>: Fix object</p>
             <p><b>R</b>: Reset System</p>
@@ -20417,7 +20453,7 @@ exports.Logger = Logger;
 
 "use strict";
 
-const engine_vector_1 = __webpack_require__(37);
+const engine_vector_1 = __webpack_require__(19);
 const engine_rigid_1 = __webpack_require__(68);
 class Circle extends engine_rigid_1.RigidShape {
     constructor(center, radius, shapeCollection, fix) {
@@ -20437,13 +20473,12 @@ class Circle extends engine_rigid_1.RigidShape {
     }
     rotate(angle) {
         this.angle += angle;
-        this.startPoint = this.startPoint.rotate(this.center, angle);
-        return this;
+        this.startPoint = this.startPoint.rotate(angle, this.center);
     }
     ;
-    move(s) {
-        this.startPoint = this.startPoint.addition(s);
-        this.center = this.center.addition(s);
+    move(vector) {
+        this.startPoint = this.startPoint.add(vector);
+        this.center = this.center.add(vector);
         return this;
     }
     ;
@@ -20458,6 +20493,7 @@ exports.Circle = Circle;
 "use strict";
 
 const engine_rigid_1 = __webpack_require__(68);
+const engine_vector_1 = __webpack_require__(19);
 class Rectangle extends engine_rigid_1.RigidShape {
     constructor(center, width, height, shapeCollection, fix) {
         super(center, width, shapeCollection);
@@ -20468,6 +20504,13 @@ class Rectangle extends engine_rigid_1.RigidShape {
         this.width = width;
         this.vertexes = [];
         this.compass = [];
+        this.registerAngles();
+    }
+    registerAngles() {
+        this.vertexes[0] = new engine_vector_1.Vector(this.center.x - this.width / 2, this.center.y - this.height / 2);
+        this.vertexes[1] = new engine_vector_1.Vector(this.center.x + this.width / 2, this.center.y - this.height / 2);
+        this.vertexes[2] = new engine_vector_1.Vector(this.center.x + this.width / 2, this.center.y + this.height / 2);
+        this.vertexes[3] = new engine_vector_1.Vector(this.center.x - this.width / 2, this.center.y + this.height / 2);
     }
     rotate(angle) {
         this.angle += angle;
@@ -20482,7 +20525,6 @@ class Rectangle extends engine_rigid_1.RigidShape {
         this.compass[2] = this.compass[2].normalize();
         this.compass[3] = this.vertexes[0].subtract(this.vertexes[1]);
         this.compass[3] = this.compass[3].normalize();
-        return this;
     }
     ;
     render(context) {
@@ -20492,12 +20534,11 @@ class Rectangle extends engine_rigid_1.RigidShape {
         context.strokeRect(0, 0, this.width, this.height);
         context.restore();
     }
-    move(v) {
+    move(vector) {
         this.vertexes.map((vertex, i) => {
-            vertex[i] = vertex.addition(v);
+            vertex[i] = vertex.add(vector);
         });
-        this.center = this.center.addition(v);
-        return this;
+        this.center = this.center.addition(vector);
     }
     ;
 }
@@ -20522,6 +20563,21 @@ exports.ShapeCollection = ShapeCollection;
 
 /***/ }),
 /* 361 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+const engine_vector_1 = __webpack_require__(19);
+class VectorFactory {
+    createVectorShape(x, y) {
+        return new engine_vector_1.Vector(x, y);
+    }
+}
+exports.VectorFactory = VectorFactory;
+
+
+/***/ }),
+/* 362 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20557,6 +20613,12 @@ class Game {
                 break;
             case controls_model_1.Controls.up:
                 this.decrementObject();
+                break;
+            case controls_model_1.Controls.arrowUp:
+                this.engine.shapeCollection.collection[this.engine.shapeCollection.selectedObject].move(this.engine.vector.createVectorShape(0, -10));
+                break;
+            case controls_model_1.Controls.arrowDown:
+                this.engine.shapeCollection.collection[this.engine.shapeCollection.selectedObject].move(this.engine.vector.createVectorShape(0, +10));
                 break;
             case controls_model_1.Controls.right:
                 this.engine.shapeCollection.collection[this.engine.shapeCollection.selectedObject].rotate(-0.1);
