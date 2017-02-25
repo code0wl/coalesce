@@ -8,8 +8,8 @@ export class Circle extends RigidShape {
     public fix: number;
     private startPoint: Vector;
 
-    constructor(center, radius, fix?) {
-        super(center, radius);
+    constructor(center, radius, shapeCollection, fix?) {
+        super(center, radius, shapeCollection);
         this.rigidShapeType = 'Circle';
         this.radius = radius;
         this.fix = fix;

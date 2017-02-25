@@ -1,6 +1,6 @@
 {
     "name": "2d-physics-engine",
-    "version": "0.1.1",
+    "version": "0.1.2",
     "description": "A simple physics engine for 2d applications",
     "main": "./src/engine.core.js",
     "scripts": {

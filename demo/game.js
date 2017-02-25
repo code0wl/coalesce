@@ -20,8 +20,8 @@ class Game {
     }
     gameInput(keyCode) {
         if (keyCode >= controls_model_1.Controls.one && keyCode <= controls_model_1.Controls.nine) {
-            if (keyCode - controls_model_1.Controls.one < ShapeCollection.collection.length) {
-                ShapeCollection.selectedObject = keyCode - controls_model_1.Controls.one;
+            if (keyCode - controls_model_1.Controls.one < this.engine.shapeCollection.collection.length) {
+                this.engine.shapeCollection.selectedObject = keyCode - controls_model_1.Controls.one;
             }
         }
         switch (keyCode) {
@@ -32,20 +32,20 @@ class Game {
                 this.decrementObject();
                 break;
             case controls_model_1.Controls.right:
-                ShapeCollection.collection[ShapeCollection.selectedObject].rotate(-0.1);
+                this.engine.shapeCollection.collection[this.engine.shapeCollection.selectedObject].rotate(-0.1);
                 break;
             case controls_model_1.Controls.left:
-                ShapeCollection.collection[ShapeCollection.selectedObject].rotate(0.1);
+                this.engine.shapeCollection.collection[this.engine.shapeCollection.selectedObject].rotate(0.1);
                 break;
             case controls_model_1.Controls.rectangle:
                 this.engine.draw.drawRectangle();
                 break;
             case controls_model_1.Controls.gravity:
-                if (ShapeCollection.collection[ShapeCollection.selectedObject].fix === 0) {
-                    ShapeCollection.collection[ShapeCollection.selectedObject].fix = 1;
+                if (this.engine.shapeCollection.collection[this.engine.shapeCollection.selectedObject].fix === 0) {
+                    this.engine.shapeCollection.collection[this.engine.shapeCollection.selectedObject].fix = 1;
                 }
                 else {
-                    ShapeCollection.collection[ShapeCollection.selectedObject].fix = 0;
+                    this.engine.shapeCollection.collection[this.engine.shapeCollection.selectedObject].fix = 0;
                 }
                 break;
             case controls_model_1.Controls.circle:
@@ -54,13 +54,13 @@ class Game {
         }
     }
     decrementObject() {
-        if (ShapeCollection.selectedObject > 0) {
-            ShapeCollection.selectedObject--;
+        if (this.engine.shapeCollection.selectedObject > 0) {
+            this.engine.shapeCollection.selectedObject--;
         }
     }
     incrementObject() {
-        if (ShapeCollection.selectedObject < ShapeCollection.collection.length - 1) {
-            ShapeCollection.selectedObject++;
+        if (this.engine.shapeCollection.selectedObject < this.engine.shapeCollection.collection.length - 1) {
+            this.engine.shapeCollection.selectedObject++;
         }
     }
 }

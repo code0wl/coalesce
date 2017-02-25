@@ -10,6 +10,7 @@ export class PhysicsEngine {
     private keyboard: InputKeyboard;
     private mouse: InputMouse;
     public draw: Draw;
+    public shapeCollection: ShapeCollection;
     private version: string = json.version;
     public collision: Collision;
     public accelerometer: Accelerometer;
@@ -17,9 +18,10 @@ export class PhysicsEngine {
     public constructor(options: PhysicsEngineOptions) {
         console.log(`Engine started, running version ${this.version}`);
         this.bootstrapEngine(options);
-        this.draw = new Draw(options.width, options.height, options.log);
-        ShapeCollection.canvas.height = options.height;
-        ShapeCollection.canvas.width = options.width;
+        this.shapeCollection = new ShapeCollection();
+        this.shapeCollection.canvas.height = options.height;
+        this.shapeCollection.canvas.width = options.width;
+        this.draw = new Draw(options.width, options.height, options.log, this.shapeCollection);
     }
 
     public handleInput(keyCode): void {

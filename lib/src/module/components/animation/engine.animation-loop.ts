@@ -3,15 +3,17 @@ import { Logger } from '../logger/engine.logger';
 
 export class AnimationLoop {
 
+    public width: number;
+    public height: number;
     private context: CanvasRenderingContext2D;
-    private width: number;
+    private shapeCollection: ShapeCollection;
     private logger: boolean;
     private loggable: Logger;
-    private height: number;
 
-    public constructor(context, width, height, logger) {
+    public constructor(context, width, height, logger, shapeCollection) {
         this.context = context;
         this.width = width;
+        this.shapeCollection = shapeCollection;
         this.logger = logger;
         this.height = height;
         this.createLogger();
@@ -20,7 +22,7 @@ export class AnimationLoop {
 
     private createLogger() {
         if (this.logger) {
-            this.loggable = new Logger();
+            this.loggable = new Logger(this.shapeCollection);
         }
     }
 
@@ -32,12 +34,12 @@ export class AnimationLoop {
 
     private draw() {
         this.context.clearRect(0, 0, this.width, this.height);
-        ShapeCollection.collection.map((item, index) => {
+        this.shapeCollection.collection.map((item, index) => {
             this.context.strokeStyle = 'blue';
-            if (index === ShapeCollection.selectedObject) {
+            if (index === this.shapeCollection.selectedObject) {
                 this.context.strokeStyle = 'red';
             }
-            ShapeCollection.collection[index].render(this.context);
+            this.shapeCollection.collection[index].render(this.context);
         });
     }
 

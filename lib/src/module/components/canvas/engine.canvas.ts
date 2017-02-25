@@ -11,11 +11,11 @@ export class Canvas {
         this.generateCanvas();
     }
 
-    public get canvas(): HTMLCanvasElement {
+    public getCanvas(): HTMLCanvasElement {
         return this._canvas;
     }
 
-    public get context(): CanvasRenderingContext2D {
+    public getContext(): CanvasRenderingContext2D {
         return this._context;
     }
 

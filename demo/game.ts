@@ -1,6 +1,8 @@
 import { PhysicsEngine } from '2d-physics-engine';
 import { Controls } from './models/input-model/controls.model';
 
+declare const ShapeCollection: any;
+
 const engineConfiguration = {
     collision: true,
     keyboard: true,
@@ -26,8 +28,8 @@ class Game {
 
     public gameInput(keyCode) {
         if (keyCode >= Controls.one && keyCode <= Controls.nine) {
-            if (keyCode - Controls.one < ShapeCollection.collection.length) {
-                ShapeCollection.selectedObject = keyCode - Controls.one;
+            if (keyCode - Controls.one < this.engine.shapeCollection.collection.length) {
+                this.engine.shapeCollection.selectedObject = keyCode - Controls.one;
             }
         }
 
@@ -41,11 +43,11 @@ class Game {
                 break;
 
             case Controls.right:
-                ShapeCollection.collection[ShapeCollection.selectedObject].rotate(-0.1);
+                this.engine.shapeCollection.collection[this.engine.shapeCollection.selectedObject].rotate(-0.1);
                 break;
 
             case Controls.left:
-                ShapeCollection.collection[ShapeCollection.selectedObject].rotate(0.1);
+                this.engine.shapeCollection.collection[this.engine.shapeCollection.selectedObject].rotate(0.1);
                 break;
 
             case Controls.rectangle:
@@ -53,10 +55,10 @@ class Game {
                 break;
 
             case Controls.gravity:
-                if (ShapeCollection.collection[ShapeCollection.selectedObject].fix === 0) {
-                    ShapeCollection.collection[ShapeCollection.selectedObject].fix = 1;
+                if (this.engine.shapeCollection.collection[this.engine.shapeCollection.selectedObject].fix === 0) {
+                    this.engine.shapeCollection.collection[this.engine.shapeCollection.selectedObject].fix = 1;
                 } else {
-                    ShapeCollection.collection[ShapeCollection.selectedObject].fix = 0;
+                    this.engine.shapeCollection.collection[this.engine.shapeCollection.selectedObject].fix = 0;
                 }
                 break;
 
@@ -67,14 +69,14 @@ class Game {
     }
 
     private decrementObject() {
-        if (ShapeCollection.selectedObject > 0) {
-            ShapeCollection.selectedObject--;
+        if (this.engine.shapeCollection.selectedObject > 0) {
+            this.engine.shapeCollection.selectedObject--;
         }
     }
 
     private incrementObject() {
-        if (ShapeCollection.selectedObject < ShapeCollection.collection.length - 1) {
-            ShapeCollection.selectedObject++;
+        if (this.engine.shapeCollection.selectedObject < this.engine.shapeCollection.collection.length - 1) {
+            this.engine.shapeCollection.selectedObject++;
         }
     }
 

@@ -3,7 +3,7 @@ import { Draw } from './module/components/drawing/engine.draw';
 import { InputKeyboard, InputMouse } from './module/components/input/input.peripheral';
 import { Collision } from './module/components/collision/engine.collision';
 import { PhysicsEngineOptions } from './models/engine-model/engine.model';
-import { RigidShape } from './module/components/rigid/engine.rigid';
+import { ShapeCollection } from './module/components/shapes/engine.shape-collection';
 
 /**
  * @class AsyncSubject<T>
@@ -14,6 +14,7 @@ export declare class PhysicsEngine<T> {
     public draw: Draw;
     private version: string;
     public collision: Collision;
+    public shapeCollection: ShapeCollection;
     public accelerometer: Accelerometer;
 
     public handleInput(keyCode): void;

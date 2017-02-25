@@ -9,8 +9,8 @@ export class Rectangle extends RigidShape {
     private vertexes: Array<any>;
     private compass: Array<any>;
 
-    constructor(center, width, height, fix?) {
-        super(center, width);
+    constructor(center, width, height, shapeCollection, fix?) {
+        super(center, width, shapeCollection);
         this.rigidShapeType = 'Rectangle';
         this.height = height;
         this.center = center;

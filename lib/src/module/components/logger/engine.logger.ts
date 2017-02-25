@@ -1,13 +1,14 @@
 import { ShapeCollection } from '../shapes/engine.shape-collection';
-
 declare const console: any;
 
 export class Logger {
 
     private lagTime: number = 0;
+    private shapeCollection: ShapeCollection;
     private color: string;
 
-    constructor() {
+    constructor(shapeCollection) {
+        this.shapeCollection = shapeCollection;
         console.info('logging performance');
         const ui = document.createElement('div');
         ui.classList.add('uiEchoString');
@@ -20,17 +21,17 @@ export class Logger {
 
     public logStats(): void {
         // move ugly pseudo code to logger
-        if (ShapeCollection.collection.length) {
+        if (this.shapeCollection.collection.length) {
             document.querySelector('.uiEchoString').innerHTML = `
             <p><b>Selected Object:</b></p>
             <p style="color: ${this.color}">Missed rendering frames meter: ${this.lagTime}</p>
             <ul> 
-            <li>Id: ${ShapeCollection.selectedObject} </li>
+            <li>Id: ${this.shapeCollection.selectedObject} </li>
             <li>
-                Center: ${ShapeCollection.collection[ShapeCollection.selectedObject].center.x.toPrecision(3)},
-                ${ShapeCollection.collection[ShapeCollection.selectedObject].center.y.toPrecision(3)}
+                Center: ${this.shapeCollection.collection[this.shapeCollection.selectedObject].center.x.toPrecision(3)},
+                ${this.shapeCollection.collection[this.shapeCollection.selectedObject].center.y.toPrecision(3)}
             </li>
-            <li>Angle:  ${ShapeCollection.collection[ShapeCollection.selectedObject].angle.toPrecision(3)} </li>
+            <li>Angle:  ${this.shapeCollection.collection[this.shapeCollection.selectedObject].angle.toPrecision(3)} </li>
             </ul> 
             <hr>
             <p><b>Control</b>: of selected object</p>
