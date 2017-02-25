@@ -3,7 +3,7 @@ import { Draw } from './module/components/drawing/engine.draw';
 import { InputKeyboard, InputMouse } from './module/components/input/input.peripheral';
 import { Collision } from './module/components/collision/engine.collision';
 import { PhysicsEngineOptions } from './models/engine-model/engine.model';
-import { ShapeCollection } from './module/components/shapes/engine.shape-collection';
+import { RigidShape } from './module/components/rigid/engine.rigid';
 
 /**
  * @class AsyncSubject<T>

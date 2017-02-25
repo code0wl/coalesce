@@ -1,8 +1,6 @@
 import { PhysicsEngine } from '2d-physics-engine';
 import { Controls } from './models/input-model/controls.model';
 
-console.log(PhysicsEngine);
-
 const engineConfiguration = {
     collision: true,
     keyboard: true,

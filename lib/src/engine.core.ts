@@ -6,7 +6,7 @@ import { PhysicsEngineOptions } from './models/engine-model/engine.model';
 import { ShapeCollection } from './module/components/shapes/engine.shape-collection';
 const json = require('../package.json');
 
-export default class PhysicsEngine {
+export class PhysicsEngine {
     private keyboard: InputKeyboard;
     private mouse: InputMouse;
     public draw: Draw;
