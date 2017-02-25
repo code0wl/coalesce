@@ -1,12 +1,12 @@
-import { Accelerometer } from './components/accelerometer/engine.accelerometer';
-import { Draw } from './components/drawing/engine.draw';
-import { InputKeyboard, InputMouse } from './components/input/input.peripheral';
-import { Collision } from './components/collision/engine.collision';
-import { PhysicsEngineOptions } from '../models/engine-model/engine.model';
-import { ShapeCollection } from './components/shapes/engine.shape-collection';
-const json = require('../../package.json');
+import { Accelerometer } from './module/components/accelerometer/engine.accelerometer';
+import { Draw } from './module/components/drawing/engine.draw';
+import { InputKeyboard, InputMouse } from './module/components/input/input.peripheral';
+import { Collision } from './module/components/collision/engine.collision';
+import { PhysicsEngineOptions } from './models/engine-model/engine.model';
+import { ShapeCollection } from './module/components/shapes/engine.shape-collection';
+const json = require('../package.json');
 
-export class PhysicsEngine {
+export default class PhysicsEngine {
     private keyboard: InputKeyboard;
     private mouse: InputMouse;
     public draw: Draw;

@@ -1,27 +1,25 @@
-var path = require('path');
+const path = require('path');
 
-module.exports = {
-    entry: ['whatwg-fetch', './game.ts'],
+const config = {
+    entry: './game.js',
     output: {
-        path: './dist',
-        filename: "bundle.js"
+        path: path.resolve(__dirname, 'dist'),
+        filename: './bundle.js'
     },
     resolve: {
-        extensions: ['.js', '.ts', '.json', '']
+        extensions: ['.ts', '.js']
     },
-    context: path.resolve(__dirname, './'),
     module: {
-        loaders: [
+        rules: [
             {
-                test: /.ts$/,
+                test: /\.ts?$/,
                 loader: 'ts-loader',
-                exclude: /node_modules/
-            },
-            {
-                test: /\.json$/,
-                loader: 'json-loader',
-                exclude: /node_modules/
+                options: {
+                    transpileOnly: true
+                }
             }
         ]
     }
 };
+
+module.exports = config;

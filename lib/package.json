@@ -2,12 +2,11 @@
     "name": "2d-physics-engine",
     "version": "0.1.1",
     "description": "A simple physics engine for 2d applications",
-    "main": "bundle.js",
+    "main": "./dist/bundle.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "npm i && typings install && webpack-dev-server --watch --inline",
+        "start": "npm i && typings install && webpack && webpack-dev-server -w",
         "validate-webpack:dev": "webpack-validator webpack.config.js --env.dev",
-        "validate-webpack:production": "webpack-validator webpack.config.js --env.prod",
         "prep.demo": "webpack && cd ../demo && rm -rf node_modules && npm start"
     },
     "repository": {
@@ -31,8 +30,8 @@
         "tslint": "4.4.2",
         "typescript": "2.1.4",
         "typings": "2.1.0",
-        "webpack": "1.14.0",
-        "webpack-dev-server": "1.16.2",
+        "webpack": "^2.2.1",
+        "webpack-dev-server": "^2.4.1",
         "webpack-validator": "^2.3.0"
     }
 }
