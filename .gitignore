@@ -5,3 +5,4 @@ main.js
 lib/src/**/*.js
 *.log
 .idea/
+*/dist

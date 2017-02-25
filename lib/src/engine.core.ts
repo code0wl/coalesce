@@ -8,14 +8,14 @@ import { ShapeCollection } from './module/components/shapes/engine.shape-collect
 const json = require('../package.json');
 
 export class PhysicsEngine {
-    private keyboard: InputKeyboard;
-    private mouse: InputMouse;
     public draw: Draw;
     public shapeCollection: ShapeCollection;
-    private version: string = json.version;
-    private vector = VectorFactory;
+    public vector: VectorFactory;
     public collision: Collision;
     public accelerometer: Accelerometer;
+    private version: string = json.version;
+    private keyboard: InputKeyboard;
+    private mouse: InputMouse;
 
     public constructor(options: PhysicsEngineOptions) {
         console.log(`Engine started, running version ${this.version}`);
