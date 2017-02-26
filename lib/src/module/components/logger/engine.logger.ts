@@ -1,4 +1,3 @@
-import { PhysicsEngine } from '../../../engine.core';
 import { generateMarkup } from './logger-markup';
 import { AnimationLoop } from '../animation/engine.animation-loop';
 declare const console: any;
@@ -19,7 +18,7 @@ export class Logger {
 
     public logStats(): void {
         if (this.animation.engine.shapeCollection.collection.length) {
-            document.querySelector('.render-info').innerHTML = generateMarkup(this);
+            document.querySelector('.render-info').innerHTML = generateMarkup(this.animation);
         }
     }
 
@@ -29,6 +28,7 @@ export class Logger {
         ui.style.zIndex = '1';
         ui.style.position = 'absolute';
         ui.style.top = '0';
+        ui.style.width = `370px`;
         ui.style.right = '0';
         document.body.appendChild(ui);
     }

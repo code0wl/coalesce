@@ -59,9 +59,7 @@ export class AnimationLoop {
         });
     }
 
-    private animationLoop() {
-        requestAnimationFrame(() => this.animationLoop());
-
+    private animationCost() {
         this.currentTime = Date.now();
         this.elapsedTime = this.currentTime - this.previousTime;
         this.previousTime = this.currentTime;
@@ -71,8 +69,12 @@ export class AnimationLoop {
             this.lagTime -= this.kMPF;
             this.calculateCollision();
         }
+    }
 
+    private animationLoop() {
+        requestAnimationFrame(() => this.animationLoop());
         this.updateLogger();
+        this.animationCost();
         this.draw();
     }
 
