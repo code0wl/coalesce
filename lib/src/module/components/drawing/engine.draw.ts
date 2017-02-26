@@ -8,7 +8,7 @@ import { PhysicsEngine } from '../../../engine.core';
 export class Draw extends Canvas {
 
     private logger: boolean;
-    private engine: PhysicsEngine;
+    public engine: PhysicsEngine;
     public animationLoop: AnimationLoop;
 
     public constructor(width, height, logger, engine) {

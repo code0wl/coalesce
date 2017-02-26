@@ -5,7 +5,6 @@ declare const console: any;
 
 export class Logger {
 
-    private engine: PhysicsEngine;
     private color: string;
     private lagTime: number;
     private animation: AnimationLoop;
@@ -19,7 +18,7 @@ export class Logger {
     }
 
     public logStats(): void {
-        if (this.engine.shapeCollection.collection.length) {
+        if (this.animation.engine.shapeCollection.collection.length) {
             document.querySelector('.render-info').innerHTML = generateMarkup(this);
         }
     }

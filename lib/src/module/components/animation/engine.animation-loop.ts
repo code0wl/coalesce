@@ -9,7 +9,7 @@ export class AnimationLoop {
     public height: number;
 
     private context: CanvasRenderingContext2D;
-    private engine: PhysicsEngine;
+    public engine: PhysicsEngine;
     private log: boolean;
     private loggable: Logger;
 
