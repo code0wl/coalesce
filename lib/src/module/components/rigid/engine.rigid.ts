@@ -8,6 +8,7 @@ export class RigidShape {
     constructor(public center: any, public angle: any, public shapeCollection: ShapeCollection) {
         this.shapeCollection = shapeCollection;
         this.radius = 0;
+        this.angle = 0;
         this.shapeCollection.collection.push(this);
     }
 

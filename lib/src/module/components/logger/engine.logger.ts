@@ -17,6 +17,7 @@ export class Logger {
 
     public logStats(): void {
         this.color = this.lagTime > 10 ? 'red' : 'green';
+        console.log(this.color, 'test');
         if (this.animation.engine.shapeCollection.collection.length) {
             document.querySelector('.render-info').innerHTML = generateMarkup(this);
         }
