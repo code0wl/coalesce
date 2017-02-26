@@ -7,8 +7,8 @@ export class RigidShape {
 
     constructor(public center: any, public angle: any, public shapeCollection: ShapeCollection) {
         this.shapeCollection = shapeCollection;
-        this.shapeCollection.collection.push(this);
         this.radius = 0;
+        this.shapeCollection.collection.push(this);
     }
 
     public move(v: Vector) {
@@ -21,10 +21,10 @@ export class RigidShape {
         const distance = vectorDifference.lengthCalculation();
         console.log(distance, angleSum);
         if (distance > angleSum) {
-            console.log('not touching');
+            console.log('not overlapping');
             return false;
         }
-        console.log('touching');
+        console.log('overlapping');
         return true;
     };
 

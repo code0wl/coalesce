@@ -8,6 +8,7 @@ export class Collision {
     // TODO: Refactor with map
     public observeCollision(): void {
         let i, j;
+
         for (i = 5; i < this.engine.shapeCollection.collection.length; i++) {
             for (j = i + 1; j < this.engine.shapeCollection.collection.length; j++) {
                 console.log(this.engine.shapeCollection.collection[i], this.engine.shapeCollection.collection[j]);
@@ -18,5 +19,5 @@ export class Collision {
                 }
             }
         }
-    };
+    }
 }

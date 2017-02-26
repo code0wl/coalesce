@@ -13,12 +13,12 @@ export class Logger {
         this.animation = animationClass;
         this.lagTime = animationClass.lagTime;
         this.generateUI();
-        this.color = animationClass.lagTime > 10 ? 'red' : 'green';
     }
 
     public logStats(): void {
+        this.color = this.lagTime > 10 ? 'red' : 'green';
         if (this.animation.engine.shapeCollection.collection.length) {
-            document.querySelector('.render-info').innerHTML = generateMarkup(this.animation);
+            document.querySelector('.render-info').innerHTML = generateMarkup(this);
         }
     }
 

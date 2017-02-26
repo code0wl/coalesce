@@ -1,14 +1,14 @@
 export function generateMarkup(draw) {
     return ` 
  <p><b>Selected Object:</b></p>
-            <p style="color: ${draw.color}">Missed rendering frames meter: ${draw.lagTime}</p>
+            <p style="color: ${draw.color}">Missed rendering frames meter: ${draw.animation.lagTime}</p>
             <ul> 
-                <li>Id: ${draw.engine.shapeCollection.selectedObject} </li>
+                <li>Id: ${draw.animation.engine.shapeCollection.selectedObject} </li>
                 <li>
-                    Center: ${draw.engine.shapeCollection.collection[draw.engine.shapeCollection.selectedObject].center.x.toPrecision(3)},
-                    ${draw.engine.shapeCollection.collection[draw.engine.shapeCollection.selectedObject].center.y.toPrecision(3)}
+                    Center: ${draw.animation.engine.shapeCollection.collection[draw.animation.engine.shapeCollection.selectedObject].center.x.toPrecision(3)},
+                    ${draw.animation.engine.shapeCollection.collection[draw.animation.engine.shapeCollection.selectedObject].center.y.toPrecision(3)}
                 </li>
-                <li>Angle:  ${draw.engine.shapeCollection.collection[draw.engine.shapeCollection.selectedObject].angle.toPrecision(3)} </li>
+                <li>Angle:  ${draw.animation.engine.shapeCollection.collection[draw.animation.engine.shapeCollection.selectedObject].angle.toPrecision(3)} </li>
             </ul> 
             <hr>
             <p>
