@@ -9,7 +9,7 @@ export class Draw extends Canvas {
 
     private logger: boolean;
     private engine: PhysicsEngine;
-    private animationLoop: AnimationLoop;
+    public animationLoop: AnimationLoop;
 
     public constructor(width, height, logger, engine) {
         super(width, height);
@@ -25,7 +25,6 @@ export class Draw extends Canvas {
 
     // TODO: shorten
     public startEngine() {
-        console.log('starting engine', this.engine);
         this.animationLoop = new AnimationLoop(super.getContext(), super.getCanvas().width, super.getCanvas().height, this.logger, this.engine);
     }
 

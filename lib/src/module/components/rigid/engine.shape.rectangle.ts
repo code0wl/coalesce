@@ -3,20 +3,20 @@ import { Vector } from '../vector/engine.vector';
 
 export class Rectangle extends RigidShape {
 
+    public radius: number;
     private rigidShapeType: string;
     private height: number;
     private width: number;
-    public fix: number;
     private vertexes: Array<Vector>;
     private compass: Array<any>;
 
-    constructor(center, width, height, shapeCollection, fix?) {
+    constructor(center, width, height, shapeCollection) {
         super(center, width, shapeCollection);
         this.rigidShapeType = 'Rectangle';
         this.height = height;
         this.center = center;
-        this.fix = fix;
         this.width = width;
+        this.radius = Math.sqrt(width*width + height*height)/2;
         this.vertexes = [];
         this.compass = [];
         this.registerAngles();
@@ -55,9 +55,9 @@ export class Rectangle extends RigidShape {
     }
 
     public move(vector: Vector): void {
-        this.vertexes.map((vertex, i) => {
-            vertex[i] = vertex.add(vector);
-        });
-        this.center = this.center.add(vector);
+        // this.vertexes.map((vertex, i) => {
+        //     vertex[i] = vertex.add(vector);
+        // });
+        // this.center = this.center.add(vector);
     };
 }

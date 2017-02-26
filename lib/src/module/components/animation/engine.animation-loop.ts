@@ -1,15 +1,26 @@
 import { Logger } from '../logger/engine.logger';
 import { PhysicsEngine } from '../../../engine.core';
 import { RigidShape } from '../rigid/engine.rigid';
+import DateTimeFormat = Intl.DateTimeFormat;
 
 export class AnimationLoop {
 
     public width: number;
     public height: number;
+
     private context: CanvasRenderingContext2D;
     private engine: PhysicsEngine;
     private log: boolean;
     private loggable: Logger;
+
+    private currentTime: number;
+    private elapsedTime: number;
+    private previousTime: number = Date.now();
+    private lagTime: number = 0;
+    private fps: number = 60;
+    private frameTime: number = 1 / this.fps;
+    private mUpdateIntervalInSeconds: number = this.frameTime;
+    private kMPF = 1000 * this.frameTime;
 
     public constructor(context, width, height, log, engine) {
         this.context = context;
@@ -22,13 +33,12 @@ export class AnimationLoop {
     }
 
     private createLogger() {
-        console.log('creating logger with', this.engine);
         if (this.log) {
-            this.loggable = new Logger(this.engine);
+            this.loggable = new Logger(this);
         }
     }
 
-    private calculateCollision(): void {
+    public calculateCollision(): void {
         this.engine.collision.observeCollision();
     }
 
@@ -51,8 +61,18 @@ export class AnimationLoop {
 
     private animationLoop() {
         requestAnimationFrame(() => this.animationLoop());
+
+        this.currentTime = Date.now();
+        this.elapsedTime = this.currentTime - this.previousTime;
+        this.previousTime = this.currentTime;
+        this.lagTime += this.elapsedTime;
+
+        while (this.lagTime >= this.kMPF) {
+            this.lagTime -= this.kMPF;
+            this.calculateCollision();
+        }
+
         this.updateLogger();
-        this.calculateCollision();
         this.draw();
     }
 

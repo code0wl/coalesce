@@ -45,7 +45,7 @@ export class Vector {
         return new Vector(this.x * len, this.y * len);
     }
 
-    public distance(vector): number {
+    public distance(vector: Vector): number {
         const x = this.x - vector.x;
         const y = this.y - vector.y;
         return Math.sqrt(x * x + y * y);

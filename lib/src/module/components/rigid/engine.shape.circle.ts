@@ -4,11 +4,11 @@ import { RigidShape } from './engine.rigid';
 export class Circle extends RigidShape {
 
     private rigidShapeType: string;
-    private radius: number;
+    public radius: number;
     public fix: number;
     private startPoint: Vector;
 
-    public constructor(center, radius, shapeCollection, fix?) {
+    constructor(center, radius, shapeCollection, fix?) {
         super(center, radius, shapeCollection);
         this.rigidShapeType = 'Circle';
         this.radius = radius;
@@ -32,7 +32,7 @@ export class Circle extends RigidShape {
 
     public move(vector: Vector): Circle {
         this.startPoint = this.startPoint.add(vector);
-        this.center = this.center.add(vector);
+        this.center = this.center.addition(vector);
         return this;
     };
 }

@@ -2,11 +2,13 @@ import { ShapeCollection } from '../shapes/engine.shape-collection';
 import { Vector } from '../vector/engine.vector';
 
 export class RigidShape {
-    public fix: number;
+
+    public radius: number;
 
     constructor(public center: any, public angle: any, public shapeCollection: ShapeCollection) {
         this.shapeCollection = shapeCollection;
         this.shapeCollection.collection.push(this);
+        this.radius = 0;
     }
 
     public move(v: Vector) {
@@ -14,12 +16,15 @@ export class RigidShape {
     }
 
     public boundTest(shape) {
-        const vFrom1to2 = shape.center.subtract(this.center);
-        const rSum = this.angle + shape.radius;
-        const dist = vFrom1to2.length();
-        if (dist > rSum) {
-            return false;  //not overlapping
+        const vectorDifference = shape.center.subtract(this.center);
+        const angleSum = this.angle + shape.angle;
+        const distance = vectorDifference.lengthCalculation();
+        console.log(distance, angleSum);
+        if (distance > angleSum) {
+            console.log('not touching');
+            return false;
         }
+        console.log('touching');
         return true;
     };
 
@@ -32,8 +37,8 @@ export class RigidShape {
     }
 
     public update(context: CanvasRenderingContext2D) {
-        if (this.center.y < this.shapeCollection.canvas.height && this.fix !== 0) {
-            this.move(new Vector(0, 1));
-        }
+        // if (this.center.y < this.shapeCollection.canvas.height && this.fix !== 0) {
+        //     this.move(new Vector(0, 1));
+        // }
     }
 }
