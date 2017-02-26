@@ -15,7 +15,7 @@ export class RigidShape {
 
     public boundTest(shape) {
         const vFrom1to2 = shape.center.subtract(this.center);
-        const rSum = this.angle + shape.mBoundRadius;
+        const rSum = this.angle + shape.radius;
         const dist = vFrom1to2.length();
         if (dist > rSum) {
             return false;  //not overlapping

@@ -3,22 +3,18 @@ import { Vector } from './../vector/engine.vector';
 import { Circle } from './../rigid/engine.shape.circle';
 import { Rectangle } from './../rigid/engine.shape.rectangle';
 import { Canvas } from './../canvas/engine.canvas';
-import { ShapeCollection } from '../shapes/engine.shape-collection';
-
-
-declare const console: any;
-declare const Math: any;
+import { PhysicsEngine } from '../../../engine.core';
 
 export class Draw extends Canvas {
 
     private logger: boolean;
-    private shapeCollection: ShapeCollection;
+    private engine: PhysicsEngine;
     private animationLoop: AnimationLoop;
 
-    public constructor(width, height, logger, shapeCollection) {
+    public constructor(width, height, logger, engine) {
         super(width, height);
         this.logger = logger;
-        this.shapeCollection = shapeCollection;
+        this.engine = engine;
         this.startEngine();
         console.info(`drawing engine enabled with dimension: ${width}px X ${height}px`);
     }
@@ -27,8 +23,10 @@ export class Draw extends Canvas {
         return super.getContext();
     }
 
+    // TODO: shorten
     public startEngine() {
-        this.animationLoop = new AnimationLoop(super.getContext(), super.getCanvas().width, super.getCanvas().height, this.logger, this.shapeCollection);
+        console.log('starting engine', this.engine);
+        this.animationLoop = new AnimationLoop(super.getContext(), super.getCanvas().width, super.getCanvas().height, this.logger, this.engine);
     }
 
     // createShape and move drawing responsibility to from draw method
@@ -37,13 +35,7 @@ export class Draw extends Canvas {
             Math.random() * super.getCanvas().width * 0.8,
             Math.random() * super.getCanvas().height * 0.8),
             Math.random() * 30 + 10,
-            Math.random() * 30 + 10, this.shapeCollection);
-    }
-
-    public update() {
-        this.shapeCollection.collection.map((item) => {
-            item.update(super.getContext());
-        });
+            Math.random() * 30 + 10, this.engine.shapeCollection);
     }
 
     // create higher order to take any shape
@@ -52,6 +44,12 @@ export class Draw extends Canvas {
             new Vector(
                 Math.random() * super.getCanvas().width * 0.8,
                 Math.random() * super.getCanvas().height * 0.8),
-            Math.random() * 10 + 20, this.shapeCollection);
+            Math.random() * 10 + 20, this.engine.shapeCollection);
+    }
+
+    public update() {
+        this.engine.shapeCollection.collection.map((item) => {
+            item.update(super.getContext());
+        });
     }
 }

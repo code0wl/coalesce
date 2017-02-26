@@ -1,17 +1,17 @@
-import { ShapeCollection } from '../shapes/engine.shape-collection';
+import { PhysicsEngine } from '../../../engine.core';
 declare const console: any;
 
 export class Logger {
 
     private lagTime: number = 0;
-    private shapeCollection: ShapeCollection;
+    private engine: PhysicsEngine;
     private color: string;
 
-    constructor(shapeCollection) {
-        this.shapeCollection = shapeCollection;
+    constructor(engine) {
+        this.engine= engine;
         console.info('logging performance');
         const ui = document.createElement('div');
-        ui.classList.add('uiEchoString');
+        ui.classList.add('render-info');
         ui.style.zIndex = '1';
         ui.style.position = 'absolute';
         ui.style.top = '0';
@@ -20,18 +20,17 @@ export class Logger {
     }
 
     public logStats(): void {
-        // move ugly pseudo code to logger
-        if (this.shapeCollection.collection.length) {
-            document.querySelector('.uiEchoString').innerHTML = `
+        if (this.engine.shapeCollection.collection.length) {
+            document.querySelector('.render-info').innerHTML = `
             <p><b>Selected Object:</b></p>
             <p style="color: ${this.color}">Missed rendering frames meter: ${this.lagTime}</p>
             <ul> 
-                <li>Id: ${this.shapeCollection.selectedObject} </li>
+                <li>Id: ${this.engine.shapeCollection.selectedObject} </li>
                 <li>
-                    Center: ${this.shapeCollection.collection[this.shapeCollection.selectedObject].center.x.toPrecision(3)},
-                    ${this.shapeCollection.collection[this.shapeCollection.selectedObject].center.y.toPrecision(3)}
+                    Center: ${this.engine.shapeCollection.collection[this.engine.shapeCollection.selectedObject].center.x.toPrecision(3)},
+                    ${this.engine.shapeCollection.collection[this.engine.shapeCollection.selectedObject].center.y.toPrecision(3)}
                 </li>
-                <li>Angle:  ${this.shapeCollection.collection[this.shapeCollection.selectedObject].angle.toPrecision(3)} </li>
+                <li>Angle:  ${this.engine.shapeCollection.collection[this.engine.shapeCollection.selectedObject].angle.toPrecision(3)} </li>
             </ul> 
             <hr>
             <p>
@@ -54,7 +53,6 @@ export class Logger {
     }
 
     private fpsMeter() {
-
         let currentTime,
             elapsedTime,
             previousTime = Date.now();
@@ -71,8 +69,6 @@ export class Logger {
         while (this.lagTime >= kMPF) {
             this.lagTime -= kMPF;
         }
-        console.log('test', this.lagTime);
-        console.log('kmpf', kFrameTime);
         this.color = this.lagTime > 10 ? 'red' : 'green';
     }
 

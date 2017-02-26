@@ -7,6 +7,8 @@ import { VectorFactory } from './module/components/vector/vector.factory';
 import { ShapeCollection } from './module/components/shapes/engine.shape-collection';
 const json = require('../package.json');
 
+declare const require: any;
+
 export class PhysicsEngine {
     public draw: Draw;
     public shapeCollection: ShapeCollection;
@@ -22,8 +24,9 @@ export class PhysicsEngine {
         this.shapeCollection = new ShapeCollection();
         this.shapeCollection.canvas.height = options.height;
         this.shapeCollection.canvas.width = options.width;
-        this.draw = new Draw(options.width, options.height, options.log, this.shapeCollection);
         this.vector = new VectorFactory();
+        this.collision = new Collision(this);
+        this.draw = new Draw(options.width, options.height, options.log, this);
         this.bootstrapEngine(options);
     }
 
@@ -31,14 +34,7 @@ export class PhysicsEngine {
         // TODO: abstract
     };
 
-    private enableCollision(isEnabled) {
-        if (isEnabled) {
-            this.collision = new Collision(this.shapeCollection, this.draw.getContext());
-        }
-    }
-
     private bootstrapEngine(options: PhysicsEngineOptions): void {
-        this.enableCollision(options.collision);
         this.enableKeyboard(options.keyboard);
         this.enableMouse(options.mouse);
         this.enableAccelerometer(options.accelerometer);

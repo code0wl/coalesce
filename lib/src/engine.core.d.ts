@@ -6,9 +6,6 @@ import { PhysicsEngineOptions } from './models/engine-model/engine.model';
 import { ShapeCollection } from './module/components/shapes/engine.shape-collection';
 import { VectorFactory } from './module/components/vector/vector.factory';
 
-/**
- * @class AsyncSubject<T>
- */
 export declare class PhysicsEngine<T> {
     private keyboard: InputKeyboard;
     private mouse: InputMouse;
