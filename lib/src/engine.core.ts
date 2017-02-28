@@ -25,7 +25,7 @@ export class PhysicsEngine {
         this.shapeCollection.canvas.height = options.height;
         this.shapeCollection.canvas.width = options.width;
         this.vector = new VectorFactory();
-        this.collision = new Collision(this);
+        this.collision = new Collision(this, options.log);
         this.draw = new Draw(options.width, options.height, options.log, this);
         this.bootstrapEngine(options);
     }
