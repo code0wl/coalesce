@@ -1,4 +1,4 @@
-import { PhysicsEngineOptions } from '../models/engine-model/engine.model';
+import { PhysicsEngineOptions } from '../models/engine/engine.model';
 
 export const engineConfiguration: PhysicsEngineOptions = {
     collision: true,

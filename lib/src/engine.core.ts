@@ -2,7 +2,7 @@ import { Accelerometer } from './module/components/accelerometer/engine.accelero
 import { Draw } from './module/components/drawing/engine.draw';
 import { InputKeyboard, InputMouse } from './module/components/input/input.peripheral';
 import { Collision } from './module/components/collision/engine.collision';
-import { PhysicsEngineOptions } from './models/engine-model/engine.model';
+import { PhysicsEngineOptions } from './models/engine/engine.model';
 import { VectorFactory } from './module/components/vector/vector.factory';
 import { ShapeCollection } from './module/components/shapes/engine.shape-collection';
 const json = require('../package.json');
