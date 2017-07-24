@@ -1,6 +1,7 @@
 "use strict";
-const _2d_physics_engine_1 = require('2d-physics-engine');
-const controls_model_1 = require('./models/input-model/controls.model');
+Object.defineProperty(exports, "__esModule", { value: true });
+const _2d_physics_engine_1 = require("2d-physics-engine");
+const controls_model_1 = require("./models/input-model/controls.model");
 const engineConfiguration = {
     collision: true,
     keyboard: true,

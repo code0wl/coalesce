@@ -1,4 +1,6 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var Controls;
 (function (Controls) {
     Controls[Controls["arrowUp"] = 38] = "arrowUp";
     Controls[Controls["arrowDown"] = 40] = "arrowDown";
@@ -11,6 +13,5 @@
     Controls[Controls["gravity"] = 72] = "gravity";
     Controls[Controls["left"] = 37] = "left";
     Controls[Controls["right"] = 39] = "right";
-})(exports.Controls || (exports.Controls = {}));
-var Controls = exports.Controls;
+})(Controls = exports.Controls || (exports.Controls = {}));
 //# sourceMappingURL=controls.model.js.map
