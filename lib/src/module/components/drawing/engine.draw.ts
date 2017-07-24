@@ -1,9 +1,9 @@
 import {PhysicsEngine} from "../../../engine.core";
-import {AnimationLoop} from "./../animation/engine.animation-loop";
-import {Canvas} from "./../canvas/engine.canvas";
-import {Circle} from "./../rigid/engine.shape.circle";
-import {Rectangle} from "./../rigid/engine.shape.rectangle";
-import {Vector} from "./../vector/engine.vector";
+import {AnimationLoop} from "../animation/engine.animation-loop";
+import {Canvas} from "../canvas/engine.canvas";
+import {Circle} from "../rigid/engine.shape.circle";
+import {Rectangle} from "../rigid/engine.shape.rectangle";
+import {Vector} from "../vector/engine.vector";
 
 export class Draw extends Canvas {
 
