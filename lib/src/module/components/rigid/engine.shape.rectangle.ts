@@ -23,10 +23,12 @@ export class Rectangle extends RigidShape {
 	}
 
 	private registerAngles(): void {
-		this.vertexes[0] = new Vector(this.center.x - this.width / 2, this.center.y - this.height / 2);
-		this.vertexes[1] = new Vector(this.center.x + this.width / 2, this.center.y - this.height / 2);
-		this.vertexes[2] = new Vector(this.center.x + this.width / 2, this.center.y + this.height / 2);
-		this.vertexes[3] = new Vector(this.center.x - this.width / 2, this.center.y + this.height / 2);
+		const xHalf = this.width / 2;
+		const yHalf = this.height / 2;
+		this.vertexes[0] = new Vector(this.center.x - xHalf, this.center.y - yHalf);
+		this.vertexes[1] = new Vector(this.center.x + xHalf, this.center.y - yHalf);
+		this.vertexes[2] = new Vector(this.center.x + xHalf, this.center.y + yHalf);
+		this.vertexes[3] = new Vector(this.center.x - xHalf, this.center.y + yHalf);
 	}
 
 	public rotate(angle: number): void {
