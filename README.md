@@ -1,4 +1,4 @@
-# A modern lightweight physics engine for the browser
+# WIP A modern lightweight physics engine for the browser
 ### A minimalist 2D physics engine written and maintained with TypeScript and RxJS for games, graphs or any canvas interface
 
 Work in Progress
