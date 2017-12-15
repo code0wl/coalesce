@@ -9,7 +9,7 @@
     "start": "concurrently \"webpack -w \" \"webpack-dev-server\"",
     "update-all": "npm-update-all",
     "validate-webpack:dev": "webpack-validator webpack.config.js --env.dev",
-    "prep.demo": "webpack && cd ../demo && rm -rf node_modules && npm start"
+    "prep.demo": "webpack && cd ../demo"
   },
   "repository": {
     "type": "git",
