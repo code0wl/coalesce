@@ -6,10 +6,10 @@
   "scripts": {
     "prestart": "npm i && typings install ",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently \"webpack -w \" \"webpack-dev-server\"",
+    "start": "webpack -w",
     "update-all": "npm-update-all",
     "validate-webpack:dev": "webpack-validator webpack.config.js --env.dev",
-    "prep.demo": "webpack && cd ../demo"
+    "prep.demo": "webpack && webpack-dev-server"
   },
   "repository": {
     "type": "git",
