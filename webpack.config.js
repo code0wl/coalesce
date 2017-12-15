@@ -1,7 +1,7 @@
 const path = require('path');
 
 const config = {
-    entry: path.resolve(__dirname, './src/engine.core'),
+    entry: path.resolve(__dirname, './lib/src/engine.core'),
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: './bundle.js'

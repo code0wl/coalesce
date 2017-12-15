@@ -6,7 +6,7 @@ import {InputKeyboard, InputMouse} from './module/components/input/input.periphe
 import {ShapeCollection} from './module/components/shapes/engine.shape-collection';
 import {VectorFactory} from './module/components/vector/vector.factory';
 
-const json = require('../package.json');
+const json = require('../../package.json');
 
 declare const require: any;
 
