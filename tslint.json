@@ -1,8 +1,4 @@
 {
-  "rulesDirectory": [
-    "path/to/custom/rules/directory/",
-    "another/path/"
-  ],
   "rules": {
     "max-line-length": {
       "options": [

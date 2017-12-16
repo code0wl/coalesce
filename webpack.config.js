@@ -1,4 +1,5 @@
 const path = require('path');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const config = {
     entry: path.resolve(__dirname, './lib/src/engine.core'),
@@ -19,7 +20,10 @@ const config = {
                 }
             }
         ]
-    }
+    },
+    plugins: [
+        new UglifyJsPlugin()
+    ]
 };
 
 module.exports = config;

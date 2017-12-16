@@ -3,7 +3,7 @@
   "version": "0.1.2",
   "description": "A simple physics engine for 2d applications",
   "scripts": {
-    "prestart": "npm i && typings install",
+    "prestart": "npm i",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack -w",
     "update-all": "npm-update-all",
@@ -28,13 +28,14 @@
   },
   "devDependencies": {
     "@types/node": "7.0.5",
+    "@types/rx": "*",
     "concurrently": "^3.5.1",
     "json-loader": "^0.5.4",
     "npm-update-all": "^1.0.1",
     "ts-loader": "^3.2.0",
     "tslint": "^5.8.0",
     "typescript": "^2.6.2",
-    "typings": "2.1.0",
+    "uglifyjs-webpack-plugin": "^1.1.4",
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.9.7",
     "webpack-validator": "^2.3.0"
