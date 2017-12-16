@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "@types/node": "7.0.5",
-    "@types/rx": "*",
+    "@types/rx": "^4.1.1",
     "concurrently": "^3.5.1",
     "json-loader": "^0.5.4",
     "npm-update-all": "^1.0.1",
