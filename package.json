@@ -4,7 +4,7 @@
   "description": "A simple physics engine for 2d applications",
   "scripts": {
     "prestart": "npm i",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "webpack",
     "start": "webpack -w",
     "update-all": "npm-update-all",
     "validate-webpack:dev": "webpack-validator webpack.config.js --env.dev",
