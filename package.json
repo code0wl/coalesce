@@ -4,11 +4,11 @@
   "description": "A simple physics engine for 2d applications",
   "scripts": {
     "prestart": "npm i",
-    "test": "webpack",
-    "start": "webpack -w",
+    "test": "webpack --config webpack/base.config.js",
+    "start": "npm run prep.engine",
     "update-all": "npm-update-all",
-    "validate-webpack:dev": "webpack-validator webpack.config.js --env.dev",
-    "prep.demo": "webpack && webpack-dev-server"
+    "prep.demo": "webpack && webpack-dev-server",
+    "prep.engine": "webpack-dev-server --config webpack/base.config.js"
   },
   "main": "./lib/src/engine.core.ts",
   "repository": {
@@ -27,17 +27,16 @@
     "2d-physics-engine-core": "./lib"
   },
   "devDependencies": {
-    "@types/node": "7.0.5",
+    "@types/node": "^8.5.1",
     "@types/rx": "^4.1.1",
     "concurrently": "^3.5.1",
-    "json-loader": "^0.5.4",
+    "json-loader": "^0.5.7",
     "npm-update-all": "^1.0.1",
     "ts-loader": "^3.2.0",
     "tslint": "^5.8.0",
     "typescript": "^2.6.2",
     "uglifyjs-webpack-plugin": "^1.1.4",
     "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.9.7",
-    "webpack-validator": "^2.3.0"
+    "webpack-dev-server": "^2.9.7"
   }
 }
