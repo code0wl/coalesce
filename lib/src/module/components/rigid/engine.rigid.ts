@@ -4,6 +4,7 @@ import {Vector} from "../vector/engine.vector";
 export class RigidShape {
 
 	public radius: number;
+	public fix: number;
 
 	constructor(public center: any, public angle: any, public shapeCollection: ShapeCollection) {
 		this.shapeCollection = shapeCollection;

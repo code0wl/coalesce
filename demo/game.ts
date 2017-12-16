@@ -1,5 +1,5 @@
-import {PhysicsEngine} from '2d-physics-engine';
-import {Controls} from './models/input-model/controls.model';
+import {PhysicsEngine} from "2d-physics-engine-core";
+import {Controls} from "./models/input-model/controls.model";
 
 const engineConfiguration = {
     collision: true,
