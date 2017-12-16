@@ -1,10 +1,9 @@
 {
-  "name": "2d-physics-engine",
+  "name": "2d-physics-engine-core",
   "version": "0.1.2",
   "description": "A simple physics engine for 2d applications",
   "scripts": {
     "prestart": "npm i && typings install",
-    "postinstall": "cd lib && npm i --log-level=error",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack -w",
     "update-all": "npm-update-all",
