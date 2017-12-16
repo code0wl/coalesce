@@ -4,13 +4,13 @@
   "description": "A simple physics engine for 2d applications",
   "scripts": {
     "prestart": "npm i && typings install",
-    "postinstall": "cd lib && npm i --log-level=error",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack -w",
     "update-all": "npm-update-all",
     "validate-webpack:dev": "webpack-validator webpack.config.js --env.dev",
     "prep.demo": "webpack && webpack-dev-server"
   },
+  "main": "./lib/src/engine.core.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/code0wl/2d-physics-engine.git"
@@ -24,7 +24,7 @@
   "dependencies": {
     "rxjs": "^5.5.5",
     "whatwg-fetch": "^2.0.1",
-    "PhysicsEngine": "./lib"
+    "2d-physics-engine-core": "./lib"
   },
   "devDependencies": {
     "@types/node": "7.0.5",

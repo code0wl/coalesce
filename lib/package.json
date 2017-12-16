@@ -12,8 +12,7 @@
   "author": "Oscar Lodriguez",
   "dependencies": {
     "rxjs": "^5.5.5",
-    "whatwg-fetch": "^2.0.1",
-    "PhysicsEngine": "./lib"
+    "whatwg-fetch": "^2.0.1"
   },
   "devDependencies": {
     "@types/node": "7.0.5",
