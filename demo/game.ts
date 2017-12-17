@@ -1,4 +1,4 @@
-import {PhysicsEngine} from "2d-physics-engine-core";
+import * as PhysicsEngine from "2d-physics-engine-core";
 import {Controls} from "./models/input-model/controls.model";
 
 const engineConfiguration = {
@@ -21,7 +21,6 @@ class Game {
         this.width = engineConfiguration.width;
         this.gameInput = this.gameInput.bind(this);
         this.height = engineConfiguration.height;
-        this.engine.handleInput = this.gameInput;
     }
 
     public gameInput(keyCode: number) {

@@ -7,10 +7,10 @@
     "test": "webpack --config webpack/base.config.js",
     "start": "npm run prep.engine",
     "update-all": "npm-update-all",
-    "prep.demo": "webpack && webpack-dev-server",
-    "prep.engine": "webpack-dev-server --config webpack/base.config.js"
+    "prep.demo": "npm i && webpack --config webpack/demo.config.js &&  webpack-dev-server --config webpack/demo.config.js",
+    "prep.engine": "webpack --config webpack/base.config.js && webpack-dev-server --config webpack/base.config.js"
   },
-  "main": "./lib/src/engine.core.ts",
+  "main": "./lib/main.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/code0wl/2d-physics-engine.git"

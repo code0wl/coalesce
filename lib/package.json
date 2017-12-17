@@ -1,10 +1,7 @@
 {
   "name": "2d-physics-engine-core",
   "description": "A simple physics engine for 2d applications",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "main": "./src/engine.core.ts",
+  "main": "main.js",
   "author": "Oscar Lodriguez",
   "license": "ISC"
 }
