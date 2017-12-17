@@ -17,7 +17,6 @@ class Game {
     public width: number;
 
     constructor() {
-        console.log(this);
         this.engine = new PhysicsEngine(engineConfiguration);
         this.width = engineConfiguration.width;
         this.gameInput = this.gameInput.bind(this);

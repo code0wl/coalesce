@@ -22,4 +22,6 @@ export declare class PhysicsEngine<T> {
     private enableKeyboard(isEnabled: boolean): void;
     private enableAccelerometer(isEnabled: boolean): void;
     private enableMouse(isEnabled: boolean): void;
+
+    constructor(options: PhysicsEngineOptions)
 }
