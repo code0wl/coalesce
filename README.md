@@ -18,3 +18,16 @@ Engine will support the following modules which could be seen as features
 - Collision
 - Canvas Drawing interface
 - Different input peripheral support (mouse, keyboard, leap-motion, VR)
+
+**How to use**
+
+A full documentation will follow, but for now checking the project's package.json file will reveal how to run the demo application.
+
+```npm
+"scripts": {
+    "prestart": "npm i",
+    "start": "npm run prep.engine",
+    "prep.demo": "npm i && webpack --config webpack/demo.config.js &&  webpack-dev-server --config webpack/demo.config.js",
+    "prep.engine": "webpack --config webpack/base.config.js && webpack-dev-server --config webpack/base.config.js"
+}
+```
