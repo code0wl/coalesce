@@ -1,6 +1,6 @@
 {
   "name": "2d-physics-engine",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A simple physics engine for 2d applications",
   "scripts": {
     "prestart": "npm i",
