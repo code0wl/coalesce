@@ -1,4 +1,4 @@
-import * as PhysicsEngine from "2d-physics-engine-core";
+import * as PhysicsEngine from "../node_modules/2d-physics-engine-core";
 import {Controls} from "./models/input-model/controls.model";
 
 const engineConfiguration = {
