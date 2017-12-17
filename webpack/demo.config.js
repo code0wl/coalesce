@@ -2,7 +2,7 @@ const path = require('path');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const config = {
-    entry: path.resolve(__dirname, '../lib/src/engine.core'),
+    entry: path.resolve(__dirname, '../demo/game.ts'),
     output: {
         path: path.resolve(__dirname, '../demo/dist'),
         filename: './bundle.js'
