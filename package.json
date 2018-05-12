@@ -21,21 +21,22 @@
   },
   "homepage": "https://github.com/code0wl/2d-physics-engine#readme",
   "dependencies": {
-    "rxjs": "^5.5.5",
-    "whatwg-fetch": "^2.0.1",
-    "2d-physics-engine-core": "./lib"
+    "2d-physics-engine-core": "./lib",
+    "rxjs": "^5.5.10",
+    "whatwg-fetch": "^2.0.4"
   },
   "devDependencies": {
-    "@types/node": "^8.5.1",
+    "@types/node": "^6.0.110",
     "@types/rx": "^4.1.1",
     "concurrently": "^3.5.1",
     "json-loader": "^0.5.7",
     "npm-update-all": "^1.0.1",
-    "ts-loader": "^3.2.0",
-    "tslint": "^5.8.0",
-    "typescript": "^2.6.2",
-    "uglifyjs-webpack-plugin": "^1.1.4",
-    "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.9.7"
+    "ts-loader": "^4.3.0",
+    "tslint": "^5.10.0",
+    "typescript": "^2.8.3",
+    "uglifyjs-webpack-plugin": "^1.2.5",
+    "webpack": "^4.8.2",
+    "webpack-cli": "^2.1.3",
+    "webpack-dev-server": "^3.1.4"
   }
 }
