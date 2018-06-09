@@ -33,6 +33,7 @@
     "npm-update-all": "^1.0.1",
     "ts-loader": "^4.3.0",
     "tslint": "^5.10.0",
+    "tslint-loader": "^3.6.0",
     "typescript": "^2.8.3",
     "uglifyjs-webpack-plugin": "^1.2.5",
     "webpack": "^4.8.2",
