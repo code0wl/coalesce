@@ -1,9 +1,9 @@
-import {PhysicsEngine} from "../../../engine.core";
-import {AnimationLoop} from "../animation/engine.animation-loop";
-import {Canvas} from "../canvas/engine.canvas";
-import {Circle} from "../rigid/engine.shape.circle";
-import {Rectangle} from "../rigid/engine.shape.rectangle";
-import {Vector} from "../vector/engine.vector";
+import { PhysicsEngine } from "../../engine.core";
+import { AnimationLoop } from "../animation/engine.animation-loop";
+import { Canvas } from "../canvas/engine.canvas";
+import { Circle } from "../rigid/engine.shape.circle";
+import { Rectangle } from "../rigid/engine.shape.rectangle";
+import { Vector } from "../vector/engine.vector";
 
 export class Draw extends Canvas {
 
@@ -16,7 +16,7 @@ export class Draw extends Canvas {
 		this.logger = logger;
 		this.engine = engine;
 		this.startEngine();
-		console.info(`drawing engine enabled with dimension: ${width}px X ${height}px`);
+		console.log(`drawing engine enabled with dimension: ${width}px X ${height}px`);
 	}
 
 	public getContext(): CanvasRenderingContext2D {
@@ -25,8 +25,11 @@ export class Draw extends Canvas {
 
 	// TODO: shorten
 	public startEngine() {
-		this.animationLoop = new AnimationLoop(super.getContext(), super.getCanvas().width, super.getCanvas().height, this.logger,
+
+		this.animationLoop = new AnimationLoop(
+			super.getContext(), super.getCanvas().width, super.getCanvas().height, this.logger,
 			this.engine);
+
 	}
 
 	// createShape and move drawing responsibility to from draw method

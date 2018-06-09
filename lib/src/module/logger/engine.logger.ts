@@ -10,7 +10,7 @@ export class Logger {
 	private animation: AnimationLoop;
 
 	constructor(animationClass) {
-		console.info("logging performance");
+		console.log("logging performance");
 		this.animation = animationClass;
 		this.lagTime = animationClass.lagTime;
 		this.generateUI();

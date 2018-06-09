@@ -1,5 +1,5 @@
 import {Observable} from "rxjs";
-import {Controls} from "../../../models/input/controls";
+import {Controls} from "../../models/input/controls";
 
 export class InputKeyboard {
 	public keyboardInput$: Observable<number>;

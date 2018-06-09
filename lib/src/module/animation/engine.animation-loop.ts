@@ -1,4 +1,4 @@
-import {PhysicsEngine} from "../../../engine.core";
+import {PhysicsEngine} from "../../engine.core";
 import {Logger} from "../logger/engine.logger";
 import {RigidShape} from "../rigid/engine.rigid";
 

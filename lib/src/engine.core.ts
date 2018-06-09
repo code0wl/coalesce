@@ -1,10 +1,10 @@
 import {PhysicsEngineOptions} from './models/engine/engine';
-import {Accelerometer} from './module/components/accelerometer/engine.accelerometer';
-import {Collision} from './module/components/collision/engine.collision';
-import {Draw} from './module/components/drawing/engine.draw';
-import {InputKeyboard, InputMouse} from './module/components/input/input.peripheral';
-import {ShapeCollection} from './module/components/shapes/engine.shape-collection';
-import {VectorFactory} from './module/components/vector/vector.factory';
+import {Accelerometer} from './module/accelerometer/engine.accelerometer';
+import {Collision} from './module/collision/engine.collision';
+import {Draw} from './module/drawing/engine.draw';
+import {InputKeyboard, InputMouse} from './module/input/input.peripheral';
+import {ShapeCollection} from './module/shapes/engine.shape-collection';
+import {VectorFactory} from './module/vector/vector.factory';
 
 const json = require('../../package.json');
 
