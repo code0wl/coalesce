@@ -7,7 +7,7 @@
     "test": "webpack --config webpack/base.config.js",
     "start": "npm run prep.engine",
     "update-all": "npm-update-all",
-    "prep.demo": "npm i && webpack --config webpack/demo.config.js &&  webpack-dev-server --config webpack/demo.config.js",
+    "prep.demo": "npm i && webpack --config webpack/demo.config.js && webpack-dev-server --config webpack/demo.config.js",
     "prep.engine": "webpack --config webpack/base.config.js && webpack-dev-server --config webpack/base.config.js"
   },
   "repository": {
