@@ -1,12 +1,5 @@
 module.exports = {
-  extends: [
-    'tslint:recommended',
-    'tslint-no-circular-imports',
-    'tslint-sonarts',
-    'tslint-config-prettier'
-  ],
   rules: {
-    /* tslint overrides */
     'interface-name': false,
     'max-classes-per-file': false,
     'member-access': false,
