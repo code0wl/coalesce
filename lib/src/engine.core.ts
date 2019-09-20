@@ -29,6 +29,8 @@ export class PhysicsEngine {
         this.collision = new Collision(this, options.log);
         this.draw = new Draw(options.width, options.height, options.log, this);
         this.bootstrapEngine(options);
+
+        console.log(this)
     }
 
     public handleInput(keyCode): void {
