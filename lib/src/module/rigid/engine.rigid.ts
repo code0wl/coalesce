@@ -2,6 +2,10 @@ import { Vector } from '../vector/engine.vector';
 
 export class RigidShape {
   constructor(center, mass, friction, restitution) {
+    if (!gEngine) {
+      return;
+    }
+    console.log(gEngine)
     this.mCenter = center;
     this.mInertia = 0;
     if (mass !== undefined) {
@@ -45,7 +49,7 @@ export class RigidShape {
     gEngine.Core.mAllObjects.push(this);
   }
 
-  updateMass = function(delta) {
+  updateMass(delta) {
     var mass;
     if (this.mInvMass !== 0) {
       mass = 1 / this.mInvMass;
@@ -65,14 +69,14 @@ export class RigidShape {
       this.mAcceleration = gEngine.Core.mGravity;
     }
     this.updateInertia();
-  };
+  }
 
-  updateInertia = function() {
+  updateInertia() {
     // subclass must define this.
     // must work with inverted this.mInvMass
-  };
+  }
 
-  update = function() {
+  update() {
     if (gEngine.Core.mMovement) {
       var dt = gEngine.Core.mUpdateIntervalInSeconds;
       //v += a*t
@@ -94,9 +98,9 @@ export class RigidShape {
       var index = gEngine.Core.mAllObjects.indexOf(this);
       if (index > -1) gEngine.Core.mAllObjects.splice(index, 1);
     }
-  };
+  }
 
-  boundTest = function(otherShape) {
+  boundTest(otherShape) {
     var vFrom1to2 = otherShape.mCenter.subtract(this.mCenter);
     var rSum = this.mBoundRadius + otherShape.mBoundRadius;
     var dist = vFrom1to2.length();
@@ -105,5 +109,5 @@ export class RigidShape {
       return false;
     }
     return true;
-  };
+  }
 }
