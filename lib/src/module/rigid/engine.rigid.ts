@@ -1,46 +1,109 @@
-import {ShapeCollection} from "../shapes/engine.shape-collection";
-import {Vector} from "../vector/engine.vector";
+import { Vector } from '../vector/engine.vector';
 
 export class RigidShape {
+  constructor(center, mass, friction, restitution) {
+    this.mCenter = center;
+    this.mInertia = 0;
+    if (mass !== undefined) {
+      this.mInvMass = mass;
+    } else {
+      this.mInvMass = 1;
+    }
 
-	public radius: number;
-	public fix: number;
+    if (friction !== undefined) {
+      this.mFriction = friction;
+    } else {
+      this.mFriction = 0.8;
+    }
 
-	constructor(public center: any, public angle: any, public shapeCollection: ShapeCollection) {
-		this.shapeCollection = shapeCollection;
-		this.radius = 0;
-		this.angle = 0;
-		this.shapeCollection.collection.push(this);
-	}
+    if (restitution !== undefined) {
+      this.mRestitution = restitution;
+    } else {
+      this.mRestitution = 0.2;
+    }
 
-	public move(v: Vector) {
-		// override
-	}
+    this.mVelocity = new Vector(0, 0);
 
-	public boundTest(shape) {
-		const vectorDifference = shape.center.subtract(this.center);
-		const angleSum = this.angle + shape.angle;
-		const distance = vectorDifference.lengthCalculation();
-		console.log(distance, angleSum);
-		if (distance > angleSum) {
-			console.log("not overlapping");
-			return false;
-		}
-		console.log("overlapping");
-		return true;
-	};
+    if (this.mInvMass !== 0) {
+      this.mInvMass = 1 / this.mInvMass;
+      this.mAcceleration = gEngine.Core.mGravity;
+    } else {
+      this.mAcceleration = new Vector(0, 0);
+    }
 
-	public render(context: CanvasRenderingContext2D) {
-		// override;
-	}
+    //angle
+    this.mAngle = 0;
 
-	public rotate(angle: number, center?: number) {
-		// override;
-	}
+    //negetive-- clockwise
+    //postive-- counterclockwise
+    this.mAngularVelocity = 0;
 
-	public update(context: CanvasRenderingContext2D) {
-		// if (this.center.y < this.shapeCollection.canvas.height && this.fix !== 0) {
-		//     this.move(new Vector(0, 1));
-		// }
-	}
+    this.mAngularAcceleration = 0;
+
+    this.mBoundRadius = 0;
+
+    gEngine.Core.mAllObjects.push(this);
+  }
+
+  updateMass = function(delta) {
+    var mass;
+    if (this.mInvMass !== 0) {
+      mass = 1 / this.mInvMass;
+    } else {
+      mass = 0;
+    }
+
+    mass += delta;
+    if (mass <= 0) {
+      this.mInvMass = 0;
+      this.mVelocity = new Vector(0, 0);
+      this.mAcceleration = new Vector(0, 0);
+      this.mAngularVelocity = 0;
+      this.mAngularAcceleration = 0;
+    } else {
+      this.mInvMass = 1 / mass;
+      this.mAcceleration = gEngine.Core.mGravity;
+    }
+    this.updateInertia();
+  };
+
+  updateInertia = function() {
+    // subclass must define this.
+    // must work with inverted this.mInvMass
+  };
+
+  update = function() {
+    if (gEngine.Core.mMovement) {
+      var dt = gEngine.Core.mUpdateIntervalInSeconds;
+      //v += a*t
+      this.mVelocity = this.mVelocity.add(this.mAcceleration.scale(dt));
+      //s += v*t
+      this.move(this.mVelocity.scale(dt));
+
+      this.mAngularVelocity += this.mAngularAcceleration * dt;
+      this.rotate(this.mAngularVelocity * dt);
+    }
+    var width = gEngine.Core.mWidth;
+    var height = gEngine.Core.mHeight;
+    if (
+      this.mCenter.x < 0 ||
+      this.mCenter.x > width ||
+      this.mCenter.y < 0 ||
+      this.mCenter.y > height
+    ) {
+      var index = gEngine.Core.mAllObjects.indexOf(this);
+      if (index > -1) gEngine.Core.mAllObjects.splice(index, 1);
+    }
+  };
+
+  boundTest = function(otherShape) {
+    var vFrom1to2 = otherShape.mCenter.subtract(this.mCenter);
+    var rSum = this.mBoundRadius + otherShape.mBoundRadius;
+    var dist = vFrom1to2.length();
+    if (dist > rSum) {
+      //not overlapping
+      return false;
+    }
+    return true;
+  };
 }
