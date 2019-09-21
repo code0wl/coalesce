@@ -1,5 +1,4 @@
 const path = require('path');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const config = {
   entry: path.resolve(__dirname, '../demo/game.ts'),
@@ -9,7 +8,7 @@ const config = {
     filename: './bundle.js'
   },
   resolve: {
-    extensions: ['.ts', '.js'] // note if using webpack 1 you'd also need a '' in the array as well
+    extensions: ['.ts']
   },
   module: {
     rules: [
@@ -21,8 +20,7 @@ const config = {
         }
       }
     ]
-  },
-  plugins: [new UglifyJsPlugin()]
+  }
 };
 
 module.exports = config;

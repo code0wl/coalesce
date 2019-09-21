@@ -2,8 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Demo game</title>
+    <title>Simulation engine</title>
     <style>
+      #uiEchoString {
+        position: absolute;
+        right: 2em;
+        top: 0;
+      }
       body {
         padding: 0;
         margin: 0;
@@ -17,6 +22,8 @@
   </head>
 
   <body>
+    <div id="uiEchoString"></div>
+    <canvas id="canvas"></canvas>
     <script src="dist/bundle.js"></script>
   </body>
 </html>

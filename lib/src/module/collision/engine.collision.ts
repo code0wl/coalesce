@@ -1,90 +1,75 @@
-import { PhysicsEngine } from "../../engine.core";
-import { Vector } from "../vector/engine.vector";
+import { Vector } from '../vector/engine.vector';
 
-export class Collision {
+export class CollisionInfo {
+  constructor() {
+    this.mDepth = 0;
+    this.mNormal = new Vector(0, 0);
+    this.mStart = new Vector(0, 0);
+    this.mEnd = new Vector(0, 0);
+  }
 
-	private depth: number;
-	private radius: Vector;
-	private start: Vector;
-	private end: Vector;
+  /**
+   * Set the depth of the CollisionInfo
+   * @memberOf CollisionInfo
+   * @param {Number} s how much penetration
+   * @returns {void}
+   */
+  setDepth = function(s) {
+    this.mDepth = s;
+  };
 
-	constructor(private engine: PhysicsEngine, log: boolean) {
-		if (log) {
-			this.detectionLog();
-		}
-	}
+  /**
+   * Set the normal of the CollisionInfo
+   * @memberOf CollisionInfo
+   * @param {Vector} s Vector upon which collision interpenetrates
+   * @returns {void}
+   */
+  setNormal = function(s) {
+    this.mNormal = s;
+  };
 
-	// TODO: Refactor with map
-	public observeCollision(): void {
-		let i, j;
+  /**
+   * Return the depth of the CollisionInfo
+   * @memberOf CollisionInfo
+   * @returns {Number} how much penetration
+   */
+  getDepth = function() {
+    return this.mDepth;
+  };
 
-		for (i = 5; i < this.engine.shapeCollection.collection.length; i++) {
+  /**
+   * Return the depth of the CollisionInfo
+   * @memberOf CollisionInfo
+   * @returns {Vector} Vector upon which collision interpenetrates
+   */
+  getNormal = function() {
+    return this.mNormal;
+  };
 
-			for (j = i + 1; j < this.engine.shapeCollection.collection.length; j++) {
+  /**
+   * Set the all value of the CollisionInfo
+   * @memberOf CollisionInfo
+   * @param {Number} d the depth of the CollisionInfo
+   * @param {Vector} n the normal of the CollisionInfo
+   * @param {Vector} s the startpoint of the CollisionInfo
+   * @returns {void}
+   */
+  setInfo = function(d, n, s) {
+    this.mDepth = d;
+    this.mNormal = n;
+    this.mStart = s;
+    this.mEnd = s.add(n.scale(d));
+  };
 
-				console.log(this.engine.shapeCollection.collection[i], this.engine.shapeCollection.collection[j]);
-
-				if (this.engine.shapeCollection.collection[i].boundTest(this.engine.shapeCollection.collection[j])) {
-					this.engine.draw.getContext().strokeStyle = "green";
-					this.engine.shapeCollection.collection[i].render(this.engine.draw.getContext());
-					this.engine.shapeCollection.collection[j].render(this.engine.draw.getContext());
-				}
-			}
-
-		}
-	}
-
-	public collide(otherShape, collisionInfo) {
-		var status = false;
-		if (otherShape.mType === "Circle") {
-			status = this.collidedCircCirc(this, otherShape, collisionInfo);
-		} else {
-			status = false;
-		}
-		return status;
-	};
-
-	private collidedCircCirc(c1, c2, collisionInfo) {
-		const vFrom1to2 = c2.mCenter.subtract(c1.mCenter);
-		const rSum = c1.mRadius + c2.mRadius;
-		const dist = vFrom1to2.length();
-		if (dist > Math.sqrt(rSum * rSum)) {
-			return false; //not overlapping
-		}
-	};
-
-	private detectionLog() {
-		this.depth = 0;
-		this.radius = new Vector(0, 0);
-		this.start = new Vector(0, 0);
-		this.end = new Vector(0, 0);
-	}
-
-	private setRadius(s) {
-		this.radius = s;
-	};
-
-	private getDepth() {
-		return this.depth;
-	};
-
-	private getRadius() {
-		return this.radius;
-	};
-
-	private setInfo = function (d, n, s) {
-		this.depth = d;
-		this.radius = n;
-		this.start = s;
-		this.end = s.add(n.scale(d));
-	};
-
-	private changeDir = function () {
-		this.radius = this.radius.scale(-1);
-		const n = this.start;
-		this.start = this.end;
-		this.end = n;
-	};
-
-
+  /**
+   * change the direction of normal
+   * @memberOf CollisionInfo
+   * @returns {void}
+   */
+  changeDir = function() {
+    this.mNormal = this.mNormal.scale(-1);
+    var n = this.mStart;
+    this.mStart = this.mEnd;
+    this.mEnd = n;
+  };
 }
