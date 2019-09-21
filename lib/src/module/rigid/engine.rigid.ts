@@ -1,11 +1,19 @@
 import { Vector } from '../vector/engine.vector';
 
 export class RigidShape {
+  mCenter;
+  mInvMass;
+  mFriction;
+  mRestitution;
+  mInertia;
+  mBoundRadius;
+  mAngularVelocity;
+  mAngularAcceleration;
+  mVelocity;
+  mAngle;
+  mAcceleration;
+
   constructor(center, mass, friction, restitution) {
-    if (!gEngine) {
-      return;
-    }
-    console.log(gEngine)
     this.mCenter = center;
     this.mInertia = 0;
     if (mass !== undefined) {
