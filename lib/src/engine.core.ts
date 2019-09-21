@@ -226,6 +226,7 @@ gEngine.Core = (function() {
   var mAllObjects = [];
 
   var updateUIEcho = function() {
+    if (!mAllObjects.length) return;
     document.getElementById('uiEchoString').innerHTML =
       '<p><b>Selected Object:</b>:</p>' +
       '<ul style="margin:-10px">' +
