@@ -15,7 +15,7 @@ export class Rectangle extends RigidShape {
   mVertex;
   mFaceNormal;
   constructor(center, width, height, mass, friction, restitution) {
-    super(center, width, height, mass, friction, restitution);
+    super(center, width, height, mass);
     this.tmpSupport = new SupportStruct();
 
     this.mType = 'Rectangle';
@@ -47,7 +47,6 @@ export class Rectangle extends RigidShape {
 
   rotate(angle) {
     this.mAngle += angle;
-    console.log(this.mVertex);
     for (let i = 0; i < this.mVertex.length; i++) {
       this.mVertex[i] = this.mVertex[i].rotate(this.mCenter, angle);
     }

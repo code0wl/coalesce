@@ -1,5 +1,4 @@
 import { Vector } from './module/vector/engine.vector';
-import { RigidShape } from './module/rigid/engine.rigid';
 import { Rectangle } from './module/rigid/engine.shape.rectangle';
 import { Circle } from './module/rigid/engine.shape.circle';
 import { CollisionInfo } from './module/logger/collision.info';
@@ -343,218 +342,210 @@ gEngine.Core = (function() {
  */
 /*jslint node: true, vars: true, evil: true, bitwise: true */
 
-if (RigidShape) {
-  /* global height, width, gEngine */
-  window.MyGame = function() {
-    var r1 = new Rectangle(new Vector(500, 200), 400, 20, 0, 0.3, 0);
-    r1.rotate(2.8);
+/* global height, width, gEngine */
+window.MyGame = function() {
+  var r1 = new Rectangle(new Vector(500, 200), 400, 20, 0, 0.3, 0);
+  r1.rotate(2.8);
 
-    for (var i = 0; i < 10; i++) {
-      var r1 = new Rectangle(
-        new Vector(
-          Math.random() * gEngine.Core.mWidth,
-          (Math.random() * gEngine.Core.mHeight) / 2
-        ),
-        Math.random() * 50 + 10,
-        Math.random() * 50 + 10,
-        Math.random() * 30,
-        Math.random(),
-        Math.random()
-      );
-      r1.mVelocity = new Vector(
-        Math.random() * 60 - 30,
-        Math.random() * 60 - 30
-      );
-      var r1 = new Circle(
-        new Vector(
-          Math.random() * gEngine.Core.mWidth,
-          (Math.random() * gEngine.Core.mHeight) / 2
-        ),
-        Math.random() * 20 + 10,
-        Math.random() * 30,
-        Math.random(),
-        Math.random()
-      );
-      r1.mVelocity = new Vector(
-        Math.random() * 60 - 30,
-        Math.random() * 60 - 30
-      );
-    }
-  };
+  for (var i = 0; i < 10; i++) {
+    var r1 = new Rectangle(
+      new Vector(
+        Math.random() * gEngine.Core.mWidth,
+        (Math.random() * gEngine.Core.mHeight) / 2
+      ),
+      Math.random() * 50 + 10,
+      Math.random() * 50 + 10,
+      Math.random() * 30,
+      Math.random(),
+      Math.random()
+    );
+    r1.mVelocity = new Vector(Math.random() * 60 - 30, Math.random() * 60 - 30);
+    var r1 = new Circle(
+      new Vector(
+        Math.random() * gEngine.Core.mWidth,
+        (Math.random() * gEngine.Core.mHeight) / 2
+      ),
+      Math.random() * 20 + 10,
+      Math.random() * 30,
+      Math.random(),
+      Math.random()
+    );
+    r1.mVelocity = new Vector(Math.random() * 60 - 30, Math.random() * 60 - 30);
+  }
+};
 
-  /*
-   * To change this license header, choose License Headers in Project Properties.
-   * To change this template file, choose Tools | Templates
-   * and open the template in the editor.
-   */
-  /*jslint node: true, vars: true, evil: true, bitwise: true */
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+/*jslint node: true, vars: true, evil: true, bitwise: true */
 
-  /* global mAllObjects, gEngine */
+/* global mAllObjects, gEngine */
 
-  var gObjectNum = 0;
-  function userControl(event) {
-    var keycode;
+var gObjectNum = 0;
+document.addEventListener('keydown', event => {
+  var keycode;
 
-    if (window.event) {
-      //alert('ie');
-      keycode = event.keyCode;
-    } else if (event.which) {
-      //alert('firefox ');
-      keycode = event.which;
-    }
-    if (keycode >= 48 && keycode <= 57) {
-      if (keycode - 48 < gEngine.Core.mAllObjects.length) {
-        gObjectNum = keycode - 48;
-      }
-    }
-    if (keycode === 38) {
-      //up arrow
-      if (gObjectNum > 0) {
-        gObjectNum--;
-      }
-    }
-    if (keycode === 40) {
-      // down arrow
-      if (gObjectNum < gEngine.Core.mAllObjects.length - 1) {
-        gObjectNum++;
-      }
-    }
-    if (keycode === 87) {
-      //W
-      gEngine.Core.mAllObjects[gObjectNum].move(new Vector(0, -10));
-    }
-    if (keycode === 83) {
-      // S
-      gEngine.Core.mAllObjects[gObjectNum].move(new Vector(0, +10));
-    }
-    if (keycode === 65) {
-      //A
-      gEngine.Core.mAllObjects[gObjectNum].move(new Vector(-10, 0));
-    }
-    if (keycode === 68) {
-      //D
-      gEngine.Core.mAllObjects[gObjectNum].move(new Vector(10, 0));
-    }
-    if (keycode === 81) {
-      //Q
-      gEngine.Core.mAllObjects[gObjectNum].rotate(-0.1);
-    }
-    if (keycode === 69) {
-      //E
-      gEngine.Core.mAllObjects[gObjectNum].rotate(0.1);
-    }
-    if (keycode === 73) {
-      //I
-      gEngine.Core.mAllObjects[gObjectNum].mVelocity.y -= 1;
-    }
-    if (keycode === 75) {
-      // k
-      gEngine.Core.mAllObjects[gObjectNum].mVelocity.y += 1;
-    }
-    if (keycode === 74) {
-      //j
-      gEngine.Core.mAllObjects[gObjectNum].mVelocity.x -= 1;
-    }
-    if (keycode === 76) {
-      //l
-      gEngine.Core.mAllObjects[gObjectNum].mVelocity.x += 1;
-    }
-    if (keycode === 85) {
-      //U
-      gEngine.Core.mAllObjects[gObjectNum].mAngularVelocity -= 0.1;
-    }
-    if (keycode === 79) {
-      //O
-      gEngine.Core.mAllObjects[gObjectNum].mAngularVelocity += 0.1;
-    }
-    if (keycode === 90) {
-      //Z
-      gEngine.Core.mAllObjects[gObjectNum].updateMass(-1);
-    }
-    if (keycode === 88) {
-      //X
-      gEngine.Core.mAllObjects[gObjectNum].updateMass(1);
-    }
-    if (keycode === 67) {
-      //C
-      gEngine.Core.mAllObjects[gObjectNum].mFriction -= 0.01;
-    }
-    if (keycode === 86) {
-      //V
-      gEngine.Core.mAllObjects[gObjectNum].mFriction += 0.01;
-    }
-    if (keycode === 66) {
-      //B
-      gEngine.Core.mAllObjects[gObjectNum].mRestitution -= 0.01;
-    }
-    if (keycode === 78) {
-      //N
-      gEngine.Core.mAllObjects[gObjectNum].mRestitution += 0.01;
-    }
-    if (keycode === 77) {
-      //M
-      gEngine.Physics.mPositionalCorrectionFlag = !gEngine.Physics
-        .mPositionalCorrectionFlag;
-    }
-    if (keycode === 188) {
-      //，
-      gEngine.Core.mMovement = !gEngine.Core.mMovement;
-    }
-    if (keycode === 70) {
-      //f
-      var r1 = new Rectangle(
-        new Vector(
-          gEngine.Core.mAllObjects[gObjectNum].mCenter.x,
-          gEngine.Core.mAllObjects[gObjectNum].mCenter.y
-        ),
-        Math.random() * 30 + 10,
-        Math.random() * 30 + 10,
-        Math.random() * 30,
-        Math.random(),
-        Math.random()
-      );
-      r1.mVelocity = new Vector(
-        Math.random() * 300 - 150,
-        Math.random() * 300 - 150
-      );
-    }
-    if (keycode === 71) {
-      //g
-      var r1 = new Circle(
-        new Vector(
-          gEngine.Core.mAllObjects[gObjectNum].mCenter.x,
-          gEngine.Core.mAllObjects[gObjectNum].mCenter.y
-        ),
-        Math.random() * 10 + 20,
-        Math.random() * 30,
-        Math.random(),
-        Math.random()
-      );
-      r1.mVelocity = new Vector(
-        Math.random() * 300 - 150,
-        Math.random() * 300 - 150
-      );
-    }
-
-    if (keycode === 72) {
-      //H
-      var i;
-      for (i = 0; i < gEngine.Core.mAllObjects.length; i++) {
-        if (gEngine.Core.mAllObjects[i].mInvMass !== 0) {
-          gEngine.Core.mAllObjects[i].mVelocity = new Vector(
-            Math.random() * 500 - 250,
-            Math.random() * 500 - 250
-          );
-        }
-      }
-    }
-    if (keycode === 82) {
-      //R
-      gEngine.Core.mAllObjects.splice(7, gEngine.Core.mAllObjects.length);
-      gObjectNum = 0;
+  if (window.event) {
+    //alert('ie');
+    keycode = event.keyCode;
+  } else if (event.which) {
+    //alert('firefox ');
+    keycode = event.which;
+  }
+  if (keycode >= 48 && keycode <= 57) {
+    if (keycode - 48 < gEngine.Core.mAllObjects.length) {
+      gObjectNum = keycode - 48;
     }
   }
+  if (keycode === 38) {
+    //up arrow
+    if (gObjectNum > 0) {
+      gObjectNum--;
+    }
+  }
+  if (keycode === 40) {
+    // down arrow
+    if (gObjectNum < gEngine.Core.mAllObjects.length - 1) {
+      gObjectNum++;
+    }
+  }
+  if (keycode === 87) {
+    //W
+    gEngine.Core.mAllObjects[gObjectNum].move(new Vector(0, -10));
+  }
+  if (keycode === 83) {
+    // S
+    gEngine.Core.mAllObjects[gObjectNum].move(new Vector(0, +10));
+  }
+  if (keycode === 65) {
+    //A
+    gEngine.Core.mAllObjects[gObjectNum].move(new Vector(-10, 0));
+  }
+  if (keycode === 68) {
+    //D
+    gEngine.Core.mAllObjects[gObjectNum].move(new Vector(10, 0));
+  }
+  if (keycode === 81) {
+    //Q
+    gEngine.Core.mAllObjects[gObjectNum].rotate(-0.1);
+  }
+  if (keycode === 69) {
+    //E
+    gEngine.Core.mAllObjects[gObjectNum].rotate(0.1);
+  }
+  if (keycode === 73) {
+    //I
+    gEngine.Core.mAllObjects[gObjectNum].mVelocity.y -= 1;
+  }
+  if (keycode === 75) {
+    // k
+    gEngine.Core.mAllObjects[gObjectNum].mVelocity.y += 1;
+  }
+  if (keycode === 74) {
+    //j
+    gEngine.Core.mAllObjects[gObjectNum].mVelocity.x -= 1;
+  }
+  if (keycode === 76) {
+    //l
+    gEngine.Core.mAllObjects[gObjectNum].mVelocity.x += 1;
+  }
+  if (keycode === 85) {
+    //U
+    gEngine.Core.mAllObjects[gObjectNum].mAngularVelocity -= 0.1;
+  }
+  if (keycode === 79) {
+    //O
+    gEngine.Core.mAllObjects[gObjectNum].mAngularVelocity += 0.1;
+  }
+  if (keycode === 90) {
+    //Z
+    gEngine.Core.mAllObjects[gObjectNum].updateMass(-1);
+  }
+  if (keycode === 88) {
+    //X
+    gEngine.Core.mAllObjects[gObjectNum].updateMass(1);
+  }
+  if (keycode === 67) {
+    //C
+    gEngine.Core.mAllObjects[gObjectNum].mFriction -= 0.01;
+  }
+  if (keycode === 86) {
+    //V
+    gEngine.Core.mAllObjects[gObjectNum].mFriction += 0.01;
+  }
+  if (keycode === 66) {
+    //B
+    gEngine.Core.mAllObjects[gObjectNum].mRestitution -= 0.01;
+  }
+  if (keycode === 78) {
+    //N
+    gEngine.Core.mAllObjects[gObjectNum].mRestitution += 0.01;
+  }
+  if (keycode === 77) {
+    //M
+    gEngine.Physics.mPositionalCorrectionFlag = !gEngine.Physics
+      .mPositionalCorrectionFlag;
+  }
+  if (keycode === 188) {
+    //，
+    gEngine.Core.mMovement = !gEngine.Core.mMovement;
+  }
+  if (keycode === 70) {
+    //f
+    var r1 = new Rectangle(
+      new Vector(
+        gEngine.Core.mAllObjects[gObjectNum].mCenter.x,
+        gEngine.Core.mAllObjects[gObjectNum].mCenter.y
+      ),
+      Math.random() * 30 + 10,
+      Math.random() * 30 + 10,
+      Math.random() * 30,
+      Math.random(),
+      Math.random()
+    );
+    r1.mVelocity = new Vector(
+      Math.random() * 300 - 150,
+      Math.random() * 300 - 150
+    );
+  }
+  if (keycode === 71) {
+    //g
+    var r1 = new Circle(
+      new Vector(
+        gEngine.Core.mAllObjects[gObjectNum].mCenter.x,
+        gEngine.Core.mAllObjects[gObjectNum].mCenter.y
+      ),
+      Math.random() * 10 + 20,
+      Math.random() * 30,
+      Math.random(),
+      Math.random()
+    );
+    r1.mVelocity = new Vector(
+      Math.random() * 300 - 150,
+      Math.random() * 300 - 150
+    );
+  }
 
-  window['game'] = new window.MyGame();
-  gEngine.Core.initializeEngineCore();
-}
+  if (keycode === 72) {
+    //H
+    var i;
+    for (i = 0; i < gEngine.Core.mAllObjects.length; i++) {
+      if (gEngine.Core.mAllObjects[i].mInvMass !== 0) {
+        gEngine.Core.mAllObjects[i].mVelocity = new Vector(
+          Math.random() * 500 - 250,
+          Math.random() * 500 - 250
+        );
+      }
+    }
+  }
+  if (keycode === 82) {
+    //R
+    gEngine.Core.mAllObjects.splice(7, gEngine.Core.mAllObjects.length);
+    gObjectNum = 0;
+  }
+});
+
+window['game'] = new window.MyGame();
+gEngine.Core.initializeEngineCore();
