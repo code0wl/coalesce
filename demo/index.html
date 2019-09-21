@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <title>Demo game</title>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Simulation engine</title>
     <style>
-        body {
-            padding: 0;
-            margin: 0;
-            overflow: hidden;
-        }
+      #uiEchoString {
+        position: absolute;
+        right: 2em;
+        top: 0;
+      }
+      body {
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+      }
 
-        canvas {
-            background: lightgrey;
-        }
+      canvas {
+        background: lightgrey;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-
-<script src="dist/bundle.js"></script>
-</body>
-
+  <body ">
+    <div id="uiEchoString"></div>
+    <canvas id="canvas"></canvas>
+    <script src="dist/bundle.js"></script>
+  </body>
 </html>

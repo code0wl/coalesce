@@ -1,6 +1,10 @@
 import { Vector } from '../vector/engine.vector';
 
 export class CollisionInfo {
+  mDepth;
+  mNormal;
+  mStart;
+  mEnd;
   constructor() {
     this.mDepth = 0;
     this.mNormal = new Vector(0, 0);
@@ -14,9 +18,9 @@ export class CollisionInfo {
    * @param {Number} s how much penetration
    * @returns {void}
    */
-  setDepth = function(s) {
+  setDepth(s) {
     this.mDepth = s;
-  };
+  }
 
   /**
    * Set the normal of the CollisionInfo
@@ -24,27 +28,27 @@ export class CollisionInfo {
    * @param {Vector} s Vector upon which collision interpenetrates
    * @returns {void}
    */
-  setNormal = function(s) {
+  setNormal(s) {
     this.mNormal = s;
-  };
+  }
 
   /**
    * Return the depth of the CollisionInfo
    * @memberOf CollisionInfo
    * @returns {Number} how much penetration
    */
-  getDepth = function() {
+  getDepth() {
     return this.mDepth;
-  };
+  }
 
   /**
    * Return the depth of the CollisionInfo
    * @memberOf CollisionInfo
    * @returns {Vector} Vector upon which collision interpenetrates
    */
-  getNormal = function() {
+  getNormal() {
     return this.mNormal;
-  };
+  }
 
   /**
    * Set the all value of the CollisionInfo
@@ -54,22 +58,22 @@ export class CollisionInfo {
    * @param {Vector} s the startpoint of the CollisionInfo
    * @returns {void}
    */
-  setInfo = function(d, n, s) {
+  setInfo(d, n, s) {
     this.mDepth = d;
     this.mNormal = n;
     this.mStart = s;
     this.mEnd = s.add(n.scale(d));
-  };
+  }
 
   /**
    * change the direction of normal
    * @memberOf CollisionInfo
    * @returns {void}
    */
-  changeDir = function() {
+  changeDir() {
     this.mNormal = this.mNormal.scale(-1);
     var n = this.mStart;
     this.mStart = this.mEnd;
     this.mEnd = n;
-  };
+  }
 }
