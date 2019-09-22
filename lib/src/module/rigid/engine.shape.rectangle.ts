@@ -289,7 +289,7 @@ export class Rectangle extends RigidShape {
     if (this.mInvMass === 0) {
       this.mInertia = 0;
     } else {
-      //inertia=mass*width^2+height^2
+    //   inertia=mass*width^2+height^2
       this.mInertia =
         ((1 / this.mInvMass) *
           (this.mWidth * this.mWidth + this.mHeight * this.mHeight)) /

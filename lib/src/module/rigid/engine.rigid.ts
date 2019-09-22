@@ -1,6 +1,9 @@
 import { Vector } from '../vector/engine.vector';
+import { Coalesce } from '../../engine.core';
 
 export class RigidShape {
+  move;
+  rotate;
   mCenter;
   mInvMass;
   mFriction;
@@ -38,7 +41,8 @@ export class RigidShape {
 
     if (this.mInvMass !== 0) {
       this.mInvMass = 1 / this.mInvMass;
-      this.mAcceleration = gEngine.Core.mGravity;
+      console.log(Coalesce);
+      this.mAcceleration = Coalesce.Core().mGravity;
     } else {
       this.mAcceleration = new Vector(0, 0);
     }
@@ -54,7 +58,7 @@ export class RigidShape {
 
     this.mBoundRadius = 0;
 
-    gEngine.Core.mAllObjects.push(this);
+    Coalesce.Core().mAllObjects.push(this);
   }
 
   updateMass(delta) {
@@ -74,7 +78,7 @@ export class RigidShape {
       this.mAngularAcceleration = 0;
     } else {
       this.mInvMass = 1 / mass;
-      this.mAcceleration = gEngine.Core.mGravity;
+      this.mAcceleration = Coalesce.Core().mGravity;
     }
     this.updateInertia();
   }
@@ -85,8 +89,8 @@ export class RigidShape {
   }
 
   update() {
-    if (gEngine.Core.mMovement) {
-      var dt = gEngine.Core.mUpdateIntervalInSeconds;
+    if (Coalesce.Core().mMovement) {
+      var dt = Coalesce.Core().mUpdateIntervalInSeconds;
       //v += a*t
       this.mVelocity = this.mVelocity.add(this.mAcceleration.scale(dt));
       //s += v*t
@@ -95,16 +99,16 @@ export class RigidShape {
       this.mAngularVelocity += this.mAngularAcceleration * dt;
       this.rotate(this.mAngularVelocity * dt);
     }
-    var width = gEngine.Core.mWidth;
-    var height = gEngine.Core.mHeight;
+    var width = Coalesce.Core().mWidth;
+    var height = Coalesce.Core().mHeight;
     if (
       this.mCenter.x < 0 ||
       this.mCenter.x > width ||
       this.mCenter.y < 0 ||
       this.mCenter.y > height
     ) {
-      var index = gEngine.Core.mAllObjects.indexOf(this);
-      if (index > -1) gEngine.Core.mAllObjects.splice(index, 1);
+      var index = Coalesce.Core().mAllObjects.indexOf(this);
+      if (index > -1) Coalesce.Core().mAllObjects.splice(index, 1);
     }
   }
 

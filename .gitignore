@@ -1,6 +1,6 @@
 node_modules/
 .vscode/
-main.js
+index.js
 *.js.map
 lib/src/**/*.js
 *.log
