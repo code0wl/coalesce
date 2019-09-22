@@ -25,24 +25,13 @@ export class RigidShape {
       this.mInvMass = 1;
     }
 
-    if (friction !== undefined) {
-      this.mFriction = friction;
-    } else {
-      this.mFriction = 0.8;
-    }
-
-    if (restitution !== undefined) {
-      this.mRestitution = restitution;
-    } else {
-      this.mRestitution = 0.2;
-    }
-
+    this.mFriction = friction !== undefined ? friction : 0.8;
+    this.mRestitution = restitution !== undefined ? restitution : 0.2;
     this.mVelocity = new Vector(0, 0);
 
     if (this.mInvMass !== 0) {
       this.mInvMass = 1 / this.mInvMass;
-      console.log(Coalesce);
-      this.mAcceleration = Coalesce.Core().mGravity;
+      this.mAcceleration = Coalesce.Core.mGravity;
     } else {
       this.mAcceleration = new Vector(0, 0);
     }
@@ -58,7 +47,8 @@ export class RigidShape {
 
     this.mBoundRadius = 0;
 
-    Coalesce.Core().mAllObjects.push(this);
+    Coalesce.Core.mAllObjects.push(this);
+    console.log(Coalesce.Core.mAllObjects);
   }
 
   updateMass(delta) {
@@ -78,7 +68,7 @@ export class RigidShape {
       this.mAngularAcceleration = 0;
     } else {
       this.mInvMass = 1 / mass;
-      this.mAcceleration = Coalesce.Core().mGravity;
+      this.mAcceleration = Coalesce.Core.mGravity;
     }
     this.updateInertia();
   }
@@ -89,8 +79,8 @@ export class RigidShape {
   }
 
   update() {
-    if (Coalesce.Core().mMovement) {
-      var dt = Coalesce.Core().mUpdateIntervalInSeconds;
+    if (Coalesce.Core.mMovement) {
+      var dt = Coalesce.Core.mUpdateIntervalInSeconds;
       //v += a*t
       this.mVelocity = this.mVelocity.add(this.mAcceleration.scale(dt));
       //s += v*t
@@ -99,16 +89,16 @@ export class RigidShape {
       this.mAngularVelocity += this.mAngularAcceleration * dt;
       this.rotate(this.mAngularVelocity * dt);
     }
-    var width = Coalesce.Core().mWidth;
-    var height = Coalesce.Core().mHeight;
+    var width = Coalesce.Core.mWidth;
+    var height = Coalesce.Core.mHeight;
     if (
       this.mCenter.x < 0 ||
       this.mCenter.x > width ||
       this.mCenter.y < 0 ||
       this.mCenter.y > height
     ) {
-      var index = Coalesce.Core().mAllObjects.indexOf(this);
-      if (index > -1) Coalesce.Core().mAllObjects.splice(index, 1);
+      var index = Coalesce.Core.mAllObjects.indexOf(this);
+      if (index > -1) Coalesce.Core.mAllObjects.splice(index, 1);
     }
   }
 

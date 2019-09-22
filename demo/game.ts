@@ -147,7 +147,8 @@ document.addEventListener('keydown', event => {
   }
   if (keycode === 77) {
     //M
-    Physics.mPositionalCorrectionFlag = !Physics.mPositionalCorrectionFlag;
+    Coalesce.Physics.mPositionalCorrectionFlag = !Coalesce.Physics
+      .mPositionalCorrectionFlag;
   }
   if (keycode === 188) {
     //，
@@ -209,4 +210,4 @@ document.addEventListener('keydown', event => {
 });
 
 new MyGame();
-// Coalesce.Core().initializeEngineCore();
+Coalesce.Core.initializeEngineCore();
