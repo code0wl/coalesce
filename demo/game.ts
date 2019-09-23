@@ -7,7 +7,6 @@ import {
 let gObjectNum = 0;
 
 class MyGame {
-  gObjectNum;
   constructor() {
     var r1 = new Rectangle(new Vector(500, 200), 400, 20, 0, 0.3, 0);
     r1.rotate(2.8);

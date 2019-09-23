@@ -19,7 +19,7 @@ export class RigidShape {
   constructor(center, mass, friction, restitution) {
     this.mCenter = center;
     this.mInertia = 0;
-    if (mass !== undefined) {
+    if (mass) {
       this.mInvMass = mass;
     } else {
       this.mInvMass = 1;
