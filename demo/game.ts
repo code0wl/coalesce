@@ -210,4 +210,4 @@ document.addEventListener('keydown', event => {
 });
 
 new MyGame();
-Coalesce.Core.initializeEngineCore();
+Coalesce.Core.initializeEngine();

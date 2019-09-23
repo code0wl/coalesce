@@ -1,8 +1,10 @@
 import { Vector } from './module/vector/engine.vector';
 import { CollisionInfo } from './module/logger/collision.info';
 import { Canvas } from './module/canvas/engine.canvas';
+import { updateLog } from './module/logger/engine.logger';
 
 let gObjectNum = 0;
+let mAllObjects = [];
 
 const { context, width, height } = new Canvas(
   window.innerWidth,
@@ -32,7 +34,7 @@ const Physics = function() {
     }
 
     //  correct positions
-    if (Coalesce.Physics.mPositionalCorrectionFlag) {
+    if (mPositionalCorrectionFlag) {
       positionalCorrection(s1, s2, collisionInfo);
     }
 
@@ -156,6 +158,8 @@ const Physics = function() {
                 collisionInfo.changeDir();
               }
 
+              drawCollisionInfo(collisionInfo, context);
+
               resolveCollision(
                 Coalesce.Core.mAllObjects[i],
                 Coalesce.Core.mAllObjects[j],
@@ -185,64 +189,6 @@ const Core = function() {
   let kFrameTime = 1 / kFPS;
   let mUpdateIntervalInSeconds = kFrameTime;
   let kMPF = 1000 * kFrameTime; // Milliseconds per frame.
-  let mAllObjects = [];
-
-  let updateUIEcho = function() {
-    if (!mAllObjects.length) return;
-    document.getElementById('info').innerHTML =
-      '<p><b>Selected Object:</b>:</p>' +
-      '<ul style="margin:-10px">' +
-      '<li>Id: ' +
-      gObjectNum +
-      '</li>' +
-      '<li>Center: ' +
-      mAllObjects[gObjectNum].mCenter.x.toPrecision(3) +
-      ',' +
-      mAllObjects[gObjectNum].mCenter.y.toPrecision(3) +
-      '</li>' +
-      '<li>Angle: ' +
-      mAllObjects[gObjectNum].mAngle.toPrecision(3) +
-      '</li>' +
-      '<li>Velocity: ' +
-      mAllObjects[gObjectNum].mVelocity.x.toPrecision(3) +
-      ',' +
-      mAllObjects[gObjectNum].mVelocity.y.toPrecision(3) +
-      '</li>' +
-      '<li>AngluarVelocity: ' +
-      mAllObjects[gObjectNum].mAngularVelocity.toPrecision(3) +
-      '</li>' +
-      '<li>Mass: ' +
-      1 / mAllObjects[gObjectNum].mInvMass.toPrecision(3) +
-      '</li>' +
-      '<li>Friction: ' +
-      mAllObjects[gObjectNum].mFriction.toPrecision(3) +
-      '</li>' +
-      '<li>Restitution: ' +
-      mAllObjects[gObjectNum].mRestitution.toPrecision(3) +
-      '</li>' +
-      '<li>Positional Correction: ' +
-      Coalesce.Physics.mPositionalCorrectionFlag +
-      '</li>' +
-      '<li>Movement: ' +
-      Coalesce.Core.mMovement +
-      '</li>' +
-      '</ul> <hr>' +
-      '<p><b>Control</b>: of selected object</p>' +
-      '<ul style="margin:-10px">' +
-      '<li><b>Num</b> or <b>Up/Down Arrow</b>: Select Object</li>' +
-      '<li><b>WASD</b> + <b>QE</b>: Position [Move + Rotate]</li>' +
-      '<li><b>IJKL</b> + <b>UO</b>: Velocities [Linear + Angular]</li>' +
-      '<li><b>Z/X</b>: Mass [Decrease/Increase]</li>' +
-      '<li><b>C/V</b>: Frictrion [Decrease/Increase]</li>' +
-      '<li><b>B/N</b>: Restitution [Decrease/Increase]</li>' +
-      '<li><b>M</b>: Positional Correction [On/Off]</li>' +
-      '<li><b>,</b>: Movement [On/Off]</li>' +
-      '</ul> <hr>' +
-      '<b>F/G</b>: Spawn [Rectangle/Circle] at selected object' +
-      '<p><b>H</b>: Excite all objects</p>' +
-      '<p><b>R</b>: Reset System</p>' +
-      '<hr>';
-  };
 
   const draw = () => {
     context.clearRect(0, 0, width, height);
@@ -269,7 +215,10 @@ const Core = function() {
     mPreviousTime = mCurrentTime;
     mLagTime += mElapsedTime;
 
-    updateUIEcho();
+    updateLog(mAllObjects, gObjectNum, {
+      mPositionalCorrectionFlag: Physics().mPositionalCorrectionFlag,
+      Movement: mMovement
+    });
     draw();
 
     while (mLagTime >= kMPF) {
@@ -279,12 +228,12 @@ const Core = function() {
     }
   };
 
-  let initializeEngineCore = function() {
+  const initializeEngine = function() {
     runGameLoop();
   };
 
   return {
-    initializeEngineCore,
+    initializeEngine,
     mAllObjects,
     context,
     width,
