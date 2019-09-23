@@ -1,8 +1,13 @@
 import { Vector } from './module/vector/engine.vector';
 import { CollisionInfo } from './module/logger/collision.info';
-declare const window;
+import { Canvas } from './module/canvas/engine.canvas';
 
 let gObjectNum = 0;
+
+const { context, width, height } = new Canvas(
+  window.innerWidth,
+  window.innerHeight
+);
 
 const Physics = function() {
   let mPositionalCorrectionFlag = true;
@@ -169,15 +174,6 @@ const Physics = function() {
 };
 
 const Core = function() {
-  let mCanvas,
-    mContext,
-    mWidth = window.innerWidth,
-    mHeight = window.innerHeight;
-  mCanvas = document.getElementById('canvas');
-  mContext = mCanvas.getContext('2d');
-  mCanvas.height = mHeight;
-  mCanvas.width = mWidth;
-
   let mGravity = new Vector(0, 20);
   let mMovement = true;
 
@@ -249,19 +245,19 @@ const Core = function() {
   };
 
   const draw = () => {
-    mContext.clearRect(0, 0, mWidth, mHeight);
+    context.clearRect(0, 0, width, height);
     for (let i = 0; i < mAllObjects.length; i++) {
-      mContext.strokeStyle = 'blue';
+      context.strokeStyle = 'blue';
       if (i === gObjectNum) {
-        mContext.strokeStyle = 'red';
+        context.strokeStyle = 'red';
       }
-      mAllObjects[i].draw(mContext);
+      mAllObjects[i].draw(context);
     }
   };
 
   const update = () => {
     for (let i = 0; i < mAllObjects.length; i++) {
-      mAllObjects[i].update(mContext);
+      mAllObjects[i].update(context);
     }
   };
 
@@ -290,9 +286,9 @@ const Core = function() {
   return {
     initializeEngineCore,
     mAllObjects,
-    mWidth,
-    mHeight,
-    mContext,
+    context,
+    width,
+    height,
     mGravity,
     mUpdateIntervalInSeconds,
     mMovement

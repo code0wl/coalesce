@@ -15,8 +15,8 @@ class MyGame {
     for (var i = 0; i < 10; i++) {
       var r1 = new Rectangle(
         new Vector(
-          Math.random() * Coalesce.Core.mWidth,
-          (Math.random() * Coalesce.Core.mHeight) / 2
+          Math.random() * Coalesce.Core.width,
+          (Math.random() * Coalesce.Core.height) / 2
         ),
         Math.random() * 50 + 10,
         Math.random() * 50 + 10,
@@ -30,8 +30,8 @@ class MyGame {
       );
       var r1 = new Circle(
         new Vector(
-          Math.random() * Coalesce.Core.mWidth,
-          (Math.random() * Coalesce.Core.mHeight) / 2
+          Math.random() * Coalesce.Core.width,
+          (Math.random() * Coalesce.Core.height) / 2
         ),
         Math.random() * 20 + 10,
         Math.random() * 30,

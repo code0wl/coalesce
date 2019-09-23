@@ -48,7 +48,6 @@ export class RigidShape {
     this.mBoundRadius = 0;
 
     Coalesce.Core.mAllObjects.push(this);
-    console.log(Coalesce.Core.mAllObjects);
   }
 
   updateMass(delta) {
