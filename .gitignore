@@ -1,8 +1,8 @@
 node_modules/
 .vscode/
-*index.js
 *.js.map
 lib/src/**/*.js
 *.log
 .idea/
 */dist
+lib/index.js

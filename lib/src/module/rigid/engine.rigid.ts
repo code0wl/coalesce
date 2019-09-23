@@ -36,11 +36,8 @@ export class RigidShape {
       this.mAcceleration = new Vector(0, 0);
     }
 
-    //angle
     this.mAngle = 0;
 
-    //negetive-- clockwise
-    //postive-- counterclockwise
     this.mAngularVelocity = 0;
 
     this.mAngularAcceleration = 0;
@@ -88,8 +85,8 @@ export class RigidShape {
       this.mAngularVelocity += this.mAngularAcceleration * dt;
       this.rotate(this.mAngularVelocity * dt);
     }
-    var width = Coalesce.Core.mWidth;
-    var height = Coalesce.Core.mHeight;
+    var width = Coalesce.Core.width;
+    var height = Coalesce.Core.height;
     if (
       this.mCenter.x < 0 ||
       this.mCenter.x > width ||
