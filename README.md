@@ -1,4 +1,4 @@
-# WIP A modern lightweight physics engine for the browser
+# WIP A modern lightweight physics engine for the browser (Currently undergoing a major rewrite)
 ### A minimalist 2D physics engine written and maintained with TypeScript and RxJS for games, graphs or any canvas interface
 
 Work in Progress (Do not use for Production yet) [![Build Status](https://travis-ci.org/code0wl/coalesce.svg?branch=master)](https://travis-ci.org/code0wl/coalesce)
