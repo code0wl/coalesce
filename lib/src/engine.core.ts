@@ -28,7 +28,7 @@ const Physics = function() {
     s2.move(correctionAmount.scale(s2InvMass));
   };
 
-  let resolveCollision = function(s1, s2, collisionInfo) {
+  const resolveCollision = (s1, s2, collisionInfo) => {
     if (s1.mInvMass === 0 && s2.mInvMass === 0) {
       return;
     }
